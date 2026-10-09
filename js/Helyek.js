@@ -9,7 +9,4 @@ class Helyek {
 
     }
 
-    setHely(hely){
-        this.>#
-    }
 }

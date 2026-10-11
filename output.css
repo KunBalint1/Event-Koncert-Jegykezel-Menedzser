@@ -275,6 +275,7 @@
     --radius: 8px;
     --spacing-8xl: 90rem;
     --leading-9: 36px;
+    --leading-8: 32px;
     --leading-6: 24px;
     --leading-5: 20px;
     --radius-base: 12px;
@@ -1202,6 +1203,9 @@
   .mb-2\.5 {
     margin-bottom: calc(var(--spacing) * 2.5);
   }
+  .mb-3 {
+    margin-bottom: calc(var(--spacing) * 3);
+  }
   .apexcharts-canvas .apexcharts-xaxistooltip {
     color: var(--color-body) !important;
     padding-top: 0.5rem !important;
@@ -1439,6 +1443,9 @@
   .w-37\.5 {
     width: calc(var(--spacing) * 37.5);
   }
+  .w-50 {
+    width: calc(var(--spacing) * 50);
+  }
   .w-56 {
     width: calc(var(--spacing) * 56);
   }
@@ -1448,8 +1455,14 @@
   .w-75 {
     width: calc(var(--spacing) * 75);
   }
+  .w-80 {
+    width: calc(var(--spacing) * 80);
+  }
   .w-85 {
     width: calc(var(--spacing) * 85);
+  }
+  .w-120 {
+    width: calc(var(--spacing) * 120);
   }
   .w-full {
     width: 100%;
@@ -1589,6 +1602,9 @@
   .grid-rows-1 {
     grid-template-rows: repeat(1, minmax(0, 1fr));
   }
+  .grid-rows-2 {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
   .grid-rows-6 {
     grid-template-rows: repeat(6, minmax(0, 1fr));
   }
@@ -1622,6 +1638,9 @@
   .gap-2 {
     gap: calc(var(--spacing) * 2);
   }
+  .gap-4 {
+    gap: calc(var(--spacing) * 4);
+  }
   .gap-8 {
     gap: calc(var(--spacing) * 8);
   }
@@ -1647,6 +1666,9 @@
   }
   .self-center {
     align-self: center;
+  }
+  .justify-self-end {
+    justify-self: flex-end;
   }
   .overflow-hidden {
     overflow: hidden;
@@ -2156,6 +2178,10 @@
     --tw-leading: var(--leading-6);
     line-height: var(--leading-6);
   }
+  .leading-8 {
+    --tw-leading: var(--leading-8);
+    line-height: var(--leading-8);
+  }
   .leading-9 {
     --tw-leading: var(--leading-9);
     line-height: var(--leading-9);
@@ -2175,6 +2201,10 @@
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
+  }
+  .tracking-tight {
+    --tw-tracking: var(--tracking-tight);
+    letter-spacing: var(--tracking-tight);
   }
   .whitespace-nowrap {
     white-space: nowrap;
@@ -3163,6 +3193,10 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-tracking {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-shadow {
   syntax: "*";
   inherits: false;
@@ -3329,6 +3363,7 @@
       --tw-gradient-to-position: 100%;
       --tw-leading: initial;
       --tw-font-weight: initial;
+      --tw-tracking: initial;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
       --tw-shadow-alpha: 100%;

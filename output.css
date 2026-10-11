@@ -1334,6 +1334,12 @@
   .h-16 {
     height: calc(var(--spacing) * 16);
   }
+  .h-\[200px\] {
+    height: 200px;
+  }
+  .h-\[300px\] {
+    height: 300px;
+  }
   .h-\[calc\(100\%-1rem\)\] {
     height: calc(100% - 1rem);
   }
@@ -1464,6 +1470,12 @@
   .w-120 {
     width: calc(var(--spacing) * 120);
   }
+  .w-\[120\] {
+    width: 120;
+  }
+  .w-\[300px\] {
+    width: 300px;
+  }
   .w-full {
     width: 100%;
   }
@@ -1581,11 +1593,11 @@
   .resize {
     resize: both;
   }
+  .auto-cols-fr {
+    grid-auto-columns: minmax(0, 1fr);
+  }
   .grid-flow-col {
     grid-auto-flow: column;
-  }
-  .auto-rows-\[110px\] {
-    grid-auto-rows: 110px;
   }
   .auto-rows-\[120px\] {
     grid-auto-rows: 120px;
@@ -2014,9 +2026,6 @@
   .p-0 {
     padding: 0px;
   }
-  .p-0\.5 {
-    padding: calc(var(--spacing) * 0.5);
-  }
   .p-1 {
     padding: var(--spacing);
   }
@@ -2349,25 +2358,6 @@
     transition-timing-function: var(--ease-out);
   }
   @media (hover: hover) {
-    .group-hover\:bg-transparent:is(:where(.group):hover *) {
-      background-color: transparent;
-    }
-    .group-hover\:from-cyan-500:is(:where(.group):hover *) {
-      --tw-gradient-from: var(--color-cyan-500);
-      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-    }
-    .group-hover\:from-green-400:is(:where(.group):hover *) {
-      --tw-gradient-from: var(--color-green-400);
-      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-    }
-    .group-hover\:to-blue-500:is(:where(.group):hover *) {
-      --tw-gradient-to: var(--color-blue-500);
-      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-    }
-    .group-hover\:to-blue-600:is(:where(.group):hover *) {
-      --tw-gradient-to: var(--color-blue-600);
-      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-    }
     .group-hover\:text-fg-brand:is(:where(.group):hover *) {
       color: var(--color-fg-brand);
     }
@@ -2390,9 +2380,6 @@
     }
     .hover\:bg-gray-200:hover {
       background-color: var(--color-gray-200);
-    }
-    .hover\:bg-green-950:hover {
-      background-color: var(--color-green-950);
     }
     .hover\:bg-neutral-secondary-medium:hover {
       background-color: var(--color-neutral-secondary-medium);
@@ -2422,9 +2409,6 @@
     .hover\:text-heading:hover {
       color: var(--color-heading);
     }
-    .hover\:text-white:hover {
-      color: var(--color-white);
-    }
   }
   .focus\:z-10:focus {
     z-index: 10;
@@ -2448,12 +2432,6 @@
   }
   .focus\:ring-brand-medium:focus {
     --tw-ring-color: var(--color-brand-medium);
-  }
-  .focus\:ring-cyan-200:focus {
-    --tw-ring-color: var(--color-cyan-200);
-  }
-  .focus\:ring-green-200:focus {
-    --tw-ring-color: var(--color-green-200);
   }
   .focus\:ring-green-300:focus {
     --tw-ring-color: var(--color-green-300);
@@ -2540,15 +2518,6 @@
     .dark\:text-white {
       color: var(--color-white);
     }
-  }
-  @media (hover: hover) {
-    @media (prefers-color-scheme: dark) {
-      .group-hover\:dark\:bg-transparent:is(:where(.group):hover *) {
-        background-color: transparent;
-      }
-    }
-  }
-  @media (prefers-color-scheme: dark) {
     @media (hover: hover) {
       .dark\:hover\:bg-blue-700:hover {
         background-color: var(--color-blue-700);
@@ -2565,9 +2534,6 @@
     }
     .dark\:focus\:ring-blue-800:focus {
       --tw-ring-color: var(--color-blue-800);
-    }
-    .dark\:focus\:ring-cyan-800:focus {
-      --tw-ring-color: var(--color-cyan-800);
     }
     .dark\:focus\:ring-gray-600:focus {
       --tw-ring-color: var(--color-gray-600);

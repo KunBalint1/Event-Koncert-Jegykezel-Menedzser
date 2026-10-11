@@ -1,17 +1,198 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="hu" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="">    
+    <link href="./output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
     <title>Naptár</title>
 </head>
+
 <body>
-    <header></header>
-    <main></main>
-    <footer></footer>
-    
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    <header>
+        <section>
+            <nav class="bg-neutral-primary fixed w-full z-20 top-0 start-0 border-b border-default">
+                <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                    <p class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <span class="self-center text-xl text-heading font-bold whitespace-nowrap">Jegykezelő
+                            Rendszer</span>
+                    </p>
+                    <div class="ml-auto">
+                        <button
+                            class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5"
+                            type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation"
+                            aria-controls="drawer-navigation">
+                            Esemény hozzáadás
+                        </button> <!-- AI javaslat: az "ml-auto" a gomb jobbra igazítására. A gomb stílusa saját -->
+                    </div>
+                    <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse ms-5">
+                        <div class="flex text-sm bg-neutral-primary rounded-full md:me-0 focus:ring-4 focus:ring-neutral-tertiary"
+                            id="user-menu-button" aria-expanded="false" data-dropdown-placement="bottom">
+                            <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-5.jpg"
+                                alt="logo photo">
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </section>
+    </header>
+    <main class="h-screen pt-20 pb-24 px-4 flex flex-col">
+        <!-- AI (Claude) segítségével: a <main> elrendezése (h-screen pt-20 pb-24 px-4 flex flex-col) -->
+        <section>
+            <!-- drawer component -->
+            <div id="drawer-navigation"
+                class="fixed top-0 left-0 z-40 w-85 h-screen p-4 overflow-y-auto transition-transform -translate-x-full border-e border-default bg-neutral-800"
+                tabindex="-1" aria-labelledby="drawer-navigation-label">
+                <div class="border-b border-default pb-4 flex items-center">
+                    <span class="self-center text-lg font-bold whitespace-nowrap text-heading">Esemény
+                        Kezelés</span>
+                    <button type="button" data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation"
+                        class="text-body bg-transparent hover:text-heading hover:bg-neutral-tertiary rounded-base w-9 h-9 absolute top-2.5 end-2.5 flex items-center justify-center">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18 17.94 6M18 18 6.06 6" />
+                        </svg>
+                        <span class="sr-only">Close menu</span>
+                    </button>
+                </div>
+                <div class="py-6 overflow-y-auto">
+
+                    <form class="max-w-sm mx-auto space-y-4 ">
+                        <div>
+                            <label for="visitors" class="block mb-2.5 text-sm font-semibold text-heading">Esemény
+                                név:</label>
+                            <input type="text" id="visitors"
+                                class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-75 px-2.5 py-2 shadow-xs placeholder:text-body ml-1.5"
+                                placeholder="" required />
+                        </div>
+                        <div>
+                            <label for="visitors"
+                                class="block mb-2.5 text-sm font-semibold text-heading">Helyszín:</label>
+                            <input type="text" id="visitors"
+                                class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-75 px-2.5 py-2 shadow-xs placeholder:text-body ml-1.5"
+                                placeholder="" required />
+                        </div>
+
+                        <label for="message" class="block mb-2.5 text-sm font-medium text-heading">Esemény
+                            leírás:</label>
+                        <textarea id="message" rows="4"
+                            class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-75 p-3.5 shadow-xs placeholder:text-body ml-1.5"
+                            placeholder="Write your thoughts here..."></textarea>
+
+                        <div class="relative max-w-sm">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z" />
+                                </svg>
+                            </div>
+                            <input id="datepicker-autohide" datepicker datepicker-autohide type="text"
+                                class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body"
+                                placeholder="Select date">
+                        </div>
+                        <div class="grid grid-flow-col grid-rows-1 py-4">
+                            <div>
+                                <button type="button"
+                                    class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 w-37.5 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Mentés</button>
+                            </div>
+                            <div>
+                                <button type="button"
+                                    class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 w-37.5 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Mégse</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section> <!-- AI (Claude) által készítve: a naptár szerkezete (hónapváltó, napnevek, rács).
+                        Saját módosítás: auto-rows-[140px], max-w-5xl wrapper -->
+            <div class="w-full max-w-5xl mx-auto flex flex-col flex-1 min-h-0">
+                <div class="flex items-center justify-center gap-8 py-2">
+                    <button id="prev-month" type="button"
+                        class="text-heading text-2xl px-3 rounded-base hover:bg-neutral-secondary-medium">‹</button>
+                    <h2 id="month-title" class="text-xl font-bold text-heading w-56 text-center"></h2>
+                    <button id="next-month" type="button"
+                        class="text-heading text-2xl px-3 rounded-base hover:bg-neutral-secondary-medium">›</button>
+                </div>
+
+                <div id="weekdays" class="grid grid-cols-7 gap-2 text-center text-sm font-bold text-heading py-2"></div>
+
+                <div id="calendar-grid" class="grid grid-cols-7 auto-rows-[140px] gap-2 flex-1 min-h-0"></div>
+            </div>
+        </section> <!---->
+    </main>
+    <footer>
+        <section>
+            <div
+                class="fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-neutral-primary-soft border border-default rounded-full bottom-4 left-1/2">
+                <div class="grid h-full max-w-lg grid-cols-4 mx-auto">
+                    <button data-tooltip-target="tooltip-home" type="button"
+                        class="inline-flex flex-col items-center justify-center px-5 rounded-s-full hover:bg-neutral-secondary-medium group">
+                        <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
+                        </svg>
+                        <span class="sr-only">Home</span>
+                    </button>
+                    <div id="tooltip-home" role="tooltip"
+                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+                        Home
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                    <button data-tooltip-target="tooltip-wallet" type="button"
+                        class="inline-flex flex-col items-center justify-center px-5 hover:bg-neutral-secondary-medium group">
+                        <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8H5m12 0a1 1 0 0 1 1 1v2.6M17 8l-4-4M5 8a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.6M5 8l4-4 4 4m6 4h-4a2 2 0 1 0 0 4h4a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1Z" />
+                        </svg>
+                        <span class="sr-only">Wallet</span>
+                    </button>
+                    <div id="tooltip-wallet" role="tooltip"
+                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+                        Wallet
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                    <button data-tooltip-target="tooltip-settings" type="button"
+                        class="inline-flex flex-col items-center justify-center px-5 hover:bg-neutral-secondary-medium group">
+                        <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                                d="M6 4v10m0 0a2 2 0 1 0 0 4m0-4a2 2 0 1 1 0 4m0 0v2m6-16v2m0 0a2 2 0 1 0 0 4m0-4a2 2 0 1 1 0 4m0 0v10m6-16v10m0 0a2 2 0 1 0 0 4m0-4a2 2 0 1 1 0 4m0 0v2" />
+                        </svg>
+                        <span class="sr-only">Settings</span>
+                    </button>
+                    <div id="tooltip-settings" role="tooltip"
+                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+                        Settings
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                    <button data-tooltip-target="tooltip-profile" type="button"
+                        class="inline-flex flex-col items-center justify-center px-5 rounded-e-full hover:bg-neutral-secondary-medium group">
+                        <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 13 16h-2a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 12 21Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                        <span class="sr-only">Profile</span>
+                    </button>
+                    <div id="tooltip-profile" role="tooltip"
+                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+                        Profile
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+
+    <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="js/script.js"></script>
+    </style>
 </body>
+
 </html>

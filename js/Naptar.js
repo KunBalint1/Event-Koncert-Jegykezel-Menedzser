@@ -3,14 +3,12 @@ class Naptar{
     #ev
     #honap
     #nap
-    #ido
 
-    constructor(hely, ev, honap, nap, ido){
+    constructor(hely, ev, honap, nap){
         this.setHely(hely)
         this.setEv(ev)
         this.setHonap(honap)
         this.setNap(nap)
-        this.setIdo(ido)
     }
 
     setHely(hely){
@@ -29,7 +27,21 @@ class Naptar{
         this.#nap = nap
     }
 
-    setIdo(ido){
-        this.#ido = ido
+    getHely(){
+        return this.#hely
     }
+
+    getEv(){
+        return this.#ev
+    }
+
+    getHonap(){
+        return this.#honap
+    }
+
+    getNap(){
+        return this.#nap
+    }
+
+
 }

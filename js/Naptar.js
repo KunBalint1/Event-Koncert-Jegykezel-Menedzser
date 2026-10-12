@@ -1,47 +1,22 @@
 class Naptar{
-    #hely
-    #ev
-    #honap
-    #nap
+    #esemenyek
+    #kovetkezoId
 
-    constructor(hely, ev, honap, nap){
-        this.setHely(hely)
-        this.setEv(ev)
-        this.setHonap(honap)
-        this.setNap(nap)
+    constructor (){
+        this.#esemenyek = []
+        this.#kovetkezoId = 1
     }
 
-    setHely(hely){
-        this.#hely = hely
+    hozzaad(esemeny){
+        
     }
 
-    setEv(ev){
-        this.#ev = ev
+    torol(id){
+
     }
 
-    setHonap(honap){
-        this.#honap = honap
-    }
+    napEsemenyei(ev, honap, nap){
 
-    setNap(nap){
-        this.#nap = nap
     }
-
-    getHely(){
-        return this.#hely
-    }
-
-    getEv(){
-        return this.#ev
-    }
-
-    getHonap(){
-        return this.#honap
-    }
-
-    getNap(){
-        return this.#nap
-    }
-
 
 }

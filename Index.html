@@ -9,7 +9,7 @@
     <title>Koncert Jegykezelő Rendzser</title>
 </head>
 
-<body class="">
+<body>
     <header>
         <section>
             <nav class="bg-neutral-primary fixed w-full z-20 top-0 start-0 border-b border-default">
@@ -33,8 +33,8 @@
 
         <section>
             <h2 class="text-white p-4 text-bold text-4xl">Staff nézet</h2>
-            <div class="grid grid-cols-5 gap-4 items-start">
-                <div class="col-span-4">
+            <div class="grid md:grid-cols-5 gap-4 items-start">
+                <div class="md:col-span-4">
                     <div
                         class="bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium h-50">
                         <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Noteworthy
@@ -44,7 +44,7 @@
                             chronological order.</p>
                     </div>
                 </div>
-                <div class="col-span-1">
+                <div class="md:col-span-1">
                     <div
                         class="bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium h-50 w-90 ml-auto">
                         <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Noteworthy
@@ -59,8 +59,8 @@
             </div>
         </section>
         <section>
+            <div class="grid md:grid-cols-1">
             <h2 class="text-white p-4 text-bold text-4xl">Események & Jegyek listája</h2>
-            <div class="">
                 <form class="max-w-md mt-auto">
                     <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
                     <div class="relative">
@@ -78,12 +78,12 @@
                             class="absolute -end-47 bottom-1.5 text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs leading-5 rounded text-xs px-5 py-1.5 focus:outline-none font-bold">Keresés</button>
                     </div>
                 </form>
-            </div>
+                </div>
 
         </section>
         <section>
-            <div class="grid grid-cols-6 gap-4 items-start py-5">
-                <div class="col-span-2">
+            <div class="grid md:grid-cols-6 gap-4 items-start py-5">
+                <div class="md:col-span-2">
                     <div
                         class="bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium h-50 w-90 justify-start">
                         <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Noteworthy
@@ -93,7 +93,7 @@
                             chronological order.</p>
                     </div>
                 </div>
-                <div class="col-span-2">
+                <div class="md:col-span-2">
                     <div
                         class="bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium h-50 w-90 ml-auto justify-center">
                         <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Noteworthy
@@ -103,7 +103,7 @@
                             chronological order.</p>
                     </div>
                 </div>
-                <div class="col-span-2">
+                <div class="md:col-span-2">
                     <div
                         class="bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium h-50 w-90 ml-auto">
                         <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Noteworthy

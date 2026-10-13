@@ -2383,6 +2383,10 @@
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
   }
+  .text-3xl {
+    font-size: var(--text-3xl);
+    line-height: var(--tw-leading, var(--text-3xl--line-height));
+  }
   .text-4xl {
     font-size: var(--text-4xl);
     line-height: var(--tw-leading, var(--text-4xl--line-height));
@@ -2818,6 +2822,11 @@
       grid-column: span 2 / span 2;
     }
   }
+  .md\:col-span-3 {
+    @media (width >= 48rem) {
+      grid-column: span 3 / span 3;
+    }
+  }
   .md\:col-span-4 {
     @media (width >= 48rem) {
       grid-column: span 4 / span 4;
@@ -2826,6 +2835,11 @@
   .md\:me-0 {
     @media (width >= 48rem) {
       margin-inline-end: calc(var(--spacing) * 0);
+    }
+  }
+  .md\:flex {
+    @media (width >= 48rem) {
+      display: flex;
     }
   }
   .md\:hidden {

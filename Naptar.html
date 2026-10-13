@@ -9,7 +9,7 @@
     <title>Naptár</title>
 </head>
 
-<body class="p-4">
+<body>
     <header>
         <section>
             <nav class="bg-neutral-primary fixed w-full z-20 top-0 start-0 border-b border-default">
@@ -86,7 +86,7 @@
                             leírás:</label>
                         <textarea id="message" rows="4"
                             class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-75 p-3.5 shadow-xs placeholder:text-body ml-1.5"
-                            placeholder="Write your thoughts here..."></textarea>
+                            placeholder="Leírás..."></textarea>
 
                         <label for="time" class="block mb-2.5 text-sm font-medium text-heading">Dátum:</label>
                         <div class="relative max-w-sm">
@@ -124,7 +124,7 @@
                             class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 w-37.5 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Mentés</button>
                     </div>
                     <div>
-                        <button type="button"
+                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
                             class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 w-37.5 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Mégse</button>
                     </div>
                 </div>
@@ -217,6 +217,42 @@
             </div>
         </section>
     </footer>
+
+    <div id="popup-modal" tabindex="-1"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-md max-h-full">
+            <div class="relative bg-neutral-primary-soft border border-default rounded-base shadow-sm p-4 md:p-6">
+                <button type="button"
+                    class="absolute top-3 end-2.5 text-body bg-transparent hover:bg-neutral-tertiary hover:text-heading rounded-base text-sm w-9 h-9 ms-auto inline-flex justify-center items-center"
+                    data-modal-hide="popup-modal">
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18 17.94 6M18 18 6.06 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+                <div class="p-4 md:p-5 text-center">
+                    <svg class="mx-auto mb-4 text-fg-disabled w-12 h-12" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 13V8m0 8h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    <h3 class="mb-6 text-body py-4">Biztosan vissza szeretné vonni az adatokat?</h3>
+                    <div class="flex items-center space-x-4 justify-center">
+                        <button data-modal-hide="popup-modal" type="button"
+                            class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 w-12 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">
+                            Igen
+                        </button>
+                        <button data-modal-hide="popup-modal" type="button"
+                            class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 w-12 font-medium rounded-base text-sm px-4 py-2.5 text-center ms-3 leading-5">Nem
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
     <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>

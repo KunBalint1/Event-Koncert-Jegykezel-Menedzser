@@ -47,3 +47,4 @@ document.getElementById('next-month').addEventListener('click', () => {
 });
 
 render();
+

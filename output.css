@@ -1693,6 +1693,9 @@
       border-color: var(--color-brand);
     }
   }
+  .min-w-50 {
+    min-width: calc(var(--spacing) * 50);
+  }
   .flex-1 {
     flex: 1;
   }
@@ -2845,6 +2848,16 @@
   .md\:hidden {
     @media (width >= 48rem) {
       display: none;
+    }
+  }
+  .md\:w-50 {
+    @media (width >= 48rem) {
+      width: calc(var(--spacing) * 50);
+    }
+  }
+  .md\:min-w-50 {
+    @media (width >= 48rem) {
+      min-width: calc(var(--spacing) * 50);
     }
   }
   .md\:grid-flow-col {

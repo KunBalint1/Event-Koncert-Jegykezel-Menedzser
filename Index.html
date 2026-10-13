@@ -29,12 +29,14 @@
             </nav>
         </section>
     </header>
-    <main class="h-screen pt-20 pb-24 px-4 flex flex-col">
+    <main class="h-screen pt-20 pb-24 px-4">
+
         <section>
-            <div class="grid grid-flow-col gap-4 items-start">
-                <div class="col-span-2">
+            <h2 class="text-white p-4 text-bold text-4xl">Staff nézet</h2>
+            <div class="grid grid-cols-5 gap-4 items-start">
+                <div class="col-span-4">
                     <div
-                        class="bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
+                        class="bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium h-50">
                         <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Noteworthy
                             technology
                             acquisitions 2021</h5>
@@ -42,21 +44,42 @@
                             chronological order.</p>
                     </div>
                 </div>
-                <div>
-                    <div>
-                        <a href="#"
-                            class="bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
-                            <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Noteworthy
-                                technology
-                                acquisitions 2021</h5>
-                            <p class="text-body">Here are the biggest technology acquisitions of 2025 so far, in reverse
-                                chronological order.</p>
-                        </a>
+                <div class="col-span-1">
+                    <div
+                        class="bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium h-50 w-90 ml-auto">
+                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Noteworthy
+                            technology
+                            acquisitions 2021</h5>
+                        <p class="text-body">Here are the biggest technology acquisitions of 2025 so far, in reverse
+                            chronological order.</p>
                     </div>
                 </div>
 
 
             </div>
+        </section>
+        <section>
+            <h2 class="text-white p-4 text-bold text-4xl">Események & Jegyek listája</h2>
+            <div class="w-[]">
+                <form class="max-w-md mt-auto">
+                    <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                                    d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
+                            </svg>
+                        </div>
+                        <input type="search" id="search"
+                            class="block w-[640px] p-3 ps-9 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
+                            placeholder="Search" required />
+                        <button type="button"
+                            class="absolute -end-47 bottom-1.5 text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs leading-5 rounded text-xs px-5 py-1.5 focus:outline-none font-bold">Keresés</button>
+                    </div>
+                </form>
+            </div>
+
         </section>
     </main>
     <footer>

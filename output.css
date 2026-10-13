@@ -1,4 +1,4 @@
-/*! tailwindcss v4.3.0 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -722,121 +722,117 @@
       color: var(--color-body);
     }
   }
-  .datatable-bottom {
-    .datatable-wrapper & {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: start;
-      margin-top: 1rem;
-      gap: 1rem;
-      @media (min-width: 640px) {
-        flex-direction: row;
-        align-items: center;
-      }
-    }
-    .datatable-wrapper & .datatable-info {
-      color: var(--color-body);
-      font-size: 0.875rem;
-    }
-    .datatable-wrapper & .datatable-pagination .datatable-pagination-list {
-      display: flex;
+  .datatable-wrapper .datatable-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    margin-top: 1rem;
+    gap: 1rem;
+    @media (min-width: 640px) {
+      flex-direction: row;
       align-items: center;
-      height: 2rem;
-      font-size: 0.875rem;
-    }
-    .datatable-wrapper & .datatable-pagination .datatable-pagination-list-item-link {
-      display: flex;
-      align-items: center;
-      color: var(--color-body);
-      background-color: var(--color-neutral-secondary-medium);
-      font-weight: 500;
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
-      height: 2rem;
-      font-size: 0.875rem;
-      border-top: 1px solid var(--color-default);
-      border-bottom: 1px solid var(--color-default);
-      border-right: 1px solid var(--color-default);
-    }
-    .datatable-wrapper & .datatable-pagination .datatable-pagination-list-item:hover .datatable-pagination-list-item-link {
-      color: var(--color-heading);
-      background-color: var(--color-neutral-tertiary-medium);
-    }
-    .datatable-wrapper & .datatable-pagination .datatable-pagination-list-item:first-of-type {
-      position: relative;
-    }
-    .datatable-wrapper & .datatable-pagination .datatable-pagination-list-item:last-of-type {
-      position: relative;
-    }
-    .datatable-wrapper & .datatable-pagination .datatable-pagination-list-item.datatable-active .datatable-pagination-list-item-link {
-      color: var(--color-fg-brand);
-      background-color: var(--color-neutral-tertiary-medium);
-    }
-    .datatable-wrapper & .datatable-pagination .datatable-pagination-list-item:first-of-type .datatable-pagination-list-item-link {
-      border-top-left-radius: var(--radius-base);
-      border-bottom-left-radius: var(--radius-base);
-      border-left: 1px solid var(--color-default);
-    }
-    .datatable-wrapper & .datatable-pagination .datatable-pagination-list-item:last-of-type .datatable-pagination-list-item-link {
-      border-top-right-radius: var(--radius-base);
-      border-bottom-right-radius: var(--radius-base);
-      border-left: 0;
-    }
-    .datatable-wrapper & .datatable-pagination .datatable-pagination-list-item-link:hover {
-      background-color: var(--color-neutral-secondary-medium);
-      color: var(--color-body);
     }
   }
-  .datatable-pagination {
-    .datatable-wrapper .datatable-bottom & .datatable-pagination-list {
-      display: flex;
-      align-items: center;
-      height: 2rem;
-      font-size: 0.875rem;
-    }
-    .datatable-wrapper .datatable-bottom & .datatable-pagination-list-item-link {
-      display: flex;
-      align-items: center;
-      color: var(--color-body);
-      background-color: var(--color-neutral-secondary-medium);
-      font-weight: 500;
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
-      height: 2rem;
-      font-size: 0.875rem;
-      border-top: 1px solid var(--color-default);
-      border-bottom: 1px solid var(--color-default);
-      border-right: 1px solid var(--color-default);
-    }
-    .datatable-wrapper .datatable-bottom & .datatable-pagination-list-item:hover .datatable-pagination-list-item-link {
-      color: var(--color-heading);
-      background-color: var(--color-neutral-tertiary-medium);
-    }
-    .datatable-wrapper .datatable-bottom & .datatable-pagination-list-item:first-of-type {
-      position: relative;
-    }
-    .datatable-wrapper .datatable-bottom & .datatable-pagination-list-item:last-of-type {
-      position: relative;
-    }
-    .datatable-wrapper .datatable-bottom & .datatable-pagination-list-item.datatable-active .datatable-pagination-list-item-link {
-      color: var(--color-fg-brand);
-      background-color: var(--color-neutral-tertiary-medium);
-    }
-    .datatable-wrapper .datatable-bottom & .datatable-pagination-list-item:first-of-type .datatable-pagination-list-item-link {
-      border-top-left-radius: var(--radius-base);
-      border-bottom-left-radius: var(--radius-base);
-      border-left: 1px solid var(--color-default);
-    }
-    .datatable-wrapper .datatable-bottom & .datatable-pagination-list-item:last-of-type .datatable-pagination-list-item-link {
-      border-top-right-radius: var(--radius-base);
-      border-bottom-right-radius: var(--radius-base);
-      border-left: 0;
-    }
-    .datatable-wrapper .datatable-bottom & .datatable-pagination-list-item-link:hover {
-      background-color: var(--color-neutral-secondary-medium);
-      color: var(--color-body);
-    }
+  .datatable-wrapper .datatable-bottom .datatable-info {
+    color: var(--color-body);
+    font-size: 0.875rem;
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list {
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    font-size: 0.875rem;
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item-link {
+    display: flex;
+    align-items: center;
+    color: var(--color-body);
+    background-color: var(--color-neutral-secondary-medium);
+    font-weight: 500;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    height: 2rem;
+    font-size: 0.875rem;
+    border-top: 1px solid var(--color-default);
+    border-bottom: 1px solid var(--color-default);
+    border-right: 1px solid var(--color-default);
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item:hover .datatable-pagination-list-item-link {
+    color: var(--color-heading);
+    background-color: var(--color-neutral-tertiary-medium);
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item:first-of-type {
+    position: relative;
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item:last-of-type {
+    position: relative;
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item.datatable-active .datatable-pagination-list-item-link {
+    color: var(--color-fg-brand);
+    background-color: var(--color-neutral-tertiary-medium);
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item:first-of-type .datatable-pagination-list-item-link {
+    border-top-left-radius: var(--radius-base);
+    border-bottom-left-radius: var(--radius-base);
+    border-left: 1px solid var(--color-default);
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item:last-of-type .datatable-pagination-list-item-link {
+    border-top-right-radius: var(--radius-base);
+    border-bottom-right-radius: var(--radius-base);
+    border-left: 0;
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item-link:hover {
+    background-color: var(--color-neutral-secondary-medium);
+    color: var(--color-body);
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list {
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    font-size: 0.875rem;
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item-link {
+    display: flex;
+    align-items: center;
+    color: var(--color-body);
+    background-color: var(--color-neutral-secondary-medium);
+    font-weight: 500;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    height: 2rem;
+    font-size: 0.875rem;
+    border-top: 1px solid var(--color-default);
+    border-bottom: 1px solid var(--color-default);
+    border-right: 1px solid var(--color-default);
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item:hover .datatable-pagination-list-item-link {
+    color: var(--color-heading);
+    background-color: var(--color-neutral-tertiary-medium);
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item:first-of-type {
+    position: relative;
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item:last-of-type {
+    position: relative;
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item.datatable-active .datatable-pagination-list-item-link {
+    color: var(--color-fg-brand);
+    background-color: var(--color-neutral-tertiary-medium);
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item:first-of-type .datatable-pagination-list-item-link {
+    border-top-left-radius: var(--radius-base);
+    border-bottom-left-radius: var(--radius-base);
+    border-left: 1px solid var(--color-default);
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item:last-of-type .datatable-pagination-list-item-link {
+    border-top-right-radius: var(--radius-base);
+    border-bottom-right-radius: var(--radius-base);
+    border-left: 0;
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item-link:hover {
+    background-color: var(--color-neutral-secondary-medium);
+    color: var(--color-body);
   }
   .absolute {
     position: absolute;
@@ -851,13 +847,43 @@
     position: static;
   }
   .inset-0 {
-    inset: calc(var(--spacing) * 0);
+    inset: 0px;
   }
   .inset-y-0 {
-    inset-block: calc(var(--spacing) * 0);
+    inset-block: 0px;
   }
   .start-0 {
     inset-inline-start: calc(var(--spacing) * 0);
+  }
+  .-end-0 {
+    inset-inline-end: calc(var(--spacing) * -0);
+  }
+  .-end-45 {
+    inset-inline-end: calc(var(--spacing) * -45);
+  }
+  .-end-46 {
+    inset-inline-end: calc(var(--spacing) * -46);
+  }
+  .-end-47 {
+    inset-inline-end: calc(var(--spacing) * -47);
+  }
+  .-end-48 {
+    inset-inline-end: calc(var(--spacing) * -48);
+  }
+  .-end-50 {
+    inset-inline-end: calc(var(--spacing) * -50);
+  }
+  .end-\(--5\) {
+    inset-inline-end: var(--5);
+  }
+  .end-0 {
+    inset-inline-end: calc(var(--spacing) * 0);
+  }
+  .end-1 {
+    inset-inline-end: calc(var(--spacing) * 1);
+  }
+  .end-1\.5 {
+    inset-inline-end: calc(var(--spacing) * 1.5);
   }
   .end-2 {
     inset-inline-end: calc(var(--spacing) * 2);
@@ -865,8 +891,20 @@
   .end-2\.5 {
     inset-inline-end: calc(var(--spacing) * 2.5);
   }
+  .end-15 {
+    inset-inline-end: calc(var(--spacing) * 15);
+  }
+  .end-50 {
+    inset-inline-end: calc(var(--spacing) * 50);
+  }
+  .end-80 {
+    inset-inline-end: calc(var(--spacing) * 80);
+  }
+  .end-500 {
+    inset-inline-end: calc(var(--spacing) * 500);
+  }
   .top-0 {
-    top: calc(var(--spacing) * 0);
+    top: 0px;
   }
   .top-2 {
     top: calc(var(--spacing) * 2);
@@ -878,22 +916,31 @@
     top: calc(var(--spacing) * 3);
   }
   .right-0 {
-    right: calc(var(--spacing) * 0);
+    right: 0px;
   }
   .bottom-0 {
-    bottom: calc(var(--spacing) * 0);
+    bottom: 0px;
+  }
+  .bottom-1 {
+    bottom: var(--spacing);
+  }
+  .bottom-1\.5 {
+    bottom: calc(var(--spacing) * 1.5);
   }
   .bottom-4 {
     bottom: calc(var(--spacing) * 4);
+  }
+  .bottom-67 {
+    bottom: calc(var(--spacing) * 67);
   }
   .bottom-\[60px\] {
     bottom: 60px;
   }
   .left-0 {
-    left: calc(var(--spacing) * 0);
+    left: 0px;
   }
   .left-1 {
-    left: calc(var(--spacing) * 1);
+    left: var(--spacing);
   }
   .left-1\/2 {
     left: calc(1 / 2 * 100%);
@@ -913,8 +960,17 @@
   .z-50 {
     z-index: 50;
   }
+  .col-span-1 {
+    grid-column: span 1 / span 1;
+  }
   .col-span-2 {
     grid-column: span 2 / span 2;
+  }
+  .col-span-3 {
+    grid-column: span 3 / span 3;
+  }
+  .col-span-4 {
+    grid-column: span 4 / span 4;
   }
   .row-span-2 {
     grid-row: span 2 / span 2;
@@ -940,6 +996,9 @@
   .mx-auto {
     margin-inline: auto;
   }
+  .ms-1 {
+    margin-inline-start: var(--spacing);
+  }
   .ms-3 {
     margin-inline-start: calc(var(--spacing) * 3);
   }
@@ -949,289 +1008,270 @@
   .ms-auto {
     margin-inline-start: auto;
   }
+  .-me-0 {
+    margin-inline-end: 0px;
+  }
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
-  .apexcharts-canvas {
-    & .apexcharts-tooltip {
-      background-color: primary !important;
-      color: var(--color-body) !important;
-      border: 0 !important;
-      border-radius: var(--radius-base) !important;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
-    }
-    .dark & .apexcharts-tooltip {
-      background-color: var(--color-neutral-secondary-medium) !important;
-      color: var(--color-body) !important;
-      border-color: var(--color-default) !important;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
-    }
-    & .apexcharts-tooltip .apexcharts-tooltip-title {
-      padding-top: 0.5rem !important;
-      padding-bottom: 0.5rem !important;
-      padding-right: 0.75rem !important;
-      padding-left: 0.75rem !important;
-      margin-bottom: 0.75rem !important;
-      background-color: var(--color-neutral-tertiary-medium) !important;
-      border-color: var(--color-light) !important;
-      font-size: 0.875rem !important;
-      font-weight: 600 !important;
-      color: var(--color-heading) !important;
-    }
-    .dark & .apexcharts-tooltip .apexcharts-tooltip-title {
-      background-color: var(--color-neutral-tertiary-medium) !important;
-      border-color: var(--color-light) !important;
-      color: var(--color-heading) !important;
-    }
-    & .apexcharts-xaxistooltip {
-      color: var(--color-body) !important;
-      padding-top: 0.5rem !important;
-      padding-bottom: 0.5rem !important;
-      padding-right: 0.75rem !important;
-      padding-left: 0.75rem !important;
-      border-color: transparent !important;
-      background-color: white !important;
-      border-radius: 8px !important;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
-    }
-    .dark & .apexcharts-xaxistooltip {
-      color: var(--color-body) !important;
-      background-color: var(--color-neutral-secondary-medium) !important;
-    }
-    & .apexcharts-tooltip .apexcharts-tooltip-text-y-label {
-      color: var(--color-body) !important;
-      font-size: 0.875rem !important;
-    }
-    .dark & .apexcharts-tooltip .apexcharts-tooltip-text-y-label {
-      color: var(--color-body) !important;
-    }
-    & .apexcharts-tooltip .apexcharts-tooltip-text-y-value {
-      color: var(--color-heading);
-      font-size: 0.875rem !important;
-    }
-    .dark & .apexcharts-tooltip .apexcharts-tooltip-text-y-value {
-      color: white !important;
-    }
-    & .apexcharts-xaxistooltip-text {
-      font-weight: 400 !important;
-      font-size: 0.875rem !important;
-    }
-    & .apexcharts-xaxistooltip:after {
-      border-bottom-color: var(--color-neutral-primary-medium) !important;
-    }
-    & .apexcharts-xaxistooltip:before {
-      border-bottom-color: var(--color-neutral-primary-medium) !important;
-    }
-    & .apexcharts-xaxistooltip:after {
-      border-width: 8px !important;
-      margin-left: -8px !important;
-    }
-    & .apexcharts-xaxistooltip:before {
-      border-width: 10px !important;
-      margin-left: -10px !important;
-    }
-    & .apexcharts-tooltip-series-group.apexcharts-active .apexcharts-tooltip-y-group {
-      padding: 0 !important;
-    }
-    & .apexcharts-tooltip-series-group.apexcharts-active {
-      padding-left: 0.75rem !important;
-      padding-right: 0.75rem !important;
-      padding-bottom: 0.75rem !important;
-      background-color: var(--color-neutral-primary-medium) !important;
-      color: var(--color-body) !important;
-    }
-    .dark & .apexcharts-tooltip-series-group.apexcharts-active {
-      background-color: var(--color-neutral-secondary-medium) !important;
-      color: var(--color-body) !important;
-    }
-    & .apexcharts-tooltip-series-group.apexcharts-active:first-of-type {
-      padding-top: 0.75rem !important;
-    }
-    & .apexcharts-legend {
-      padding: 0 !important;
-    }
-    & .apexcharts-legend-text {
-      font-size: 0.75rem !important;
-      font-weight: 500 !important;
-      padding-left: 1.25rem !important;
-      color: var(--color-body) !important;
-    }
-    :is([dir=rtl]) & .apexcharts-legend-text {
-      padding-right: 0.5rem !important;
-    }
-    & .apexcharts-legend-text:not(.apexcharts-inactive-legend):hover {
-      color: var(--color-heading) !important;
-    }
-    .dark & .apexcharts-legend-text {
-      color: var(--color-body) !important;
-    }
-    .dark & .apexcharts-legend-text:not(.apexcharts-inactive-legend):hover {
-      color: heading !important;
-    }
-    & .apexcharts-legend-series {
-      margin-left: 0.5rem !important;
-      margin-right: 0.5rem !important;
-      margin-bottom: 0.25rem !important;
-      display: flex !important;
-      align-items: center !important;
-    }
-    .dark & .apexcharts-datalabels-group .apexcharts-text.apexcharts-datalabel-value {
-      fill: white !important;
-    }
-    & .apexcharts-datalabels-group .apexcharts-text.apexcharts-datalabel-label {
-      fill: var(--color-body) !important;
-      font-size: 1rem,[object Object] !important;
-      font-weight: 400 !important;
-    }
-    .dark & .apexcharts-datalabels-group .apexcharts-text.apexcharts-datalabel-label {
-      fill: var(--color-body) !important;
-    }
-    & .apexcharts-datalabels .apexcharts-text.apexcharts-pie-label {
-      font-size: 0.75rem,[object Object] !important;
-      font-weight: 600 !important;
-      text-shadow: none !important;
-      filter: none !important;
+  .mt-auto {
+    margin-top: auto;
+  }
+  .apexcharts-canvas .apexcharts-tooltip {
+    background-color: primary !important;
+    color: var(--color-body) !important;
+    border: 0 !important;
+    border-radius: var(--radius-base) !important;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-tooltip {
+    background-color: var(--color-neutral-secondary-medium) !important;
+    color: var(--color-body) !important;
+    border-color: var(--color-default) !important;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+  }
+  .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-title {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    padding-right: 0.75rem !important;
+    padding-left: 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+    background-color: var(--color-neutral-tertiary-medium) !important;
+    border-color: var(--color-light) !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    color: var(--color-heading) !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-title {
+    background-color: var(--color-neutral-tertiary-medium) !important;
+    border-color: var(--color-light) !important;
+    color: var(--color-heading) !important;
+  }
+  .apexcharts-canvas .apexcharts-xaxistooltip {
+    color: var(--color-body) !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    padding-right: 0.75rem !important;
+    padding-left: 0.75rem !important;
+    border-color: transparent !important;
+    background-color: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-xaxistooltip {
+    color: var(--color-body) !important;
+    background-color: var(--color-neutral-secondary-medium) !important;
+  }
+  .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-text-y-label {
+    color: var(--color-body) !important;
+    font-size: 0.875rem !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-text-y-label {
+    color: var(--color-body) !important;
+  }
+  .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-text-y-value {
+    color: var(--color-heading);
+    font-size: 0.875rem !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-text-y-value {
+    color: white !important;
+  }
+  .apexcharts-canvas .apexcharts-xaxistooltip-text {
+    font-weight: 400 !important;
+    font-size: 0.875rem !important;
+  }
+  .apexcharts-canvas .apexcharts-xaxistooltip:after {
+    border-bottom-color: var(--color-neutral-primary-medium) !important;
+  }
+  .apexcharts-canvas .apexcharts-xaxistooltip:before {
+    border-bottom-color: var(--color-neutral-primary-medium) !important;
+  }
+  .apexcharts-canvas .apexcharts-xaxistooltip:after {
+    border-width: 8px !important;
+    margin-left: -8px !important;
+  }
+  .apexcharts-canvas .apexcharts-xaxistooltip:before {
+    border-width: 10px !important;
+    margin-left: -10px !important;
+  }
+  .apexcharts-canvas .apexcharts-tooltip-series-group.apexcharts-active .apexcharts-tooltip-y-group {
+    padding: 0 !important;
+  }
+  .apexcharts-canvas .apexcharts-tooltip-series-group.apexcharts-active {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+    background-color: var(--color-neutral-primary-medium) !important;
+    color: var(--color-body) !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-tooltip-series-group.apexcharts-active {
+    background-color: var(--color-neutral-secondary-medium) !important;
+    color: var(--color-body) !important;
+  }
+  .apexcharts-canvas .apexcharts-tooltip-series-group.apexcharts-active:first-of-type {
+    padding-top: 0.75rem !important;
+  }
+  .apexcharts-canvas .apexcharts-legend {
+    padding: 0 !important;
+  }
+  .apexcharts-canvas .apexcharts-legend-text {
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+    padding-left: 1.25rem !important;
+    color: var(--color-body) !important;
+  }
+  :is([dir=rtl]) .apexcharts-canvas .apexcharts-legend-text {
+    padding-right: 0.5rem !important;
+  }
+  .apexcharts-canvas .apexcharts-legend-text:not(.apexcharts-inactive-legend):hover {
+    color: var(--color-heading) !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-legend-text {
+    color: var(--color-body) !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-legend-text:not(.apexcharts-inactive-legend):hover {
+    color: heading !important;
+  }
+  .apexcharts-canvas .apexcharts-legend-series {
+    margin-left: 0.5rem !important;
+    margin-right: 0.5rem !important;
+    margin-bottom: 0.25rem !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-datalabels-group .apexcharts-text.apexcharts-datalabel-value {
+    fill: white !important;
+  }
+  .apexcharts-canvas .apexcharts-datalabels-group .apexcharts-text.apexcharts-datalabel-label {
+    fill: var(--color-body) !important;
+    font-size: 1rem,[object Object] !important;
+    font-weight: 400 !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-datalabels-group .apexcharts-text.apexcharts-datalabel-label {
+    fill: var(--color-body) !important;
+  }
+  .apexcharts-canvas .apexcharts-datalabels .apexcharts-text.apexcharts-pie-label {
+    font-size: 0.75rem,[object Object] !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+  .apexcharts-canvas .apexcharts-legend-series {
+    margin-left: 0.5rem !important;
+    margin-right: 0.5rem !important;
+    margin-bottom: 0.25rem !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .apexcharts-canvas .apexcharts-tooltip {
+    background-color: primary !important;
+    color: var(--color-body) !important;
+    border: 0 !important;
+    border-radius: var(--radius-base) !important;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-tooltip {
+    background-color: var(--color-neutral-secondary-medium) !important;
+    color: var(--color-body) !important;
+    border-color: var(--color-default) !important;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+  }
+  .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-title {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    padding-right: 0.75rem !important;
+    padding-left: 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+    background-color: var(--color-neutral-tertiary-medium) !important;
+    border-color: var(--color-light) !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    color: var(--color-heading) !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-title {
+    background-color: var(--color-neutral-tertiary-medium) !important;
+    border-color: var(--color-light) !important;
+    color: var(--color-heading) !important;
+  }
+  .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-text-y-label {
+    color: var(--color-body) !important;
+    font-size: 0.875rem !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-text-y-label {
+    color: var(--color-body) !important;
+  }
+  .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-text-y-value {
+    color: var(--color-heading);
+    font-size: 0.875rem !important;
+  }
+  :is([dir=rtl]) .apexcharts-tooltip .apexcharts-tooltip-marker {
+    margin-right: 0px !important;
+    margin-left: 0.375rem !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-text-y-value {
+    color: white !important;
+  }
+  .datatable-wrapper .datatable-top {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column-reverse;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    @media (min-width: 640px) {
+      flex-direction: row-reverse;
+      align-items: center;
     }
   }
-  .apexcharts-legend-series {
-    .apexcharts-canvas & {
-      margin-left: 0.5rem !important;
-      margin-right: 0.5rem !important;
-      margin-bottom: 0.25rem !important;
-      display: flex !important;
-      align-items: center !important;
-    }
+  .datatable-wrapper .datatable-top .datatable-dropdown {
+    color: var(--color-body);
+    font-size: 0.875rem;
   }
-  .apexcharts-tooltip {
-    .apexcharts-canvas & {
-      background-color: primary !important;
-      color: var(--color-body) !important;
-      border: 0 !important;
-      border-radius: var(--radius-base) !important;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
-    }
-    .dark .apexcharts-canvas & {
-      background-color: var(--color-neutral-secondary-medium) !important;
-      color: var(--color-body) !important;
-      border-color: var(--color-default) !important;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
-    }
-    .apexcharts-canvas & .apexcharts-tooltip-title {
-      padding-top: 0.5rem !important;
-      padding-bottom: 0.5rem !important;
-      padding-right: 0.75rem !important;
-      padding-left: 0.75rem !important;
-      margin-bottom: 0.75rem !important;
-      background-color: var(--color-neutral-tertiary-medium) !important;
-      border-color: var(--color-light) !important;
-      font-size: 0.875rem !important;
-      font-weight: 600 !important;
-      color: var(--color-heading) !important;
-    }
-    .dark .apexcharts-canvas & .apexcharts-tooltip-title {
-      background-color: var(--color-neutral-tertiary-medium) !important;
-      border-color: var(--color-light) !important;
-      color: var(--color-heading) !important;
-    }
-    .apexcharts-canvas & .apexcharts-tooltip-text-y-label {
-      color: var(--color-body) !important;
-      font-size: 0.875rem !important;
-    }
-    .dark .apexcharts-canvas & .apexcharts-tooltip-text-y-label {
-      color: var(--color-body) !important;
-    }
-    .apexcharts-canvas & .apexcharts-tooltip-text-y-value {
-      color: var(--color-heading);
-      font-size: 0.875rem !important;
-    }
-    :is([dir=rtl]) & .apexcharts-tooltip-marker {
-      margin-right: 0px !important;
-      margin-left: 0.375rem !important;
-    }
-    .dark .apexcharts-canvas & .apexcharts-tooltip-text-y-value {
-      color: white !important;
-    }
+  .datatable-wrapper .datatable-top .datatable-dropdown .datatable-selector {
+    background-color: var(--color-neutral-secondary-soft);
+    color: var(--color-heading);
+    font-size: 0.875rem;
+    border: 1px solid var(--color-default);
+    border-radius: var(--radius-base);
+    margin-right: 0.25rem;
+    min-width: 4rem;
   }
-  .datatable-top {
-    .datatable-wrapper & {
-      display: flex;
-      justify-content: space-between;
-      flex-direction: column-reverse;
-      align-items: start;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      @media (min-width: 640px) {
-        flex-direction: row-reverse;
-        align-items: center;
-      }
-    }
-    .datatable-wrapper & .datatable-dropdown {
-      color: var(--color-body);
-      font-size: 0.875rem;
-    }
-    .datatable-wrapper & .datatable-dropdown .datatable-selector {
-      background-color: var(--color-neutral-secondary-soft);
-      color: var(--color-heading);
-      font-size: 0.875rem;
-      border: 1px solid var(--color-default);
-      border-radius: var(--radius-base);
-      margin-right: 0.25rem;
-      min-width: 4rem;
-    }
+  :is([dir=rtl]) .apexcharts-tooltip .apexcharts-tooltip-marker {
+    margin-right: 0px !important;
+    margin-left: 0.375rem !important;
   }
-  .apexcharts-tooltip-marker {
-    :is([dir=rtl]) .apexcharts-tooltip & {
-      margin-right: 0px !important;
-      margin-left: 0.375rem !important;
-    }
+  .datatable-wrapper .datatable-top .datatable-dropdown {
+    color: var(--color-body);
+    font-size: 0.875rem;
   }
-  .datatable-dropdown {
-    .datatable-wrapper .datatable-top & {
-      color: var(--color-body);
-      font-size: 0.875rem;
-    }
-    .datatable-wrapper .datatable-top & .datatable-selector {
-      background-color: var(--color-neutral-secondary-soft);
-      color: var(--color-heading);
-      font-size: 0.875rem;
-      border: 1px solid var(--color-default);
-      border-radius: var(--radius-base);
-      margin-right: 0.25rem;
-      min-width: 4rem;
-    }
+  .datatable-wrapper .datatable-top .datatable-dropdown .datatable-selector {
+    background-color: var(--color-neutral-secondary-soft);
+    color: var(--color-heading);
+    font-size: 0.875rem;
+    border: 1px solid var(--color-default);
+    border-radius: var(--radius-base);
+    margin-right: 0.25rem;
+    min-width: 4rem;
   }
-  .datatable-selector {
-    .datatable-wrapper .datatable-top .datatable-dropdown & {
-      background-color: var(--color-neutral-secondary-soft);
-      color: var(--color-heading);
-      font-size: 0.875rem;
-      border: 1px solid var(--color-default);
-      border-radius: var(--radius-base);
-      margin-right: 0.25rem;
-      min-width: 4rem;
-    }
+  .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-title {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    padding-right: 0.75rem !important;
+    padding-left: 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+    background-color: var(--color-neutral-tertiary-medium) !important;
+    border-color: var(--color-light) !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    color: var(--color-heading) !important;
   }
-  .apexcharts-tooltip-title {
-    .apexcharts-canvas .apexcharts-tooltip & {
-      padding-top: 0.5rem !important;
-      padding-bottom: 0.5rem !important;
-      padding-right: 0.75rem !important;
-      padding-left: 0.75rem !important;
-      margin-bottom: 0.75rem !important;
-      background-color: var(--color-neutral-tertiary-medium) !important;
-      border-color: var(--color-light) !important;
-      font-size: 0.875rem !important;
-      font-weight: 600 !important;
-      color: var(--color-heading) !important;
-    }
-    .dark .apexcharts-canvas .apexcharts-tooltip & {
-      background-color: var(--color-neutral-tertiary-medium) !important;
-      border-color: var(--color-light) !important;
-      color: var(--color-heading) !important;
-    }
+  .dark .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-title {
+    background-color: var(--color-neutral-tertiary-medium) !important;
+    border-color: var(--color-light) !important;
+    color: var(--color-heading) !important;
   }
   .mb-1 {
-    margin-bottom: calc(var(--spacing) * 1);
+    margin-bottom: var(--spacing);
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
@@ -1248,39 +1288,37 @@
   .mb-6 {
     margin-bottom: calc(var(--spacing) * 6);
   }
-  .apexcharts-xaxistooltip {
-    .apexcharts-canvas & {
-      color: var(--color-body) !important;
-      padding-top: 0.5rem !important;
-      padding-bottom: 0.5rem !important;
-      padding-right: 0.75rem !important;
-      padding-left: 0.75rem !important;
-      border-color: transparent !important;
-      background-color: white !important;
-      border-radius: 8px !important;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
-    }
-    .dark .apexcharts-canvas & {
-      color: var(--color-body) !important;
-      background-color: var(--color-neutral-secondary-medium) !important;
-    }
-    .apexcharts-canvas &:after {
-      border-bottom-color: var(--color-neutral-primary-medium) !important;
-    }
-    .apexcharts-canvas &:before {
-      border-bottom-color: var(--color-neutral-primary-medium) !important;
-    }
-    .apexcharts-canvas &:after {
-      border-width: 8px !important;
-      margin-left: -8px !important;
-    }
-    .apexcharts-canvas &:before {
-      border-width: 10px !important;
-      margin-left: -10px !important;
-    }
+  .apexcharts-canvas .apexcharts-xaxistooltip {
+    color: var(--color-body) !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    padding-right: 0.75rem !important;
+    padding-left: 0.75rem !important;
+    border-color: transparent !important;
+    background-color: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-xaxistooltip {
+    color: var(--color-body) !important;
+    background-color: var(--color-neutral-secondary-medium) !important;
+  }
+  .apexcharts-canvas .apexcharts-xaxistooltip:after {
+    border-bottom-color: var(--color-neutral-primary-medium) !important;
+  }
+  .apexcharts-canvas .apexcharts-xaxistooltip:before {
+    border-bottom-color: var(--color-neutral-primary-medium) !important;
+  }
+  .apexcharts-canvas .apexcharts-xaxistooltip:after {
+    border-width: 8px !important;
+    margin-left: -8px !important;
+  }
+  .apexcharts-canvas .apexcharts-xaxistooltip:before {
+    border-width: 10px !important;
+    margin-left: -10px !important;
   }
   .ml-1 {
-    margin-left: calc(var(--spacing) * 1);
+    margin-left: var(--spacing);
   }
   .ml-1\.5 {
     margin-left: calc(var(--spacing) * 1.5);
@@ -1288,51 +1326,50 @@
   .ml-auto {
     margin-left: auto;
   }
-  .datatable-pagination-list-item-link {
-    .datatable-wrapper .datatable-bottom .datatable-pagination & {
-      display: flex;
-      align-items: center;
-      color: var(--color-body);
-      background-color: var(--color-neutral-secondary-medium);
-      font-weight: 500;
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
-      height: 2rem;
-      font-size: 0.875rem;
-      border-top: 1px solid var(--color-default);
-      border-bottom: 1px solid var(--color-default);
-      border-right: 1px solid var(--color-default);
-    }
-    .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item:hover & {
-      color: var(--color-heading);
-      background-color: var(--color-neutral-tertiary-medium);
-    }
-    .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item.datatable-active & {
-      color: var(--color-fg-brand);
-      background-color: var(--color-neutral-tertiary-medium);
-    }
-    .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item:first-of-type & {
-      border-top-left-radius: var(--radius-base);
-      border-bottom-left-radius: var(--radius-base);
-      border-left: 1px solid var(--color-default);
-    }
-    .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item:last-of-type & {
-      border-top-right-radius: var(--radius-base);
-      border-bottom-right-radius: var(--radius-base);
-      border-left: 0;
-    }
-    .datatable-wrapper .datatable-bottom .datatable-pagination &:hover {
-      background-color: var(--color-neutral-secondary-medium);
-      color: var(--color-body);
-    }
+  .box-border {
+    box-sizing: border-box;
   }
-  .datatable-pagination-list {
-    .datatable-wrapper .datatable-bottom .datatable-pagination & {
-      display: flex;
-      align-items: center;
-      height: 2rem;
-      font-size: 0.875rem;
-    }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item-link {
+    display: flex;
+    align-items: center;
+    color: var(--color-body);
+    background-color: var(--color-neutral-secondary-medium);
+    font-weight: 500;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    height: 2rem;
+    font-size: 0.875rem;
+    border-top: 1px solid var(--color-default);
+    border-bottom: 1px solid var(--color-default);
+    border-right: 1px solid var(--color-default);
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item:hover .datatable-pagination-list-item-link {
+    color: var(--color-heading);
+    background-color: var(--color-neutral-tertiary-medium);
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item.datatable-active .datatable-pagination-list-item-link {
+    color: var(--color-fg-brand);
+    background-color: var(--color-neutral-tertiary-medium);
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item:first-of-type .datatable-pagination-list-item-link {
+    border-top-left-radius: var(--radius-base);
+    border-bottom-left-radius: var(--radius-base);
+    border-left: 1px solid var(--color-default);
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item:last-of-type .datatable-pagination-list-item-link {
+    border-top-right-radius: var(--radius-base);
+    border-bottom-right-radius: var(--radius-base);
+    border-left: 0;
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item-link:hover {
+    background-color: var(--color-neutral-secondary-medium);
+    color: var(--color-body);
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list {
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    font-size: 0.875rem;
   }
   .block {
     display: block;
@@ -1382,6 +1419,15 @@
   .h-16 {
     height: calc(var(--spacing) * 16);
   }
+  .h-50 {
+    height: calc(var(--spacing) * 50);
+  }
+  .h-100 {
+    height: calc(var(--spacing) * 100);
+  }
+  .h-\[200px\] {
+    height: 200px;
+  }
   .h-\[calc\(100\%-1rem\)\] {
     height: calc(100% - 1rem);
   }
@@ -1395,87 +1441,74 @@
     max-height: 100%;
   }
   .min-h-0 {
-    min-height: calc(var(--spacing) * 0);
-  }
-  .min-h-\[250px\] {
-    min-height: 250px;
+    min-height: 0px;
   }
   .min-h-\[350px\] {
     min-height: 350px;
   }
-  .min-h-\[450px\] {
-    min-height: 450px;
+  .datatable-wrapper .datatable-table {
+    width: 100%;
+    font-size: 0.875rem;
+    color: var(--color-body);
+    text-align: left;
   }
-  .min-h-\[550px\] {
-    min-height: 550px;
+  .datatable-wrapper .datatable-table thead {
+    font-size: 0.75rem;
+    color: var(--color-body);
+    background-color: var(--color-neutral-secondary-medium);
+    border-bottom: 1px solid var(--color-default);
   }
-  .datatable-table {
-    .datatable-wrapper & {
-      width: 100%;
-      font-size: 0.875rem;
-      color: var(--color-body);
-      text-align: left;
-    }
-    .datatable-wrapper & thead {
-      font-size: 0.75rem;
-      color: var(--color-body);
-      background-color: var(--color-neutral-secondary-medium);
-      border-bottom: 1px solid var(--color-default);
-    }
-    .datatable-wrapper & thead th {
-      white-space: nowrap;
-    }
-    .datatable-wrapper & thead th {
-      width: auto !important;
-      padding-top: 0.75rem;
-      padding-bottom: 0.75rem;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-    .datatable-wrapper & tbody th {
-      width: auto !important;
-      padding-top: 0.75rem;
-      padding-bottom: 0.75rem;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-    .datatable-wrapper & tbody td {
-      width: auto !important;
-      padding-top: 0.75rem;
-      padding-bottom: 0.75rem;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-    .datatable-wrapper & thead th .datatable-sorter {
-      text-transform: uppercase;
-    }
-    .datatable-wrapper & thead th {
-      text-transform: uppercase;
-    }
-    .datatable-wrapper & thead th .datatable-sorter:hover {
-      color: var(--color-heading);
-    }
-    .datatable-wrapper & thead th.datatable-ascending .datatable-sorter {
-      color: var(--color-heading);
-    }
-    .datatable-wrapper & thead th.datatable-descending .datatable-sorter {
-      color: var(--color-heading);
-    }
-    .datatable-wrapper & tbody tr.selected {
-      background-color: var(--color-neutral-secondary);
-    }
-    .datatable-wrapper & tbody tr {
-      border-bottom: 1px solid var(--color-default);
-    }
-    .datatable-wrapper & tbody tr:last-child {
-      border-bottom: 0;
-    }
-    .datatable-wrapper & .datatable-empty {
-      text-align: center;
-    }
+  .datatable-wrapper .datatable-table thead th {
+    white-space: nowrap;
+    width: auto !important;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .datatable-wrapper .datatable-table tbody th {
+    width: auto !important;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .datatable-wrapper .datatable-table tbody td {
+    width: auto !important;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .datatable-wrapper .datatable-table thead th .datatable-sorter {
+    text-transform: uppercase;
+  }
+  .datatable-wrapper .datatable-table thead th {
+    text-transform: uppercase;
+  }
+  .datatable-wrapper .datatable-table thead th .datatable-sorter:hover {
+    color: var(--color-heading);
+  }
+  .datatable-wrapper .datatable-table thead th.datatable-ascending .datatable-sorter {
+    color: var(--color-heading);
+  }
+  .datatable-wrapper .datatable-table thead th.datatable-descending .datatable-sorter {
+    color: var(--color-heading);
+  }
+  .datatable-wrapper .datatable-table tbody tr.selected {
+    background-color: var(--color-neutral-secondary);
+  }
+  .datatable-wrapper .datatable-table tbody tr {
+    border-bottom: 1px solid var(--color-default);
+  }
+  .datatable-wrapper .datatable-table tbody tr:last-child {
+    border-bottom: 0;
+  }
+  .datatable-wrapper .datatable-table .datatable-empty {
+    text-align: center;
   }
   .w-1 {
-    width: calc(var(--spacing) * 1);
+    width: var(--spacing);
   }
   .w-1\/2 {
     width: calc(1 / 2 * 100%);
@@ -1495,6 +1528,9 @@
   .w-9 {
     width: calc(var(--spacing) * 9);
   }
+  .w-10 {
+    width: calc(var(--spacing) * 10);
+  }
   .w-12 {
     width: calc(var(--spacing) * 12);
   }
@@ -1503,6 +1539,15 @@
   }
   .w-37\.5 {
     width: calc(var(--spacing) * 37.5);
+  }
+  .w-40 {
+    width: calc(var(--spacing) * 40);
+  }
+  .w-44 {
+    width: calc(var(--spacing) * 44);
+  }
+  .w-50 {
+    width: calc(var(--spacing) * 50);
   }
   .w-56 {
     width: calc(var(--spacing) * 56);
@@ -1516,8 +1561,59 @@
   .w-85 {
     width: calc(var(--spacing) * 85);
   }
+  .w-90 {
+    width: calc(var(--spacing) * 90);
+  }
+  .w-100 {
+    width: calc(var(--spacing) * 100);
+  }
+  .w-120 {
+    width: calc(var(--spacing) * 120);
+  }
+  .w-150 {
+    width: calc(var(--spacing) * 150);
+  }
+  .w-200 {
+    width: calc(var(--spacing) * 200);
+  }
+  .w-250 {
+    width: calc(var(--spacing) * 250);
+  }
+  .w-500 {
+    width: calc(var(--spacing) * 500);
+  }
+  .w-\[50px\] {
+    width: 50px;
+  }
+  .w-\[100px\] {
+    width: 100px;
+  }
   .w-\[200px\] {
     width: 200px;
+  }
+  .w-\[300px\] {
+    width: 300px;
+  }
+  .w-\[300spx\] {
+    width: 300spx;
+  }
+  .w-\[500px\] {
+    width: 500px;
+  }
+  .w-\[600px\] {
+    width: 600px;
+  }
+  .w-\[640px\] {
+    width: 640px;
+  }
+  .w-\[700px\] {
+    width: 700px;
+  }
+  .w-\[1000px\] {
+    width: 1000px;
+  }
+  .w-\[1000x\] {
+    width: 1000x;
   }
   .w-full {
     width: 100%;
@@ -1540,47 +1636,43 @@
   .max-w-sm {
     max-width: var(--container-sm);
   }
-  .datatable-input {
-    .datatable-wrapper .datatable-search & {
-      color: var(--color-heading);
-      font-size: 0.875rem;
-      border: 1px solid var(--color-default);
-      border-radius: var(--radius-base);
-      background-color: var(--color-neutral-secondary-soft);
-      min-width: 16rem;
-    }
-    .datatable-wrapper & {
-      color: var(--color-heading);
-      font-size: 0.875rem;
-      border: 1px solid var(--color-default);
-      border-radius: var(--radius-base);
-      background-color: var(--color-neutral-secondary-soft);
-      min-width: 16rem;
-    }
-    .datatable-wrapper thead th & {
-      background-color: var(--color-neutral-primary);
-      font-weight: 400;
-      color: var(--color-heading);
-      padding-top: .35rem;
-      padding-bottom: .35rem;
-      min-width: 0;
-    }
-    .datatable-wrapper .datatable-search &:focus {
-      border-color: var(--color-brand);
-    }
+  .datatable-wrapper .datatable-search .datatable-input {
+    color: var(--color-heading);
+    font-size: 0.875rem;
+    border: 1px solid var(--color-default);
+    border-radius: var(--radius-base);
+    background-color: var(--color-neutral-secondary-soft);
+    min-width: 16rem;
   }
-  .datatable-search {
-    .datatable-wrapper & .datatable-input {
-      color: var(--color-heading);
-      font-size: 0.875rem;
-      border: 1px solid var(--color-default);
-      border-radius: var(--radius-base);
-      background-color: var(--color-neutral-secondary-soft);
-      min-width: 16rem;
-    }
-    .datatable-wrapper & .datatable-input:focus {
-      border-color: var(--color-brand);
-    }
+  .datatable-wrapper .datatable-input {
+    color: var(--color-heading);
+    font-size: 0.875rem;
+    border: 1px solid var(--color-default);
+    border-radius: var(--radius-base);
+    background-color: var(--color-neutral-secondary-soft);
+    min-width: 16rem;
+  }
+  .datatable-wrapper thead th .datatable-input {
+    background-color: var(--color-neutral-primary);
+    font-weight: 400;
+    color: var(--color-heading);
+    padding-top: .35rem;
+    padding-bottom: .35rem;
+    min-width: 0;
+  }
+  .datatable-wrapper .datatable-search .datatable-input:focus {
+    border-color: var(--color-brand);
+  }
+  .datatable-wrapper .datatable-search .datatable-input {
+    color: var(--color-heading);
+    font-size: 0.875rem;
+    border: 1px solid var(--color-default);
+    border-radius: var(--radius-base);
+    background-color: var(--color-neutral-secondary-soft);
+    min-width: 16rem;
+  }
+  .datatable-wrapper .datatable-search .datatable-input:focus {
+    border-color: var(--color-brand);
   }
   .flex-1 {
     flex: 1;
@@ -1604,7 +1696,7 @@
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .translate-x-0 {
-    --tw-translate-x: calc(var(--spacing) * 0);
+    --tw-translate-x: 0px;
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .translate-x-full {
@@ -1640,17 +1732,26 @@
   .resize {
     resize: both;
   }
+  .auto-cols-fr {
+    grid-auto-columns: minmax(0, 1fr);
+  }
   .grid-flow-col {
     grid-auto-flow: column;
   }
   .auto-rows-\[100px\] {
     grid-auto-rows: 100px;
   }
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
   .grid-cols-7 {
     grid-template-columns: repeat(7, minmax(0, 1fr));
@@ -1709,19 +1810,15 @@
   .gap-20 {
     gap: calc(var(--spacing) * 20);
   }
-  .space-y-4 {
-    :where(& > :not(:last-child)) {
-      --tw-space-y-reverse: 0;
-      margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));
-      margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));
-    }
+  :where(.space-y-4 > :not(:last-child)) {
+    --tw-space-y-reverse: 0;
+    margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));
+    margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));
   }
-  .space-y-6 {
-    :where(& > :not(:last-child)) {
-      --tw-space-y-reverse: 0;
-      margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
-      margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
-    }
+  :where(.space-y-6 > :not(:last-child)) {
+    --tw-space-y-reverse: 0;
+    margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
+    margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
   }
   .gap-x-8 {
     column-gap: calc(var(--spacing) * 8);
@@ -1729,26 +1826,20 @@
   .gap-x-12 {
     column-gap: calc(var(--spacing) * 12);
   }
-  .space-x-2 {
-    :where(& > :not(:last-child)) {
-      --tw-space-x-reverse: 0;
-      margin-inline-start: calc(calc(var(--spacing) * 2) * var(--tw-space-x-reverse));
-      margin-inline-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-x-reverse)));
-    }
+  :where(.space-x-2 > :not(:last-child)) {
+    --tw-space-x-reverse: 0;
+    margin-inline-start: calc(calc(var(--spacing) * 2) * var(--tw-space-x-reverse));
+    margin-inline-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-x-reverse)));
   }
-  .space-x-3 {
-    :where(& > :not(:last-child)) {
-      --tw-space-x-reverse: 0;
-      margin-inline-start: calc(calc(var(--spacing) * 3) * var(--tw-space-x-reverse));
-      margin-inline-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-x-reverse)));
-    }
+  :where(.space-x-3 > :not(:last-child)) {
+    --tw-space-x-reverse: 0;
+    margin-inline-start: calc(calc(var(--spacing) * 3) * var(--tw-space-x-reverse));
+    margin-inline-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-x-reverse)));
   }
-  .space-x-4 {
-    :where(& > :not(:last-child)) {
-      --tw-space-x-reverse: 0;
-      margin-inline-start: calc(calc(var(--spacing) * 4) * var(--tw-space-x-reverse));
-      margin-inline-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-x-reverse)));
-    }
+  :where(.space-x-4 > :not(:last-child)) {
+    --tw-space-x-reverse: 0;
+    margin-inline-start: calc(calc(var(--spacing) * 4) * var(--tw-space-x-reverse));
+    margin-inline-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-x-reverse)));
   }
   .gap-y-8 {
     row-gap: calc(var(--spacing) * 8);
@@ -1765,21 +1856,22 @@
   .overflow-hidden {
     overflow: hidden;
   }
-  .datatable-container {
-    .datatable-wrapper & thead tr.search-filtering-row th {
-      padding-top: 0;
-    }
-    .datatable-wrapper & {
-      overflow-x: auto;
-      border: 1px solid var(--color-default);
-      border-radius: var(--radius-base);
-    }
+  .datatable-wrapper .datatable-container thead tr.search-filtering-row th {
+    padding-top: 0;
+  }
+  .datatable-wrapper .datatable-container {
+    overflow-x: auto;
+    border: 1px solid var(--color-default);
+    border-radius: var(--radius-base);
   }
   .overflow-x-hidden {
     overflow-x: hidden;
   }
   .overflow-y-auto {
     overflow-y: auto;
+  }
+  .rounded {
+    border-radius: var(--radius);
   }
   .rounded-base {
     border-radius: var(--radius-base);
@@ -1834,53 +1926,51 @@
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 1px;
   }
-  .dark {
-    & .apexcharts-canvas .apexcharts-tooltip {
-      background-color: var(--color-neutral-secondary-medium) !important;
-      color: var(--color-body) !important;
-      border-color: var(--color-default) !important;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
-    }
-    & .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-title {
-      background-color: var(--color-neutral-tertiary-medium) !important;
-      border-color: var(--color-light) !important;
-      color: var(--color-heading) !important;
-    }
-    & .apexcharts-canvas .apexcharts-xaxistooltip {
-      color: var(--color-body) !important;
-      background-color: var(--color-neutral-secondary-medium) !important;
-    }
-    & .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-text-y-label {
-      color: var(--color-body) !important;
-    }
-    & .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-text-y-value {
-      color: white !important;
-    }
-    & .apexcharts-canvas .apexcharts-tooltip-series-group.apexcharts-active {
-      background-color: var(--color-neutral-secondary-medium) !important;
-      color: var(--color-body) !important;
-    }
-    & .apexcharts-canvas .apexcharts-legend-text {
-      color: var(--color-body) !important;
-    }
-    & .apexcharts-canvas .apexcharts-legend-text:not(.apexcharts-inactive-legend):hover {
-      color: heading !important;
-    }
-    & .apexcharts-canvas .apexcharts-datalabels-group .apexcharts-text.apexcharts-datalabel-value {
-      fill: white !important;
-    }
-    & .apexcharts-canvas .apexcharts-datalabels-group .apexcharts-text.apexcharts-datalabel-label {
-      fill: var(--color-body) !important;
-    }
-    & .apexcharts-gridline {
-      stroke: var(--color-default) !important;
-    }
-    & .apexcharts-xcrosshairs {
-      stroke: var(--color-default) !important;
-    }
-    & .apexcharts-ycrosshairs {
-      stroke: var(--color-default) !important;
-    }
+  .dark .apexcharts-canvas .apexcharts-tooltip {
+    background-color: var(--color-neutral-secondary-medium) !important;
+    color: var(--color-body) !important;
+    border-color: var(--color-default) !important;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-title {
+    background-color: var(--color-neutral-tertiary-medium) !important;
+    border-color: var(--color-light) !important;
+    color: var(--color-heading) !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-xaxistooltip {
+    color: var(--color-body) !important;
+    background-color: var(--color-neutral-secondary-medium) !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-text-y-label {
+    color: var(--color-body) !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-text-y-value {
+    color: white !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-tooltip-series-group.apexcharts-active {
+    background-color: var(--color-neutral-secondary-medium) !important;
+    color: var(--color-body) !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-legend-text {
+    color: var(--color-body) !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-legend-text:not(.apexcharts-inactive-legend):hover {
+    color: heading !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-datalabels-group .apexcharts-text.apexcharts-datalabel-value {
+    fill: white !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-datalabels-group .apexcharts-text.apexcharts-datalabel-label {
+    fill: var(--color-body) !important;
+  }
+  .dark .apexcharts-gridline {
+    stroke: var(--color-default) !important;
+  }
+  .dark .apexcharts-xcrosshairs {
+    stroke: var(--color-default) !important;
+  }
+  .dark .apexcharts-ycrosshairs {
+    stroke: var(--color-default) !important;
   }
   .border-blue-700 {
     border-color: var(--color-blue-700);
@@ -1900,33 +1990,32 @@
   .border-gray-300 {
     border-color: var(--color-gray-300);
   }
+  .border-light {
+    border-color: var(--color-light);
+  }
   .border-transparent {
     border-color: transparent;
   }
-  .apexcharts-active {
-    .apexcharts-canvas .apexcharts-tooltip-series-group& .apexcharts-tooltip-y-group {
-      padding: 0 !important;
-    }
-    .apexcharts-canvas .apexcharts-tooltip-series-group& {
-      padding-left: 0.75rem !important;
-      padding-right: 0.75rem !important;
-      padding-bottom: 0.75rem !important;
-      background-color: var(--color-neutral-primary-medium) !important;
-      color: var(--color-body) !important;
-    }
-    .dark .apexcharts-canvas .apexcharts-tooltip-series-group& {
-      background-color: var(--color-neutral-secondary-medium) !important;
-      color: var(--color-body) !important;
-    }
-    .apexcharts-canvas .apexcharts-tooltip-series-group&:first-of-type {
-      padding-top: 0.75rem !important;
-    }
+  .apexcharts-canvas .apexcharts-tooltip-series-group.apexcharts-active .apexcharts-tooltip-y-group {
+    padding: 0 !important;
   }
-  .datatable-active {
-    .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item& .datatable-pagination-list-item-link {
-      color: var(--color-fg-brand);
-      background-color: var(--color-neutral-tertiary-medium);
-    }
+  .apexcharts-canvas .apexcharts-tooltip-series-group.apexcharts-active {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+    background-color: var(--color-neutral-primary-medium) !important;
+    color: var(--color-body) !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-tooltip-series-group.apexcharts-active {
+    background-color: var(--color-neutral-secondary-medium) !important;
+    color: var(--color-body) !important;
+  }
+  .apexcharts-canvas .apexcharts-tooltip-series-group.apexcharts-active:first-of-type {
+    padding-top: 0.75rem !important;
+  }
+  .datatable-wrapper .datatable-bottom .datatable-pagination .datatable-pagination-list-item.datatable-active .datatable-pagination-list-item-link {
+    color: var(--color-fg-brand);
+    background-color: var(--color-neutral-tertiary-medium);
   }
   .selectedCell {
     background-color: var(--color-neutral-secondary-medium);
@@ -1997,15 +2086,11 @@
       background-color: color-mix(in oklab, var(--color-white) 50%, transparent);
     }
   }
-  .dark {
-    & .selectedCell {
-      background-color: var(--color-neutral-secondary-medium);
-    }
+  .dark .selectedCell {
+    background-color: var(--color-neutral-secondary-medium);
   }
-  .selected {
-    .datatable-wrapper .datatable-table tbody tr& {
-      background-color: var(--color-neutral-secondary);
-    }
+  .datatable-wrapper .datatable-table tbody tr.selected {
+    background-color: var(--color-neutral-secondary);
   }
   .bg-gradient-to-r {
     --tw-gradient-position: to right in oklab;
@@ -2037,43 +2122,37 @@
     --tw-gradient-to: var(--color-red-600);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
-  .apexcharts-datalabels-group {
-    & .apexcharts-text.apexcharts-datalabel-value {
-      fill: var(--color-heading) !important;
-      font-size: 1.875rem,[object Object] !important;
-      font-weight: 700 !important;
-    }
-    .dark .apexcharts-canvas & .apexcharts-text.apexcharts-datalabel-value {
-      fill: white !important;
-    }
-    .apexcharts-canvas & .apexcharts-text.apexcharts-datalabel-label {
-      fill: var(--color-body) !important;
-      font-size: 1rem,[object Object] !important;
-      font-weight: 400 !important;
-    }
-    .dark .apexcharts-canvas & .apexcharts-text.apexcharts-datalabel-label {
-      fill: var(--color-body) !important;
-    }
+  .apexcharts-datalabels-group .apexcharts-text.apexcharts-datalabel-value {
+    fill: var(--color-heading) !important;
+    font-size: 1.875rem,[object Object] !important;
+    font-weight: 700 !important;
   }
-  .apexcharts-datalabel-label {
-    .apexcharts-canvas .apexcharts-datalabels-group .apexcharts-text& {
-      fill: var(--color-body) !important;
-      font-size: 1rem,[object Object] !important;
-      font-weight: 400 !important;
-    }
-    .dark .apexcharts-canvas .apexcharts-datalabels-group .apexcharts-text& {
-      fill: var(--color-body) !important;
-    }
+  .dark .apexcharts-canvas .apexcharts-datalabels-group .apexcharts-text.apexcharts-datalabel-value {
+    fill: white !important;
   }
-  .apexcharts-datalabel-value {
-    .apexcharts-datalabels-group .apexcharts-text& {
-      fill: var(--color-heading) !important;
-      font-size: 1.875rem,[object Object] !important;
-      font-weight: 700 !important;
-    }
-    .dark .apexcharts-canvas .apexcharts-datalabels-group .apexcharts-text& {
-      fill: white !important;
-    }
+  .apexcharts-canvas .apexcharts-datalabels-group .apexcharts-text.apexcharts-datalabel-label {
+    fill: var(--color-body) !important;
+    font-size: 1rem,[object Object] !important;
+    font-weight: 400 !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-datalabels-group .apexcharts-text.apexcharts-datalabel-label {
+    fill: var(--color-body) !important;
+  }
+  .apexcharts-canvas .apexcharts-datalabels-group .apexcharts-text.apexcharts-datalabel-label {
+    fill: var(--color-body) !important;
+    font-size: 1rem,[object Object] !important;
+    font-weight: 400 !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-datalabels-group .apexcharts-text.apexcharts-datalabel-label {
+    fill: var(--color-body) !important;
+  }
+  .apexcharts-datalabels-group .apexcharts-text.apexcharts-datalabel-value {
+    fill: var(--color-heading) !important;
+    font-size: 1.875rem,[object Object] !important;
+    font-weight: 700 !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-datalabels-group .apexcharts-text.apexcharts-datalabel-value {
+    fill: white !important;
   }
   .apexcharts-gridline {
     stroke: var(--color-default) !important;
@@ -2093,18 +2172,14 @@
       stroke: var(--color-default) !important;
     }
   }
-  .apexcharts-legend {
-    .apexcharts-canvas & {
-      padding: 0 !important;
-    }
+  .apexcharts-canvas .apexcharts-legend {
+    padding: 0 !important;
   }
-  .apexcharts-tooltip-y-group {
-    .apexcharts-canvas .apexcharts-tooltip-series-group.apexcharts-active & {
-      padding: 0 !important;
-    }
+  .apexcharts-canvas .apexcharts-tooltip-series-group.apexcharts-active .apexcharts-tooltip-y-group {
+    padding: 0 !important;
   }
   .p-1 {
-    padding: calc(var(--spacing) * 1);
+    padding: var(--spacing);
   }
   .p-1\.5 {
     padding: calc(var(--spacing) * 1.5);
@@ -2142,6 +2217,18 @@
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
   }
+  .px-8 {
+    padding-inline: calc(var(--spacing) * 8);
+  }
+  .py-0 {
+    padding-block: 0px;
+  }
+  .py-1 {
+    padding-block: var(--spacing);
+  }
+  .py-1\.5 {
+    padding-block: calc(var(--spacing) * 1.5);
+  }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
@@ -2157,6 +2244,9 @@
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
   }
+  .py-15 {
+    padding-block: calc(var(--spacing) * 15);
+  }
   .ps-3 {
     padding-inline-start: calc(var(--spacing) * 3);
   }
@@ -2169,33 +2259,32 @@
   .pt-2 {
     padding-top: calc(var(--spacing) * 2);
   }
+  .pt-4 {
+    padding-top: calc(var(--spacing) * 4);
+  }
   .pt-20 {
     padding-top: calc(var(--spacing) * 20);
   }
-  .search-filtering-row {
-    .datatable-wrapper .datatable-container thead tr& th {
-      padding-top: 0;
-    }
+  .datatable-wrapper .datatable-container thead tr.search-filtering-row th {
+    padding-top: 0;
   }
-  .apexcharts-legend-text {
-    .apexcharts-canvas & {
-      font-size: 0.75rem !important;
-      font-weight: 500 !important;
-      padding-left: 1.25rem !important;
-      color: var(--color-body) !important;
-    }
-    :is([dir=rtl]) .apexcharts-canvas & {
-      padding-right: 0.5rem !important;
-    }
-    .apexcharts-canvas &:not(.apexcharts-inactive-legend):hover {
-      color: var(--color-heading) !important;
-    }
-    .dark .apexcharts-canvas & {
-      color: var(--color-body) !important;
-    }
-    .dark .apexcharts-canvas &:not(.apexcharts-inactive-legend):hover {
-      color: heading !important;
-    }
+  .apexcharts-canvas .apexcharts-legend-text {
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+    padding-left: 1.25rem !important;
+    color: var(--color-body) !important;
+  }
+  :is([dir=rtl]) .apexcharts-canvas .apexcharts-legend-text {
+    padding-right: 0.5rem !important;
+  }
+  .apexcharts-canvas .apexcharts-legend-text:not(.apexcharts-inactive-legend):hover {
+    color: var(--color-heading) !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-legend-text {
+    color: var(--color-body) !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-legend-text:not(.apexcharts-inactive-legend):hover {
+    color: heading !important;
   }
   .pb-4 {
     padding-bottom: calc(var(--spacing) * 4);
@@ -2203,10 +2292,8 @@
   .pb-24 {
     padding-bottom: calc(var(--spacing) * 24);
   }
-  .datatable-empty {
-    .datatable-wrapper .datatable-table & {
-      text-align: center;
-    }
+  .datatable-wrapper .datatable-table .datatable-empty {
+    text-align: center;
   }
   .text-center {
     text-align: center;
@@ -2214,6 +2301,10 @@
   .text-2xl {
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
+  .text-4xl {
+    font-size: var(--text-4xl);
+    line-height: var(--tw-leading, var(--text-4xl--line-height));
   }
   .text-base {
     font-size: var(--text-base);
@@ -2231,51 +2322,37 @@
     font-size: var(--text-xl);
     line-height: var(--tw-leading, var(--text-xl--line-height));
   }
-  .apexcharts-datalabels {
-    .apexcharts-canvas & .apexcharts-text.apexcharts-pie-label {
-      font-size: 0.75rem,[object Object] !important;
-      font-weight: 600 !important;
-      text-shadow: none !important;
-      filter: none !important;
-    }
+  .text-xs {
+    font-size: var(--text-xs);
+    line-height: var(--tw-leading, var(--text-xs--line-height));
   }
-  .apexcharts-pie-label {
-    .apexcharts-canvas .apexcharts-datalabels .apexcharts-text& {
-      font-size: 0.75rem,[object Object] !important;
-      font-weight: 600 !important;
-      text-shadow: none !important;
-      filter: none !important;
-    }
+  .apexcharts-canvas .apexcharts-datalabels .apexcharts-text.apexcharts-pie-label {
+    font-size: 0.75rem,[object Object] !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+    filter: none !important;
   }
-  .apexcharts-xaxistooltip-text {
-    .apexcharts-canvas & {
-      font-weight: 400 !important;
-      font-size: 0.875rem !important;
-    }
+  .apexcharts-canvas .apexcharts-xaxistooltip-text {
+    font-weight: 400 !important;
+    font-size: 0.875rem !important;
   }
-  .apexcharts-tooltip-text-y-label {
-    .apexcharts-canvas .apexcharts-tooltip & {
-      color: var(--color-body) !important;
-      font-size: 0.875rem !important;
-    }
-    .dark .apexcharts-canvas .apexcharts-tooltip & {
-      color: var(--color-body) !important;
-    }
+  .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-text-y-label {
+    color: var(--color-body) !important;
+    font-size: 0.875rem !important;
   }
-  .apexcharts-tooltip-text-y-value {
-    .apexcharts-canvas .apexcharts-tooltip & {
-      color: var(--color-heading);
-      font-size: 0.875rem !important;
-    }
-    .dark .apexcharts-canvas .apexcharts-tooltip & {
-      color: white !important;
-    }
+  .dark .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-text-y-label {
+    color: var(--color-body) !important;
   }
-  .datatable-info {
-    .datatable-wrapper .datatable-bottom & {
-      color: var(--color-body);
-      font-size: 0.875rem;
-    }
+  .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-text-y-value {
+    color: var(--color-heading);
+    font-size: 0.875rem !important;
+  }
+  .dark .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-text-y-value {
+    color: white !important;
+  }
+  .datatable-wrapper .datatable-bottom .datatable-info {
+    color: var(--color-body);
+    font-size: 0.875rem;
   }
   .leading-5 {
     --tw-leading: var(--leading-5);
@@ -2319,29 +2396,23 @@
   .whitespace-nowrap {
     white-space: nowrap;
   }
-  .datatable-sorter {
-    .datatable-wrapper .datatable-table thead th & {
-      text-transform: uppercase;
-    }
-    .datatable-wrapper .datatable-table thead th &:hover {
-      color: var(--color-heading);
-    }
-    .datatable-wrapper .datatable-table thead th.datatable-ascending & {
-      color: var(--color-heading);
-    }
-    .datatable-wrapper .datatable-table thead th.datatable-descending & {
-      color: var(--color-heading);
-    }
+  .datatable-wrapper .datatable-table thead th .datatable-sorter {
+    text-transform: uppercase;
   }
-  .datatable-ascending {
-    .datatable-wrapper .datatable-table thead th& .datatable-sorter {
-      color: var(--color-heading);
-    }
+  .datatable-wrapper .datatable-table thead th .datatable-sorter:hover {
+    color: var(--color-heading);
   }
-  .datatable-descending {
-    .datatable-wrapper .datatable-table thead th& .datatable-sorter {
-      color: var(--color-heading);
-    }
+  .datatable-wrapper .datatable-table thead th.datatable-ascending .datatable-sorter {
+    color: var(--color-heading);
+  }
+  .datatable-wrapper .datatable-table thead th.datatable-descending .datatable-sorter {
+    color: var(--color-heading);
+  }
+  .datatable-wrapper .datatable-table thead th.datatable-ascending .datatable-sorter {
+    color: var(--color-heading);
+  }
+  .datatable-wrapper .datatable-table thead th.datatable-descending .datatable-sorter {
+    color: var(--color-heading);
   }
   .text-body {
     color: var(--color-body);
@@ -2351,6 +2422,9 @@
   }
   .text-fg-disabled {
     color: var(--color-fg-disabled);
+  }
+  .text-fg-success {
+    color: var(--color-fg-success);
   }
   .text-gray-400 {
     color: var(--color-gray-400);
@@ -2442,360 +2516,202 @@
     --tw-ease: var(--ease-out);
     transition-timing-function: var(--ease-out);
   }
-  .group-hover\:text-fg-brand {
-    &:is(:where(.group):hover *) {
-      @media (hover: hover) {
-        color: var(--color-fg-brand);
-      }
+  @media (hover: hover) {
+    .group-hover\:text-fg-brand:is(:where(.group):hover *) {
+      color: var(--color-fg-brand);
     }
   }
-  .placeholder\:text-body {
-    &::placeholder {
+  .placeholder\:text-body::placeholder {
+    color: var(--color-body);
+  }
+  @media (hover: hover) {
+    .hover\:border-default:hover {
+      border-color: var(--color-default);
+    }
+    .hover\:bg-blue-800:hover {
+      background-color: var(--color-blue-800);
+    }
+    .hover\:bg-brand-strong:hover {
+      background-color: var(--color-brand-strong);
+    }
+    .hover\:bg-gray-100:hover {
+      background-color: var(--color-gray-100);
+    }
+    .hover\:bg-gray-200:hover {
+      background-color: var(--color-gray-200);
+    }
+    .hover\:bg-neutral-secondary-medium:hover {
+      background-color: var(--color-neutral-secondary-medium);
+    }
+    .hover\:bg-neutral-tertiary:hover {
+      background-color: var(--color-neutral-tertiary);
+    }
+    .hover\:bg-neutral-tertiary-medium:hover {
+      background-color: var(--color-neutral-tertiary-medium);
+    }
+    .hover\:bg-white:hover {
+      background-color: var(--color-white);
+    }
+    .hover\:bg-gradient-to-br:hover {
+      --tw-gradient-position: to bottom right in oklab;
+      background-image: linear-gradient(var(--tw-gradient-stops));
+    }
+    .hover\:text-body:hover {
       color: var(--color-body);
     }
-  }
-  .hover\:border-default {
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-default);
-      }
+    .hover\:text-fg-brand:hover {
+      color: var(--color-fg-brand);
+    }
+    .hover\:text-gray-900:hover {
+      color: var(--color-gray-900);
+    }
+    .hover\:text-heading:hover {
+      color: var(--color-heading);
     }
   }
-  .hover\:bg-blue-800 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-blue-800);
-      }
-    }
+  .focus\:z-10:focus {
+    z-index: 10;
   }
-  .hover\:bg-brand-strong {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-brand-strong);
-      }
-    }
+  .focus\:border-brand:focus {
+    border-color: var(--color-brand);
   }
-  .hover\:bg-gray-100 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-gray-100);
-      }
-    }
+  .focus\:ring-2:focus {
+    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
-  .hover\:bg-gray-200 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-gray-200);
-      }
-    }
+  .focus\:ring-4:focus {
+    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
-  .hover\:bg-neutral-secondary-medium {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-neutral-secondary-medium);
-      }
-    }
+  .focus\:ring-blue-300:focus {
+    --tw-ring-color: var(--color-blue-300);
   }
-  .hover\:bg-neutral-tertiary {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-neutral-tertiary);
-      }
-    }
+  .focus\:ring-brand:focus {
+    --tw-ring-color: var(--color-brand);
   }
-  .hover\:bg-neutral-tertiary-medium {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-neutral-tertiary-medium);
-      }
-    }
+  .focus\:ring-brand-medium:focus {
+    --tw-ring-color: var(--color-brand-medium);
   }
-  .hover\:bg-white {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-white);
-      }
-    }
+  .focus\:ring-green-300:focus {
+    --tw-ring-color: var(--color-green-300);
   }
-  .hover\:bg-gradient-to-br {
-    &:hover {
-      @media (hover: hover) {
-        --tw-gradient-position: to bottom right in oklab;
-        background-image: linear-gradient(var(--tw-gradient-stops));
-      }
-    }
+  .focus\:ring-neutral-tertiary:focus {
+    --tw-ring-color: var(--color-neutral-tertiary);
   }
-  .hover\:text-body {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-body);
-      }
-    }
+  .focus\:ring-red-300:focus {
+    --tw-ring-color: var(--color-red-300);
   }
-  .hover\:text-fg-brand {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-fg-brand);
-      }
-    }
+  .focus\:outline-none:focus {
+    --tw-outline-style: none;
+    outline-style: none;
   }
-  .hover\:text-gray-900 {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-gray-900);
-      }
+  @media (width >= 48rem) {
+    .md\:inset-0 {
+      inset: 0px;
     }
-  }
-  .hover\:text-heading {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-heading);
-      }
-    }
-  }
-  .focus\:z-10 {
-    &:focus {
-      z-index: 10;
-    }
-  }
-  .focus\:border-brand {
-    &:focus {
-      border-color: var(--color-brand);
-    }
-  }
-  .focus\:ring-2 {
-    &:focus {
-      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
-      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-    }
-  }
-  .focus\:ring-4 {
-    &:focus {
-      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
-      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-    }
-  }
-  .focus\:ring-blue-300 {
-    &:focus {
-      --tw-ring-color: var(--color-blue-300);
-    }
-  }
-  .focus\:ring-brand {
-    &:focus {
-      --tw-ring-color: var(--color-brand);
-    }
-  }
-  .focus\:ring-brand-medium {
-    &:focus {
-      --tw-ring-color: var(--color-brand-medium);
-    }
-  }
-  .focus\:ring-green-300 {
-    &:focus {
-      --tw-ring-color: var(--color-green-300);
-    }
-  }
-  .focus\:ring-neutral-tertiary {
-    &:focus {
-      --tw-ring-color: var(--color-neutral-tertiary);
-    }
-  }
-  .focus\:ring-red-300 {
-    &:focus {
-      --tw-ring-color: var(--color-red-300);
-    }
-  }
-  .focus\:outline-none {
-    &:focus {
-      --tw-outline-style: none;
-      outline-style: none;
-    }
-  }
-  .md\:inset-0 {
-    @media (width >= 48rem) {
-      inset: calc(var(--spacing) * 0);
-    }
-  }
-  .md\:order-2 {
-    @media (width >= 48rem) {
+    .md\:order-2 {
       order: 2;
     }
-  }
-  .md\:me-0 {
-    @media (width >= 48rem) {
-      margin-inline-end: calc(var(--spacing) * 0);
+    .md\:me-0 {
+      margin-inline-end: 0px;
     }
-  }
-  .md\:space-x-0 {
-    @media (width >= 48rem) {
-      :where(& > :not(:last-child)) {
-        --tw-space-x-reverse: 0;
-        margin-inline-start: calc(calc(var(--spacing) * 0) * var(--tw-space-x-reverse));
-        margin-inline-end: calc(calc(var(--spacing) * 0) * calc(1 - var(--tw-space-x-reverse)));
-      }
+    :where(.md\:space-x-0 > :not(:last-child)) {
+      --tw-space-x-reverse: 0;
+      margin-inline-start: 0;
+      margin-inline-end: 0;
     }
-  }
-  .md\:p-5 {
-    @media (width >= 48rem) {
+    .md\:p-5 {
       padding: calc(var(--spacing) * 5);
     }
-  }
-  .md\:p-6 {
-    @media (width >= 48rem) {
+    .md\:p-6 {
       padding: calc(var(--spacing) * 6);
     }
   }
-  .rtl\:rotate-180 {
-    &:where(:dir(rtl), [dir="rtl"], [dir="rtl"] *) {
-      rotate: 180deg;
-    }
+  .rtl\:rotate-180:where(:dir(rtl), [dir="rtl"], [dir="rtl"] *) {
+    rotate: 180deg;
   }
-  .rtl\:space-x-reverse {
-    &:where(:dir(rtl), [dir="rtl"], [dir="rtl"] *) {
-      :where(& > :not(:last-child)) {
-        --tw-space-x-reverse: 1;
-      }
-    }
+  :where(.rtl\:space-x-reverse:where(:dir(rtl), [dir="rtl"], [dir="rtl"] *) > :not(:last-child)) {
+    --tw-space-x-reverse: 1;
   }
-  .dark\:border-gray-500 {
-    @media (prefers-color-scheme: dark) {
+  @media (prefers-color-scheme: dark) {
+    .dark\:border-gray-500 {
       border-color: var(--color-gray-500);
     }
-  }
-  .dark\:border-gray-600 {
-    @media (prefers-color-scheme: dark) {
+    .dark\:border-gray-600 {
       border-color: var(--color-gray-600);
     }
-  }
-  .dark\:bg-blue-600 {
-    @media (prefers-color-scheme: dark) {
+    .dark\:bg-blue-600 {
       background-color: var(--color-blue-600);
     }
-  }
-  .dark\:bg-gray-600 {
-    @media (prefers-color-scheme: dark) {
+    .dark\:bg-gray-600 {
       background-color: var(--color-gray-600);
     }
-  }
-  .dark\:bg-gray-700 {
-    @media (prefers-color-scheme: dark) {
+    .dark\:bg-gray-700 {
       background-color: var(--color-gray-700);
     }
-  }
-  .dark\:bg-gray-800 {
-    @media (prefers-color-scheme: dark) {
+    .dark\:bg-gray-800 {
       background-color: var(--color-gray-800);
     }
-  }
-  .dark\:bg-gray-800\/50 {
-    @media (prefers-color-scheme: dark) {
+    .dark\:bg-gray-800\/50 {
       background-color: color-mix(in srgb, oklch(27.8% 0.033 256.848) 50%, transparent);
-      @supports (color: color-mix(in lab, red, red)) {
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .dark\:bg-gray-800\/50 {
         background-color: color-mix(in oklab, var(--color-gray-800) 50%, transparent);
       }
     }
-  }
-  .dark\:bg-gray-900\/80 {
-    @media (prefers-color-scheme: dark) {
+    .dark\:bg-gray-900\/80 {
       background-color: color-mix(in srgb, oklch(21% 0.034 264.665) 80%, transparent);
-      @supports (color: color-mix(in lab, red, red)) {
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .dark\:bg-gray-900\/80 {
         background-color: color-mix(in oklab, var(--color-gray-900) 80%, transparent);
       }
     }
-  }
-  .dark\:bg-neutral-primary {
-    @media (prefers-color-scheme: dark) {
+    .dark\:bg-neutral-primary {
       background-color: var(--color-neutral-primary);
     }
-  }
-  .dark\:text-gray-300 {
-    @media (prefers-color-scheme: dark) {
+    .dark\:text-gray-300 {
       color: var(--color-gray-300);
     }
-  }
-  .dark\:text-gray-400 {
-    @media (prefers-color-scheme: dark) {
+    .dark\:text-gray-400 {
       color: var(--color-gray-400);
     }
-  }
-  .dark\:text-gray-500 {
-    @media (prefers-color-scheme: dark) {
+    .dark\:text-gray-500 {
       color: var(--color-gray-500);
     }
-  }
-  .dark\:text-white {
-    @media (prefers-color-scheme: dark) {
+    .dark\:text-white {
       color: var(--color-white);
     }
-  }
-  .dark\:hover\:bg-blue-700 {
-    @media (prefers-color-scheme: dark) {
-      &:hover {
-        @media (hover: hover) {
-          background-color: var(--color-blue-700);
-        }
+    @media (hover: hover) {
+      .dark\:hover\:bg-blue-700:hover {
+        background-color: var(--color-blue-700);
+      }
+      .dark\:hover\:bg-gray-600:hover {
+        background-color: var(--color-gray-600);
+      }
+      .dark\:hover\:bg-gray-800:hover {
+        background-color: var(--color-gray-800);
+      }
+      .dark\:hover\:text-white:hover {
+        color: var(--color-white);
       }
     }
-  }
-  .dark\:hover\:bg-gray-600 {
-    @media (prefers-color-scheme: dark) {
-      &:hover {
-        @media (hover: hover) {
-          background-color: var(--color-gray-600);
-        }
-      }
+    .dark\:focus\:ring-blue-800:focus {
+      --tw-ring-color: var(--color-blue-800);
+    }
+    .dark\:focus\:ring-gray-600:focus {
+      --tw-ring-color: var(--color-gray-600);
+    }
+    .dark\:focus\:ring-green-800:focus {
+      --tw-ring-color: var(--color-green-800);
+    }
+    .dark\:focus\:ring-red-800:focus {
+      --tw-ring-color: var(--color-red-800);
     }
   }
-  .dark\:hover\:bg-gray-800 {
-    @media (prefers-color-scheme: dark) {
-      &:hover {
-        @media (hover: hover) {
-          background-color: var(--color-gray-800);
-        }
-      }
-    }
-  }
-  .dark\:hover\:text-white {
-    @media (prefers-color-scheme: dark) {
-      &:hover {
-        @media (hover: hover) {
-          color: var(--color-white);
-        }
-      }
-    }
-  }
-  .dark\:focus\:ring-blue-800 {
-    @media (prefers-color-scheme: dark) {
-      &:focus {
-        --tw-ring-color: var(--color-blue-800);
-      }
-    }
-  }
-  .dark\:focus\:ring-gray-600 {
-    @media (prefers-color-scheme: dark) {
-      &:focus {
-        --tw-ring-color: var(--color-gray-600);
-      }
-    }
-  }
-  .dark\:focus\:ring-green-800 {
-    @media (prefers-color-scheme: dark) {
-      &:focus {
-        --tw-ring-color: var(--color-green-800);
-      }
-    }
-  }
-  .dark\:focus\:ring-red-800 {
-    @media (prefers-color-scheme: dark) {
-      &:focus {
-        --tw-ring-color: var(--color-red-800);
-      }
-    }
-  }
-  .\[\&\:\:-webkit-calendar-picker-indicator\]\:hidden {
-    &::-webkit-calendar-picker-indicator {
-      display: none;
-    }
+  .\[\&\:\:-webkit-calendar-picker-indicator\]\:hidden::-webkit-calendar-picker-indicator {
+    display: none;
   }
 }
 .dark {
@@ -3020,8 +2936,6 @@
   [role="tooltip"].invisible > [data-popper-arrow]:after {
     visibility: hidden;
   }
-}
-@layer base {
   [type='text'],[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],[type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea,select {
     appearance: none;
     background-color: #fff;

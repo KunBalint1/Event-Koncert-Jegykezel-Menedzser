@@ -1400,6 +1400,9 @@
   .h-50 {
     height: calc(var(--spacing) * 50);
   }
+  .h-100 {
+    height: calc(var(--spacing) * 100);
+  }
   .h-\[calc\(100\%-1rem\)\] {
     height: calc(100% - 1rem);
   }
@@ -1519,6 +1522,9 @@
   .w-44 {
     width: calc(var(--spacing) * 44);
   }
+  .w-50 {
+    width: calc(var(--spacing) * 50);
+  }
   .w-56 {
     width: calc(var(--spacing) * 56);
   }
@@ -1528,11 +1534,17 @@
   .w-75 {
     width: calc(var(--spacing) * 75);
   }
+  .w-80 {
+    width: calc(var(--spacing) * 80);
+  }
   .w-85 {
     width: calc(var(--spacing) * 85);
   }
   .w-90 {
     width: calc(var(--spacing) * 90);
+  }
+  .w-200 {
+    width: calc(var(--spacing) * 200);
   }
   .w-\[640px\] {
     width: 640px;
@@ -1645,18 +1657,6 @@
   }
   .transform-none {
     transform: none;
-  }
-  .zoom-2 {
-    zoom: 2%;
-  }
-  .zoom-100 {
-    zoom: 100%;
-  }
-  .zoom-200 {
-    zoom: 200%;
-  }
-  .zoom-300 {
-    zoom: 300%;
   }
   .cursor-default {
     cursor: default;
@@ -2099,9 +2099,6 @@
       stroke: var(--color-default) !important;
     }
   }
-  .object-cover {
-    object-fit: cover;
-  }
   .apexcharts-legend {
     .apexcharts-canvas & {
       padding: 0 !important;
@@ -2133,9 +2130,6 @@
   .p-4 {
     padding: calc(var(--spacing) * 4);
   }
-  .p-5 {
-    padding: calc(var(--spacing) * 5);
-  }
   .p-6 {
     padding: calc(var(--spacing) * 6);
   }
@@ -2153,6 +2147,9 @@
   }
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
+  }
+  .px-6 {
+    padding-inline: calc(var(--spacing) * 6);
   }
   .py-0 {
     padding-block: calc(var(--spacing) * 0);
@@ -2617,12 +2614,6 @@
       box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
-  .focus\:ring-5 {
-    &:focus {
-      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(5px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
-      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-    }
-  }
   .focus\:ring-blue-300 {
     &:focus {
       --tw-ring-color: var(--color-blue-300);
@@ -2689,34 +2680,24 @@
       margin-inline-end: calc(var(--spacing) * 0);
     }
   }
+  .md\:-ml-2 {
+    @media (width >= 48rem) {
+      margin-left: calc(var(--spacing) * -2);
+    }
+  }
+  .md\:ml-6 {
+    @media (width >= 48rem) {
+      margin-left: calc(var(--spacing) * 6);
+    }
+  }
   .md\:flex {
     @media (width >= 48rem) {
       display: flex;
     }
   }
-  .md\:h-8 {
+  .md\:min-w-\[200px\] {
     @media (width >= 48rem) {
-      height: calc(var(--spacing) * 8);
-    }
-  }
-  .md\:h-12 {
-    @media (width >= 48rem) {
-      height: calc(var(--spacing) * 12);
-    }
-  }
-  .md\:w-8 {
-    @media (width >= 48rem) {
-      width: calc(var(--spacing) * 8);
-    }
-  }
-  .md\:w-12 {
-    @media (width >= 48rem) {
-      width: calc(var(--spacing) * 12);
-    }
-  }
-  .md\:min-w-50 {
-    @media (width >= 48rem) {
-      min-width: calc(var(--spacing) * 50);
+      min-width: 200px;
     }
   }
   .md\:grid-flow-col {
@@ -2732,11 +2713,6 @@
   .md\:grid-cols-4 {
     @media (width >= 48rem) {
       grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-  }
-  .md\:grid-cols-6 {
-    @media (width >= 48rem) {
-      grid-template-columns: repeat(6, minmax(0, 1fr));
     }
   }
   .md\:gap-2 {

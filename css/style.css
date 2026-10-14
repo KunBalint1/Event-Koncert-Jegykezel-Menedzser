@@ -35,4 +35,24 @@ div.scrollmenu .scroll-card {
     flex-basis: 22.5rem;
   }
 }
+
+.hide-scrollbar,
+.scrollmenu {
+    -ms-overflow-style: none;   
+    scrollbar-width: none;     
+}
+.hide-scrollbar::-webkit-scrollbar,
+.scrollmenu::-webkit-scrollbar {
+    display: none;             
+}
+
+.scrollmenu {
+    display: flex;
+    gap: 1.5rem;                
+    overflow-x: auto;
+}
+
+.scroll-card {
+    flex: 0 0 auto;             
+}
 /*Eddig*/

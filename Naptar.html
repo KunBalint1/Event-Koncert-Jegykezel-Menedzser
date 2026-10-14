@@ -19,18 +19,16 @@
                             Rendszer</span>
                     </p>
                     <div class="ml-auto">
-                        <button type="button"
-                            class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 md:w-37.5 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">
-                            Esemény Törlés
-                        </button>
-                        <button
-                            class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800  font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5"
-                            type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation"
-                            aria-controls="drawer-navigation">
-                            Esemény hozzáadás
-                        </button> <!-- AI javaslat: az "ml-auto" a gomb jobbra igazítására. A gomb stílusa saját -->
-
-
+                            <button type="button"
+                                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 md:w-30 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">
+                                -
+                            </button>
+                            <button
+                                class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 md:w-30 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5"
+                                type="button" data-drawer-target="drawer-navigation"
+                                data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
+                               +
+                            </button> <!-- AI javaslat: az "ml-auto" a gomb jobbra igazítására. A gomb stílusa saját -->
                     </div>
 
                     <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse ms-5">
@@ -43,7 +41,7 @@
             </nav>
         </section>
     </header>
-    <main class="h-screen pt-20 pb-24 px-4 flex flex-col">
+    <main class="h-screen pt-20 pb-24 px-4">
         <!-- AI (Claude) segítségével: a <main> elrendezése (h-screen pt-20 pb-24 px-4 flex flex-col) -->
         <section>
             <h2 class="text-center text-white font-bold text-3xl text-wrap py-4">Események Naptár</h2>
@@ -123,16 +121,11 @@
                             </div>
                         </div>
                 </div>
-                <div class="grid md:grid-flow-col py-4">
-                    <div>
+                <div class="flex gap-3 mt-12">
                         <button type="button"
                             class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 w-37.5 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Mentés</button>
-                    </div>
-                    <div>
                         <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
                             class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 w-37.5 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Mégse</button>
-                    </div>
-                </div>
                 </form>
             </div>
             </div>
@@ -155,11 +148,13 @@
 
                     <div id="calendar-grid" class="grid grid-cols-7 md:auto-rows-[100px] gap-2 flex-1 min-h-0"></div>
                 </div>
-                <div class="">
+                <div class="py-3">
                     <div
-                        class="md:min-h-[300px] bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
-                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Következő eseményig: </h5>
-                        <p class="text-body timer text-center text-bold"><span class="day">000</span>:<span class="hour">00</span>:<span class="min">00</span>:<span class="sec">00</span></p>
+                        class="md:min-h-[100px] bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
+                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Következő
+                            eseményig: </h5>
+                        <p class="text-body timer text-center text-bold text-4xl"><span class="day">000</span>:<span
+                                class="hour">00</span>:<span class="min">00</span>:<span class="sec">00</span></p>
                     </div>
                 </div>
             </div>

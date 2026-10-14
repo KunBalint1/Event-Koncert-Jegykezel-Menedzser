@@ -10,18 +10,29 @@ body {
     }
     background-color: #00008b;
 }
-
+/* Ez itt AI*/
 div.scrollmenu {
-  overflow: auto;
-  white-space: nowrap;
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0.25rem 1rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
-div.scrollmenu .block {
-  display: inline-block;
-  color: white;
-  text-align: center;
-  padding: 14px;
-  text-decoration: none;
+div.scrollmenu .scroll-card {
+  flex: 0 0 85%;
+  min-height: 22.5rem;
+  height: auto;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  scroll-snap-align: start;
 }
 
-
+@media (min-width: 768px) {
+  div.scrollmenu .scroll-card {
+    flex-basis: 22.5rem;
+  }
+}
+/*Eddig*/

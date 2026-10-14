@@ -24,7 +24,7 @@
                             Esemény Törlés
                         </button>
                         <button
-                            class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 md:w-37.5 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5"
+                            class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800  font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5"
                             type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation"
                             aria-controls="drawer-navigation">
                             Esemény hozzáadás
@@ -36,8 +36,7 @@
                     <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse ms-5">
                         <div class="flex text-sm bg-neutral-primary rounded-full md:me-0 focus:ring-4 focus:ring-neutral-tertiary"
                             id="user-menu-button" aria-expanded="false" data-dropdown-placement="bottom">
-                            <img class="w-8 h-8 rounded-full" src="img/logo.png"
-                                alt="logo photo">
+                            <img class="w-8 h-8 rounded-full" src="img/logo.png" alt="logo photo">
                         </div>
                     </div>
                 </div>
@@ -50,7 +49,7 @@
             <h2 class="text-center text-white font-bold text-3xl text-wrap py-4">Események Naptár</h2>
             <!-- drawer component -->
             <div id="drawer-navigation"
-                class="fixed top-0 left-0 z-40 md:w-85 h-screen p-4 overflow-y-auto transition-transform -translate-x-full border-e border-default bg-neutral-800"
+                class="fixed top-0 left-0 z-40 w-85 h-screen p-4 overflow-y-auto transition-transform -translate-x-full border-e border-default bg-neutral-800"
                 tabindex="-1" aria-labelledby="drawer-navigation-label">
                 <div class="border-b border-default pb-4 flex items-center">
                     <span class="self-center text-lg font-bold whitespace-nowrap text-heading">Esemény
@@ -71,17 +70,23 @@
                             <label for="visitors" class="block mb-2.5 text-sm font-semibold text-heading">Esemény
                                 név:</label>
                             <input type="text" id="visitors"
-                                class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-75 px-2.5 py-2 shadow-xs placeholder:text-body ml-1.5"
+                                class="esemenyNev bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-75 px-2.5 py-2 shadow-xs placeholder:text-body ml-1.5"
                                 placeholder="" required />
                         </div>
                         <div>
                             <label for="visitors"
                                 class="block mb-2.5 text-sm font-semibold text-heading">Helyszín:</label>
                             <input type="text" id="visitors"
-                                class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-75 px-2.5 py-2 shadow-xs placeholder:text-body ml-1.5"
+                                class="helyszin bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-75 px-2.5 py-2 shadow-xs placeholder:text-body ml-1.5"
                                 placeholder="" required />
                         </div>
-
+                        <div>
+                            <label for="visitors" class=" block mb-2.5 text-sm font-semibold text-heading">Maximális
+                                létszám:</label>
+                            <input type="number" id="visitors"
+                                class="letszam bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-75 px-2.5 py-2 shadow-xs placeholder:text-body ml-1.5"
+                                placeholder="" required />
+                        </div>
                         <label for="message" class="block mb-2.5 text-sm font-medium text-heading">Esemény
                             leírás:</label>
                         <textarea id="message" rows="4"
@@ -99,7 +104,7 @@
                                 </svg>
                             </div>
                             <input id="datepicker-autohide" datepicker datepicker-autohide type="text"
-                                class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body"
+                                class="datum block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body"
                                 placeholder="Válasszon dátumot">
                         </div>
                         <div>
@@ -113,7 +118,7 @@
                                     </svg>
                                 </div>
                                 <input type="time" id="time"
-                                    class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs [&::-webkit-calendar-picker-indicator]:hidden"
+                                    class="ido block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs [&::-webkit-calendar-picker-indicator]:hidden"
                                     min="09:00" max="18:00" value="09:00" required />
                             </div>
                         </div>
@@ -132,20 +137,31 @@
             </div>
             </div>
         </section>
-        <section> <!-- AI (Claude) által készítve: a naptár szerkezete (hónapváltó, napnevek, rács).
+        <section>
+            <div class="grid md:grid-cols-4">
+                <!-- AI (Claude) által készítve: a naptár szerkezete (hónapváltó, napnevek, rács).
                         Saját módosítás: auto-rows-[140px], max-w-5xl wrapper -->
-            <div class="w-full max-w-5xl mx-auto flex flex-col flex-1 min-h-0">
-                <div class="flex items-center justify-center gap-8 py-2">
-                    <button id="prev-month" type="button"
-                        class="text-heading text-2xl px-3 rounded-base hover:bg-neutral-secondary-medium">‹</button>
-                    <h2 id="month-title" class="text-xl font-bold text-heading w-56 text-center"></h2>
-                    <button id="next-month" type="button"
-                        class="text-heading text-2xl px-3 rounded-base hover:bg-neutral-secondary-medium">›</button>
+                <div class="md:col-span-3 w-full  max-w-5xl mx-auto flex flex-col flex-1 min-h-0">
+                    <div class="flex items-center justify-center gap-8 py-2">
+                        <button id="prev-month" type="button"
+                            class="text-heading text-2xl px-3 rounded-base hover:bg-neutral-secondary-medium">‹</button>
+                        <h2 id="month-title" class="text-xl font-bold text-heading w-56 text-center"></h2>
+                        <button id="next-month" type="button"
+                            class="text-heading text-2xl px-3 rounded-base hover:bg-neutral-secondary-medium">›</button>
+                    </div>
+
+                    <div id="weekdays"
+                        class="grid grid-cols-7 md:gap-2 text-center text-sm font-bold text-heading py-2"></div>
+
+                    <div id="calendar-grid" class="grid grid-cols-7 md:auto-rows-[100px] gap-2 flex-1 min-h-0"></div>
                 </div>
-
-                <div id="weekdays" class="grid grid-cols-7 md:gap-2 text-center text-sm font-bold text-heading py-2"></div>
-
-                <div id="calendar-grid" class="grid grid-cols-7 md:auto-rows-[100px] gap-2 flex-1 min-h-0"></div>
+                <div class="">
+                    <div
+                        class="md:min-h-[300px] bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
+                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Következő eseményig: </h5>
+                        <p class="text-body timer text-center text-bold"><span class="day">000</span>:<span class="hour">00</span>:<span class="min">00</span>:<span class="sec">00</span></p>
+                    </div>
+                </div>
             </div>
         </section> <!---->
     </main>
@@ -241,11 +257,11 @@
                     <h3 class="mb-6 text-body py-4">Biztosan vissza szeretné vonni az adatokat?</h3>
                     <div class="flex md:flex items-center space-x-4 justify-center">
                         <button data-modal-hide="popup-modal" type="button"
-                            class="text-white max-w-md bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 w-12 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">
+                            class="text-white max-w-md bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 md:w-12 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">
                             Igen
                         </button>
                         <button data-modal-hide="popup-modal" type="button"
-                            class="text-white max-w-md bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 w-12 font-medium rounded-base text-sm px-4 py-2.5 text-center ms-3 leading-5">Nem
+                            class="text-white max-w-md bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 md:w-12 font-medium rounded-base text-sm px-4 py-2.5 text-center ms-3 leading-5">Nem
                         </button>
                     </div>
                 </div>

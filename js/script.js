@@ -57,6 +57,19 @@ if (weekdaysElement && monthTitleElement && calendarGridElement &&
     render();
 }
 
+document.querySelectorAll('.scrollmenu').forEach((menu) => {
+    menu.addEventListener('wheel', (e) => {
+        // Touchpad vízszintes gesztusa már működik, azt hagyjuk
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+
+        const atStart = menu.scrollLeft <= 0 && e.deltaY < 0;
+        const atEnd = Math.ceil(menu.scrollLeft + menu.clientWidth) >= menu.scrollWidth && e.deltaY > 0;
+        if (atStart || atEnd) return; // a sáv szélén az oldal görgessen tovább
+
+        e.preventDefault();
+        menu.scrollLeft += e.deltaY;
+    }, { passive: false });
+});
 
 // Get the CSS variable --color-brand and convert it to hex for ApexCharts
 const getBrandColor = () => {

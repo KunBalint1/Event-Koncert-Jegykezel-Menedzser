@@ -25,8 +25,13 @@ div.scrollmenu {
   overflow-x: auto;
   overflow-y: hidden;
   padding: 0.25rem 0.25rem 1rem;
-  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+div.scrollmenu::-webkit-scrollbar {
+  display: none;
 }
 
 div.scrollmenu .scroll-card {
@@ -35,7 +40,6 @@ div.scrollmenu .scroll-card {
   height: auto;
   white-space: normal;
   overflow-wrap: anywhere;
-  scroll-snap-align: start;
 }
 
 @media (min-width: 768px) {
@@ -44,23 +48,13 @@ div.scrollmenu .scroll-card {
   }
 }
 
-.hide-scrollbar,
-.scrollmenu {
-    -ms-overflow-style: none;   
-    scrollbar-width: none;     
-}
-.hide-scrollbar::-webkit-scrollbar,
-.scrollmenu::-webkit-scrollbar {
-    display: none;             
-}
-
-.scrollmenu {
-    display: flex;
-    gap: 1.5rem;                
-    overflow-x: auto;
-}
-
-.scroll-card {
-    flex: 0 0 auto;             
+/* Snap csak érintőképernyőn (telefon/tablet), egérnél zavarja a görgőt */
+@media (pointer: coarse) {
+  div.scrollmenu {
+    scroll-snap-type: x mandatory;
+  }
+  div.scrollmenu .scroll-card {
+    scroll-snap-align: start;
+  }
 }
 /*Eddig*/

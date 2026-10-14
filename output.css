@@ -1531,6 +1531,9 @@
   .w-75 {
     width: calc(var(--spacing) * 75);
   }
+  .w-85 {
+    width: calc(var(--spacing) * 85);
+  }
   .w-90 {
     width: calc(var(--spacing) * 90);
   }
@@ -2720,6 +2723,16 @@
   .md\:flex {
     @media (width >= 48rem) {
       display: flex;
+    }
+  }
+  .md\:min-h-\[300px\] {
+    @media (width >= 48rem) {
+      min-height: 300px;
+    }
+  }
+  .md\:w-12 {
+    @media (width >= 48rem) {
+      width: calc(var(--spacing) * 12);
     }
   }
   .md\:w-37\.5 {

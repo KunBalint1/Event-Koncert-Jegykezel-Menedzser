@@ -195,6 +195,7 @@
     --color-stone-800: oklch(26.8% 0.007 34.298);
     --color-stone-900: oklch(21.6% 0.006 56.043);
     --color-stone-950: oklch(14.7% 0.004 49.25);
+    --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
     --breakpoint-md: 48rem;
@@ -859,6 +860,12 @@
   .start-0 {
     inset-inline-start: calc(var(--spacing) * 0);
   }
+  .end-1 {
+    inset-inline-end: calc(var(--spacing) * 1);
+  }
+  .end-1\.5 {
+    inset-inline-end: calc(var(--spacing) * 1.5);
+  }
   .end-2 {
     inset-inline-end: calc(var(--spacing) * 2);
   }
@@ -888,6 +895,12 @@
   }
   .bottom-0 {
     bottom: calc(var(--spacing) * 0);
+  }
+  .bottom-1 {
+    bottom: calc(var(--spacing) * 1);
+  }
+  .bottom-1\.5 {
+    bottom: calc(var(--spacing) * 1.5);
   }
   .bottom-4 {
     bottom: calc(var(--spacing) * 4);
@@ -1225,6 +1238,9 @@
       margin-right: 0.25rem;
       min-width: 4rem;
     }
+  }
+  .mr-auto {
+    margin-right: auto;
   }
   .apexcharts-tooltip-title {
     .apexcharts-canvas .apexcharts-tooltip & {
@@ -2171,6 +2187,9 @@
   .p-4 {
     padding: calc(var(--spacing) * 4);
   }
+  .p-5 {
+    padding: calc(var(--spacing) * 5);
+  }
   .p-6 {
     padding: calc(var(--spacing) * 6);
   }
@@ -2215,6 +2234,9 @@
   }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
+  }
+  .py-5 {
+    padding-block: calc(var(--spacing) * 5);
   }
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
@@ -2423,6 +2445,9 @@
       color: var(--color-heading);
     }
   }
+  .text-black {
+    color: var(--color-black);
+  }
   .text-body {
     color: var(--color-body);
   }
@@ -2435,11 +2460,17 @@
   .text-fg-success {
     color: var(--color-fg-success);
   }
+  .text-gray {
+    color: var(--color-gray);
+  }
   .text-gray-400 {
     color: var(--color-gray-400);
   }
   .text-gray-500 {
     color: var(--color-gray-500);
+  }
+  .text-gray-700 {
+    color: var(--color-gray-700);
   }
   .text-gray-800 {
     color: var(--color-gray-800);
@@ -2762,6 +2793,11 @@
   .md\:auto-rows-\[100px\] {
     @media (width >= 48rem) {
       grid-auto-rows: 100px;
+    }
+  }
+  .md\:grid-cols-2 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
   .md\:grid-cols-3 {

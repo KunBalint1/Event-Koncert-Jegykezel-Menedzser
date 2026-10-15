@@ -28,26 +28,22 @@
             </nav>
         </section>
     </header>
-    <main class="h-screen w-full flex items-center justify-center px-4">
-        <section>
-            <div>
-                <div class="flex justify-center">
-                    <div
-                        class="scroll-card bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
-                        <form class=space-y-4">
-                            <div>
-                                <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Base
-                                    Input</label>
-                                <input type="text" id="visitors"
-                                    class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
-                                    placeholder="" required />
-                            </div>
-                        </form>
-                    </div>
-                </div>
+    <main class="h-screen w-full flex items-center justify-center p-6">
+        <section class="grid grid-cols-2 grid-rows-2 gap-6 w-full max-w-7xl h-[700px]">
+            <div
+                class="scroll-card row-span-2 bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
             </div>
+            <div
+                class="scroll-card bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium h-70">
+            </div>
+            <div
+                class="scroll-card bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium self-end h-[400px]">
+            </div>
+
         </section>
     </main>
+
+
     <footer>
         <section>
             <div
@@ -96,7 +92,7 @@
                         class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
                         Statisztika
                         <div class="tooltip-arrow" data-popper-arrow></div>
-                    </div> 
+                    </div>
                     <button data-tooltip-target="tooltip-profile" type="button" onclick="location.href='/Arazas.html'"
                         class="inline-flex flex-col items-center justify-center px-5 rounded-e-full hover:bg-neutral-secondary-medium group">
                         <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"

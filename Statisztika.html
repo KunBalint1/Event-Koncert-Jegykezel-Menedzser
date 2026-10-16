@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hu" class="dark">
+<html lang="hu">
 
 <head>
     <meta charset="UTF-8">
@@ -21,8 +21,7 @@
                     <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse ms-5">
                         <div class="flex text-sm bg-neutral-primary rounded-full md:me-0 focus:ring-4 focus:ring-neutral-tertiary"
                             id="user-menu-button" aria-expanded="false" data-dropdown-placement="bottom">
-                            <img class="w-8 h-8 rounded-full" src="img/logo.png"
-                                alt="logo photo">
+                            <img class="w-8 h-8 rounded-full" src="img/logo.png" alt="logo photo">
                         </div>
                     </div>
                 </div>
@@ -31,8 +30,10 @@
     </header>
     <main class="min-h-screen pt-20 pb-24 px-4 pb-32">
         <section>
-            <h2 class="text-center text-white font-bold text-3xl text-wrap py-4">Statisztika</h2>
-            <div class="grid md:grid-cols-4 gap-4 items-start">
+            <div class="border-b border-solid !border-[#ffffff] pb-4 mb-4">
+                <h2 class="text-white font-bold text-3xl text-wrap pt-4">Statisztika</h2>
+            </div>
+            <div class="grid md:grid-cols-4 gap-4 items-start pb-2">
                 <div class="md:col-span-2 ">
                     <div
                         class="min-h-[400px] w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
@@ -198,70 +199,69 @@
         </section>
     </main>
     <footer>
-            <div
-                class="fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-neutral-primary-soft border border-default rounded-full bottom-4 left-1/2">
-                <div class="grid h-full max-w-lg grid-cols-4 mx-auto">
-                    <button data-tooltip-target="tooltip-home" type="button" onclick="location.href='/Index.html'"
-                        class="inline-flex flex-col items-center justify-center px-5 rounded-s-full hover:bg-neutral-secondary-medium group">
-                        <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
-                        </svg>
-                        <span class="sr-only">Főoldal</span>
-                    </button>
-                    <div id="tooltip-home" role="tooltip"
-                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
-                        Főoldal
-                        <div class="tooltip-arrow" data-popper-arrow></div>
-                    </div>
-                    <button data-tooltip-target="tooltip-wallet" type="button" onclick="location.href='/Naptar.html'"
-                        class="inline-flex flex-col items-center justify-center px-5 hover:bg-neutral-secondary-medium group">
-                        <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z" />
-                        </svg>
-                        <span class="sr-only">Naptár</span>
-                    </button>
-                    <div id="tooltip-wallet" role="tooltip"
-                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
-                        Naptár
-                        <div class="tooltip-arrow" data-popper-arrow></div>
-                    </div>
-                    <button data-tooltip-target="tooltip-settings" type="button"
-                        onclick="location.href='/Statisztika.html'"
-                        class="inline-flex flex-col items-center justify-center px-5 hover:bg-neutral-secondary-medium group">
-                        <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5" />
-                        </svg>
+        <div
+            class="fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-neutral-primary-soft border border-default rounded-full bottom-4 left-1/2">
+            <div class="grid h-full max-w-lg grid-cols-4 mx-auto">
+                <button data-tooltip-target="tooltip-home" type="button" onclick="location.href='/Index.html'"
+                    class="inline-flex flex-col items-center justify-center px-5 rounded-s-full hover:bg-neutral-secondary-medium group">
+                    <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
+                    </svg>
+                    <span class="sr-only">Főoldal</span>
+                </button>
+                <div id="tooltip-home" role="tooltip"
+                    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+                    Főoldal
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <button data-tooltip-target="tooltip-wallet" type="button" onclick="location.href='/Naptar.html'"
+                    class="inline-flex flex-col items-center justify-center px-5 hover:bg-neutral-secondary-medium group">
+                    <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z" />
+                    </svg>
+                    <span class="sr-only">Naptár</span>
+                </button>
+                <div id="tooltip-wallet" role="tooltip"
+                    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+                    Naptár
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <button data-tooltip-target="tooltip-settings" type="button" onclick="location.href='/Statisztika.html'"
+                    class="inline-flex flex-col items-center justify-center px-5 hover:bg-neutral-secondary-medium group">
+                    <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5" />
+                    </svg>
 
-                        <span class="sr-only">Statisztika</span>
-                    </button>
-                    <div id="tooltip-settings" role="tooltip"
-                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
-                        Statisztika
-                        <div class="tooltip-arrow" data-popper-arrow></div>
-                    </div>
-                    <button data-tooltip-target="tooltip-profile" type="button" onclick="location.href='/Arazas.html'"
-                        class="inline-flex flex-col items-center justify-center px-5 rounded-e-full hover:bg-neutral-secondary-medium group">
-                        <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 10h18M6 14h2m3 0h5M3 7v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1Z" />
-                        </svg>
+                    <span class="sr-only">Statisztika</span>
+                </button>
+                <div id="tooltip-settings" role="tooltip"
+                    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+                    Statisztika
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <button data-tooltip-target="tooltip-profile" type="button" onclick="location.href='/Arazas.html'"
+                    class="inline-flex flex-col items-center justify-center px-5 rounded-e-full hover:bg-neutral-secondary-medium group">
+                    <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 10h18M6 14h2m3 0h5M3 7v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1Z" />
+                    </svg>
 
-                        <span class="sr-only">Árazás</span>
-                    </button>
-                    <div id="tooltip-profile" role="tooltip"
-                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
-                        Árazás
-                        <div class="tooltip-arrow" data-popper-arrow></div>
-                    </div>
+                    <span class="sr-only">Árazás</span>
+                </button>
+                <div id="tooltip-profile" role="tooltip"
+                    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+                    Árazás
+                    <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
             </div>
+        </div>
     </footer>
     <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
     <script src="./node_modules/apexcharts/dist/apexcharts.min.js"></script>

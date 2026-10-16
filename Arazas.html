@@ -30,80 +30,65 @@
     </header>
     <main class="min-h-screen w-full px-4 pt-24 pb-32">
         <section class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-7xl mx-auto">
-            <h2 class="text-white font-bold text-3xl text-wrap py-4 md:col-span-2">Árak & Jegyek kezelése
+            <h2 class="border-b border-solid pb-4 mb-4 text-white font-bold text-3xl text-wrap py-4 md:col-span-2" style="border-color: #008000ce !important;">Árak & Jegyek kezelése
             </h2>
             <div>
                 <div
                     class="md:row-span-2 bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
                     <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8 py-5 text-center">Árak
                     </h5>
-                    <div class="grid md:grid-cols-4 gap-6">
-                            <div class="md:col-span-4">
-                                <label for="visitors" class=" block mb-2.5 text-sm font-medium text-heading">Early
-                                    Bird:</label>
-                                <div class="relative">
-                                    <input type="number" id="early-bird-price"
-                                        class="block w-full rounded-base border border-default-medium bg-neutral-secondary-medium px-3 py-2.5 pe-12 text-sm text-heading focus:border-brand focus:ring-brand"
-                                        min="0" step="1" required />
-                                    <span
-                                        class="pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body">
-                                        Ft
-                                    </span>
-                                </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="md:col-span-2">
+                            <label for="visitors" class=" block mb-2.5 text-sm font-medium text-heading">Early
+                                Bird:</label>
+                            <div class="relative">
+                                <input type="number" id="early-bird-price"
+                                    class="block w-full rounded-base border border-default-medium bg-neutral-secondary-medium px-3 py-2.5 pe-12 text-sm text-heading focus:border-brand focus:ring-brand"
+                                    min="0" step="1" required />
+                                <span
+                                    class="pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body">
+                                    Ft
+                                </span>
                             </div>
-                            <div class="md:col-span-4">
-                                <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">VIP:</label>
-                                <div class="relative">
-                                    <input type="number" id="early-bird-price"
-                                        class="block w-full rounded-base border border-default-medium bg-neutral-secondary-medium px-3 py-2.5 pe-12 text-sm text-heading focus:border-brand focus:ring-brand"
-                                        min="0" step="1" required />
-                                    <span
-                                        class="pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body">
-                                        Ft
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="md:col-span-4">
-                                <label for="visitors"
-                                    class="block mb-2.5 text-sm font-medium text-heading">Normal:</label>
-                                <div class="relative">
-                                    <input type="number" id="early-bird-price"
-                                        class="block w-full rounded-base border border-default-medium bg-neutral-secondary-medium px-3 py-2.5 pe-12 text-sm text-heading focus:border-brand focus:ring-brand"
-                                        min="0" step="1" required />
-                                    <span
-                                        class="pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body">
-                                        Ft
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="md:col-span-4">
-                                <label for="visitors"
-                                    class="block mb-2.5 text-sm font-medium text-heading">Premium:</label>
-                                <div class="relative">
-                                    <input type="number" id="early-bird-price"
-                                        class="block w-full rounded-base border border-default-medium bg-neutral-secondary-medium px-3 py-2.5 pe-12 text-sm text-heading focus:border-brand focus:ring-brand"
-                                        min="0" step="1" required />
-                                    <span
-                                        class="pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body">
-                                        Ft
-                                        <!--pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body - AI-->
-                                    </span>
-                                </div>
-                            </div>
-
-                    </div>
-                    <div class="grid md:grid-cols-2 py-4">
-                        <div class="">
-                            <button type="button"
-                                class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 w-37.5 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Mentés</button>
                         </div>
-                        <div class="">
-                            <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 w-37.5 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Mégse</button>
+                        <div class="md:col-span-2">
+                            <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">VIP:</label>
+                            <div class="relative">
+                                <input type="number" id="early-bird-price"
+                                    class="block w-full rounded-base border border-default-medium bg-neutral-secondary-medium px-3 py-2.5 pe-12 text-sm text-heading focus:border-brand focus:ring-brand"
+                                    min="0" step="1" required />
+                                <span
+                                    class="pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body">
+                                    Ft
+                                </span>
+                            </div>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Normal:</label>
+                            <div class="relative">
+                                <input type="number" id="early-bird-price"
+                                    class="block w-full rounded-base border border-default-medium bg-neutral-secondary-medium px-3 py-2.5 pe-12 text-sm text-heading focus:border-brand focus:ring-brand"
+                                    min="0" step="1" required />
+                                <span
+                                    class="pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body">
+                                    Ft
+                                </span>
+                            </div>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Premium:</label>
+                            <div class="relative">
+                                <input type="number" id="early-bird-price"
+                                    class="block w-full rounded-base border border-default-medium bg-neutral-secondary-medium px-3 py-2.5 pe-12 text-sm text-heading focus:border-brand focus:ring-brand"
+                                    min="0" step="1" required />
+                                <span 
+                                    class="pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body"> <!--pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body - AI-->
+                                    Ft
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
             <div
                 class="bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium h-full">
@@ -112,7 +97,7 @@
                 </h5>
             </div>
 
-            <!-- Ez itt AI a teljes kártya belső része! -->
+            <!-- Ez itt AI ez a teljes kártya belső része! -->
             <div
                 class="md:col-span-2 bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium self-end md:h-[400px]">
                 <div class="flex flex-col justify-between gap-y-3 sm:gap-y-6 h-full">
@@ -162,69 +147,70 @@
         </section>
     </main>
     <footer>
-        <div
-            class="fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-neutral-primary-soft border border-default rounded-full bottom-4 left-1/2">
-            <div class="grid h-full max-w-lg grid-cols-4 mx-auto">
-                <button data-tooltip-target="tooltip-home" type="button" onclick="location.href='/Index.html'"
-                    class="inline-flex flex-col items-center justify-center px-5 rounded-s-full hover:bg-neutral-secondary-medium group">
-                    <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
-                    </svg>
-                    <span class="sr-only">Főoldal</span>
-                </button>
-                <div id="tooltip-home" role="tooltip"
-                    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
-                    Főoldal
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
-                <button data-tooltip-target="tooltip-wallet" type="button" onclick="location.href='/Naptar.html'"
-                    class="inline-flex flex-col items-center justify-center px-5 hover:bg-neutral-secondary-medium group">
-                    <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z" />
-                    </svg>
-                    <span class="sr-only">Naptár</span>
-                </button>
-                <div id="tooltip-wallet" role="tooltip"
-                    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
-                    Naptár
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
-                <button data-tooltip-target="tooltip-settings" type="button" onclick="location.href='/Statisztika.html'"
-                    class="inline-flex flex-col items-center justify-center px-5 hover:bg-neutral-secondary-medium group">
-                    <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5" />
-                    </svg>
+            <div
+                class="fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-neutral-primary-soft border border-default rounded-full bottom-4 left-1/2">
+                <div class="grid h-full max-w-lg grid-cols-4 mx-auto">
+                    <button data-tooltip-target="tooltip-home" type="button" onclick="location.href='/Index.html'"
+                        class="inline-flex flex-col items-center justify-center px-5 rounded-s-full hover:bg-neutral-secondary-medium group">
+                        <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
+                        </svg>
+                        <span class="sr-only">Főoldal</span>
+                    </button>
+                    <div id="tooltip-home" role="tooltip"
+                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+                        Főoldal
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                    <button data-tooltip-target="tooltip-wallet" type="button" onclick="location.href='/Naptar.html'"
+                        class="inline-flex flex-col items-center justify-center px-5 hover:bg-neutral-secondary-medium group">
+                        <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z" />
+                        </svg>
+                        <span class="sr-only">Naptár</span>
+                    </button>
+                    <div id="tooltip-wallet" role="tooltip"
+                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+                        Naptár
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                    <button data-tooltip-target="tooltip-settings" type="button"
+                        onclick="location.href='/Statisztika.html'"
+                        class="inline-flex flex-col items-center justify-center px-5 hover:bg-neutral-secondary-medium group">
+                        <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5" />
+                        </svg>
 
-                    <span class="sr-only">Statisztika</span>
-                </button>
-                <div id="tooltip-settings" role="tooltip"
-                    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
-                    Statisztika
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
-                <button data-tooltip-target="tooltip-profile" type="button" onclick="location.href='/Arazas.html'"
-                    class="inline-flex flex-col items-center justify-center px-5 rounded-e-full hover:bg-neutral-secondary-medium group">
-                    <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 10h18M6 14h2m3 0h5M3 7v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1Z" />
-                    </svg>
+                        <span class="sr-only">Statisztika</span>
+                    </button>
+                    <div id="tooltip-settings" role="tooltip"
+                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+                        Statisztika
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                    <button data-tooltip-target="tooltip-profile" type="button" onclick="location.href='/Arazas.html'"
+                        class="inline-flex flex-col items-center justify-center px-5 rounded-e-full hover:bg-neutral-secondary-medium group">
+                        <svg class="w-6 h-6 mb-1 text-body group-hover:text-fg-brand" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 10h18M6 14h2m3 0h5M3 7v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1Z" />
+                        </svg>
 
-                    <span class="sr-only">Árazás</span>
-                </button>
-                <div id="tooltip-profile" role="tooltip"
-                    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
-                    Árazás
-                    <div class="tooltip-arrow" data-popper-arrow></div>
+                        <span class="sr-only">Árazás</span>
+                    </button>
+                    <div id="tooltip-profile" role="tooltip"
+                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip">
+                        Árazás
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
                 </div>
             </div>
-        </div>
     </footer>
     <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
     <script src="js/script.js"></script>

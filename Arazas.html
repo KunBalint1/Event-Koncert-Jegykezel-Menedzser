@@ -32,6 +32,10 @@
         <section class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-7xl mx-auto">
             <h2 class="border-b border-solid pb-4 mb-4 text-white font-bold text-3xl text-wrap py-4 md:col-span-2" style="border-color: #008000ce !important;">Árak & Jegyek kezelése
             </h2>
+            <div id="pricing-event-context" class="pricing-event-context md:col-span-2" aria-live="polite">
+                <strong id="pricing-event-name">Nincs kiválasztva esemény</strong>
+                <span id="pricing-event-details">Válassz eseményt a főoldalon az árak megtekintéséhez.</span>
+            </div>
             <div>
                 <div
                     class="md:row-span-2 bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
@@ -39,12 +43,12 @@
                     </h5>
                     <div class="grid md:grid-cols-2 gap-6">
                         <div class="md:col-span-2">
-                            <label for="visitors" class=" block mb-2.5 text-sm font-medium text-heading">Early
+                            <label for="early-bird-price" class=" block mb-2.5 text-sm font-medium text-heading">Early
                                 Bird:</label>
                             <div class="relative">
                                 <input type="number" id="early-bird-price"
                                     class="block w-full rounded-base border border-default-medium bg-neutral-secondary-medium px-3 py-2.5 pe-12 text-sm text-heading focus:border-brand focus:ring-brand"
-                                    min="0" step="1" required />
+                                    min="0" step="1" value="6500" required />
                                 <span
                                     class="pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body">
                                     Ft
@@ -52,11 +56,11 @@
                             </div>
                         </div>
                         <div class="md:col-span-2">
-                            <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">VIP:</label>
+                            <label for="vip-price" class="block mb-2.5 text-sm font-medium text-heading">VIP:</label>
                             <div class="relative">
-                                <input type="number" id="early-bird-price"
+                                <input type="number" id="vip-price"
                                     class="block w-full rounded-base border border-default-medium bg-neutral-secondary-medium px-3 py-2.5 pe-12 text-sm text-heading focus:border-brand focus:ring-brand"
-                                    min="0" step="1" required />
+                                    min="0" step="1" value="25000" required />
                                 <span
                                     class="pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body">
                                     Ft
@@ -64,11 +68,11 @@
                             </div>
                         </div>
                         <div class="md:col-span-2">
-                            <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Normal:</label>
+                            <label for="normal-price" class="block mb-2.5 text-sm font-medium text-heading">Normal:</label>
                             <div class="relative">
-                                <input type="number" id="early-bird-price"
+                                <input type="number" id="normal-price"
                                     class="block w-full rounded-base border border-default-medium bg-neutral-secondary-medium px-3 py-2.5 pe-12 text-sm text-heading focus:border-brand focus:ring-brand"
-                                    min="0" step="1" required />
+                                    min="0" step="1" value="12500" required />
                                 <span
                                     class="pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body">
                                     Ft
@@ -76,11 +80,11 @@
                             </div>
                         </div>
                         <div class="md:col-span-2">
-                            <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Premium:</label>
+                            <label for="premium-price" class="block mb-2.5 text-sm font-medium text-heading">Premium:</label>
                             <div class="relative">
-                                <input type="number" id="early-bird-price"
+                                <input type="number" id="premium-price"
                                     class="block w-full rounded-base border border-default-medium bg-neutral-secondary-medium px-3 py-2.5 pe-12 text-sm text-heading focus:border-brand focus:ring-brand"
-                                    min="0" step="1" required />
+                                    min="0" step="1" value="18500" required />
                                 <span 
                                     class="pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body"> <!--pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body - AI-->
                                     Ft
@@ -95,6 +99,18 @@
                 <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8 text-center">
                     Ülőhelyek
                 </h5>
+                <p id="seat-capacity" class="seat-map__capacity" aria-live="polite"></p>
+                <div class="seat-map-legend" aria-label="Ülőhelyek jelmagyarázata">
+                    <span><i class="seat-map__legend-seat"></i> Szabad</span>
+                    <span><i class="seat-map__legend-seat seat-map__legend-seat--selected"></i> Kiválasztva</span>
+                    <span><i class="seat-map__legend-seat seat-map__legend-seat--reserved"></i> Foglalt</span>
+                </div>
+                <div class="seat-map__stage">SZÍNPAD</div>
+                <div id="seat-map" class="seat-map" role="group" aria-label="Választható ülőhelyek"></div>
+                <p class="seat-map__selection" aria-live="polite">
+                    Kiválasztva: <span id="selected-seats">Nincs kiválasztott szék</span>
+                    (<span id="selected-seat-count">0</span>)
+                </p>
             </div>
 
             <!-- Ez itt AI ez a teljes kártya belső része! -->

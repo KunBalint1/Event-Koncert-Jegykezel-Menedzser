@@ -12,6 +12,12 @@ body {
     background-color: #272626;
 }
 
+.page-layout {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+}
+
 
 .timer{
     font-family: "Orbitron", sans-serif;
@@ -26,6 +32,8 @@ div.scrollmenu {
   gap: 0.75rem;
   overflow-x: auto;
   overflow-y: hidden;
+  overscroll-behavior: contain;
+  touch-action: pan-x pinch-zoom;
   padding: 0.25rem 0.25rem 1rem;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
@@ -44,6 +52,182 @@ div.scrollmenu .scroll-card {
   overflow-wrap: anywhere;
 }
 
+div.scrollmenu .event-card {
+  display: flex;
+  flex-direction: column;
+  height: 40rem;
+  min-height: 40rem;
+  max-height: 40rem;
+  overflow: hidden;
+}
+
+div.scrollmenu .event-card > h5 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+div.scrollmenu .event-card > .event-stadium-preview {
+  margin-top: auto;
+}
+
+.event-card-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.event-card-action {
+  display: flex;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border: 1px solid #19c987;
+  border-radius: 0.5rem;
+  background: #11885d;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.event-card-action:hover {
+  border-color: #35e8a6;
+  background: #0e704d;
+}
+
+.event-card-action:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.event-card-action--secondary {
+  border-color: #59655f;
+  background: #303a35;
+}
+
+.event-card-action--secondary:hover {
+  border-color: #84928a;
+  background: #3d4943;
+}
+
+.pricing-event-context {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(25, 201, 135, 0.4);
+  border-radius: 0.75rem;
+  background: rgba(17, 24, 22, 0.55);
+  color: #f4f7f5;
+}
+
+.pricing-event-context span {
+  color: #b8c2bd;
+  font-size: 0.95rem;
+}
+
+.dashboard-overview-card {
+  height: 100%;
+  min-height: 20rem;
+}
+
+.dashboard-summary-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.dashboard-summary-title {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  line-height: 1.2;
+}
+
+.dashboard-summary-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.875rem;
+}
+
+.dashboard-summary-stat {
+  display: flex;
+  min-width: 0;
+  min-height: 11rem;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.125rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  background: rgba(17, 24, 22, 0.55);
+}
+
+.statistics-metric-card {
+  box-sizing: border-box;
+  height: 100%;
+  min-height: 350px;
+}
+
+.statistics-metric-cell {
+  display: flex;
+  align-self: stretch;
+  min-width: 0;
+}
+
+.statistics-metric-cell > .statistics-metric-card {
+  flex: 1;
+}
+
+.statistics-ticket-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.statistics-ticket-breakdown {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  column-gap: 3rem;
+  row-gap: 1.5rem;
+  padding-top: 0.25rem;
+}
+
+.dashboard-summary-label {
+  color: #b8c2bd;
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.dashboard-summary-value {
+  color: #f4f7f5;
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 420px) {
+  .statistics-ticket-breakdown {
+    column-gap: 1rem;
+    padding-inline: 0;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .dashboard-summary-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (min-width: 768px) {
   div.scrollmenu .scroll-card {
     flex-basis: 22.5rem;
@@ -60,3 +244,466 @@ div.scrollmenu .scroll-card {
   }
 }
 /*Eddig*/
+
+.calendar-day {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+  min-height: 8rem;
+}
+
+.calendar-day__number {
+  flex: 0 0 auto;
+}
+
+#calendar-grid {
+  grid-auto-rows: 8rem;
+}
+
+.calendar-day__events {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-height: 0;
+  max-height: 5rem;
+  overflow-y: auto;
+}
+
+.calendar-event-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.calendar-event-chip {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  min-width: 0;
+  min-height: 2rem;
+  width: 100%;
+  overflow: hidden;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid #258c61;
+  border-radius: 0.3rem;
+  background: #16432f;
+  color: #d8ffeb;
+  font-size: 0.8rem;
+  line-height: 1.15;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.calendar-event-delete-select {
+  flex: 0 0 2rem;
+  border: 1px solid #58645e;
+  border-radius: 0.3rem;
+  background: #252d29;
+  color: #d8e2dc;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.calendar-event-delete-select:hover,
+.calendar-event-delete-select:focus-visible {
+  border-color: #f87171;
+  color: #fca5a5;
+  outline: 2px solid #f87171;
+}
+
+.calendar-event-chip:hover,
+.calendar-event-chip:focus-visible,
+.calendar-event-chip--selected {
+  border-color: #22e07a;
+  background: #1c6846;
+  outline: 2px solid #22e07a;
+  outline-offset: 1px;
+}
+
+@media (max-width: 767px) {
+  #calendar-grid {
+    grid-auto-rows: 7rem;
+  }
+}
+
+#delete-event-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.event-filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.event-results {
+  margin-top: 0.5rem;
+}
+
+.event-card[hidden],
+#event-empty.hidden {
+  display: none !important;
+}
+
+.event-sales-progress {
+  height: 0.4rem;
+  overflow: hidden;
+  margin: 0.55rem 0 0.75rem;
+  border-radius: 999px;
+  background: #343a37;
+}
+
+.event-sales-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #15b981, #51e5a8);
+}
+
+.event-stadium-preview {
+  --sector-active: #22e07a;
+  --sector-selected: #22e07a;
+  --seat-premium: #8573b3;
+  --seat-lower: #5f7fac;
+  --seat-upper: #5d6f69;
+  --seat-sold: #2a312d;
+  position: relative;
+  width: min(100%, 22rem);
+  margin: 0.75rem auto 0;
+}
+
+.event-card[data-event="coldplay"] .event-stadium-preview {
+  --sector-active: #a855f7;
+  --sector-selected: #38bdf8;
+  --seat-premium: #a855f7;
+  --seat-lower: #657bb8;
+}
+
+.event-stadium-preview svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.event-stadium-preview svg.is-zoomed {
+  cursor: grab;
+  touch-action: none;
+}
+
+.event-stadium-preview [data-sector] {
+  outline: none;
+}
+
+.stadium-map__background {
+  fill: #141815;
+  stroke: #303834;
+  stroke-width: 1.5;
+}
+
+.stadium-map__seat {
+  cursor: pointer;
+  stroke: none;
+}
+
+.stadium-map__seat--premium {
+  fill: var(--seat-premium);
+}
+
+.stadium-map__seat--lower {
+  fill: var(--seat-lower);
+}
+
+.stadium-map__seat--upper {
+  fill: var(--seat-upper);
+}
+
+.event-stadium-preview [data-sector][data-state="active"] .stadium-map__seat {
+  fill: var(--sector-active);
+}
+
+.event-stadium-preview [data-sector] .stadium-map__seat.is-sold {
+  cursor: not-allowed;
+  fill: var(--seat-sold);
+}
+
+.event-stadium-preview [data-sector] .stadium-map__seat.is-selected {
+  fill: var(--sector-selected);
+  stroke: #edf8f1;
+  stroke-width: 1.6;
+}
+
+.event-stadium-preview [data-sector] .stadium-map__seat:not(.is-sold):hover,
+.event-stadium-preview [data-sector]:focus-visible .stadium-map__seat:not(.is-sold) {
+  stroke: #edf8f1;
+  stroke-width: 1.2;
+}
+
+.stadium-map__pitch {
+  fill: #202924;
+  stroke: #68746c;
+  stroke-width: 1.4;
+  pointer-events: none;
+}
+
+.stadium-map__stage,
+.stadium-map__stage-runway {
+  fill: #cbd3cd;
+  stroke: #f2f5f3;
+  stroke-width: 1;
+  pointer-events: none;
+}
+
+.stadium-map__stage-runway {
+  fill-opacity: 0.5;
+}
+
+.stadium-map__pitch-circle {
+  fill: none;
+  stroke: #829087;
+  stroke-width: 1.4;
+  pointer-events: none;
+}
+
+.stadium-map__pitch-label {
+  fill: #839087;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+
+.stadium-map__label {
+  fill: #9aa59e;
+  font-size: 11px;
+  font-weight: 600;
+  text-anchor: middle;
+  dominant-baseline: central;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 140ms ease;
+}
+
+.event-stadium-preview svg.is-zoomed .stadium-map__label {
+  opacity: 1;
+}
+
+.stadium-map__reset {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid #58645e;
+  border-radius: 0.4rem;
+  background: #252d29;
+  color: #d8e2dc;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.stadium-map__reset[hidden] {
+  display: none;
+}
+
+.stadium-map__reset:hover,
+.stadium-map__reset:focus-visible {
+  border-color: #22e07a;
+  outline: none;
+}
+
+.stadium-map__info {
+  min-height: 2.4em;
+  margin: 0.4rem 0 0;
+  color: #aeb8b2;
+  font-size: 0.7rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.stadium-map__info span {
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stadium-map__label {
+    transition: none;
+  }
+}
+
+.event-seat-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 0.8rem;
+  margin-top: 0.35rem;
+  color: #aeb8b2;
+  font-size: 0.65rem;
+}
+
+.event-seat-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.event-seat-legend span::before {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #19c987;
+  content: "";
+}
+
+.event-seat-legend span:nth-child(2)::before {
+  background: var(--seat-premium, #8573b3);
+}
+
+.event-seat-legend span:nth-child(3)::before {
+  background: var(--seat-lower, #5f7fac);
+}
+
+.event-seat-legend span:nth-child(4)::before,
+.seat-map__legend-seat--reserved {
+  background: #58615d;
+}
+
+.event-seat-legend .event-seat-legend__price {
+  color: #d8e2dc;
+  font-weight: 600;
+}
+
+.event-seat-legend .event-seat-legend__price::before {
+  display: none;
+}
+
+.event-card .event-seat-legend span:nth-child(2)::before {
+  background: #8573b3;
+}
+
+.event-card .event-seat-legend span:nth-child(3)::before {
+  background: #5f7fac;
+}
+
+.event-card .event-seat-legend span:nth-child(4)::before {
+  background: #5d6f69;
+}
+
+.event-card[data-event="coldplay"] .event-seat-legend span:first-child::before {
+  background: #a855f7;
+}
+
+.event-created-description {
+  display: -webkit-box;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.event-card .event-seat-legend span:nth-child(5)::before {
+  background: #2a312d;
+  box-shadow: inset 0 0 0 1px #4a544e;
+}
+
+.event-card .event-seat-legend span:nth-child(6)::before {
+  background: #22e07a;
+}
+
+.event-card[data-event="coldplay"] .event-seat-legend span:nth-child(6)::before {
+  background: #38bdf8;
+}
+
+.seat-map__legend-seat {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 0.25rem;
+  background: #19c987;
+}
+
+.seat-map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  color: #c2cac5;
+  font-size: 0.75rem;
+}
+
+.seat-map-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.seat-map__legend-seat--selected {
+  background: #eabf4a;
+}
+
+.seat-map__stage {
+  width: 75%;
+  margin: 1rem auto;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: #343a37;
+  padding: 0.45rem;
+  color: #e4e8e5;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-align: center;
+}
+
+.seat-map {
+  display: grid;
+  width: 100%;
+  max-width: 38rem;
+  grid-template-columns: repeat(15, minmax(0, 1fr));
+  justify-content: center;
+  gap: clamp(0.15rem, 1vw, 0.45rem);
+  margin: 0 auto;
+}
+
+.seat-map__seat {
+  min-width: 0;
+  aspect-ratio: 1;
+  border: 0;
+  border-radius: 0.35rem 0.35rem 0.55rem 0.55rem;
+  background: #19c987;
+  color: #071a12;
+  font-size: clamp(0.5rem, 1.5vw, 0.7rem);
+  cursor: pointer;
+}
+
+.seat-map__seat:hover:not(:disabled),
+.seat-map__seat--selected {
+  background: #eabf4a;
+}
+
+.seat-map__seat--reserved {
+  background: #a34a4a;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+.seat-map__selection {
+  margin: 1rem 0 0;
+  color: #c2cac5;
+  font-size: 0.8rem;
+}
+
+.seat-map__capacity {
+  margin: -0.25rem 0 0.75rem;
+  color: #c2cac5;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  text-align: center;
+}

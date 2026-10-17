@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="hu" class="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./output.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <title>Statisztika · Jegykezelő Rendszer</title>
 </head>
 
 <body>
@@ -28,8 +28,8 @@
             </nav>
         </section>
     </header>
-    <main class="min-h-screen pt-20 pb-24 px-4 pb-32">
-        <section>
+    <main class="min-h-screen pt-24 pb-24 px-4 pb-32">
+        <section class="page-layout">
             <div class="border-b border-solid pb-4 mb-4" style="border-color: #008000ce !important;">
                 <h2 class="text-white font-bold text-3xl text-wrap pt-4">Statisztika</h2>
             </div>
@@ -39,8 +39,8 @@
                         class="min-h-[400px] w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
                         <div class="flex justify-between items-start">
                             <div>
-                                <h5 class="text-2xl font-semibold text-heading">32.4k</h5>
-                                <p class="text-body">Megvett Jegyek</p>
+                                <h5 class="text-2xl font-semibold text-heading">32 400</h5>
+                                <p class="text-body">Eladott jegyek · bemutatóadat</p>
                             </div>
                             <div class="flex items-center px-2.5 py-0.5 font-medium text-fg-success text-center">
                                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -105,8 +105,8 @@
                         class="min-h-[400px] w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
                         <div class="flex justify-between items-start">
                             <div>
-                                <h5 class="text-2xl font-semibold text-heading">32.4k</h5>
-                                <p class="text-body">Megvett Jegyek</p>
+                                <h5 class="text-2xl font-semibold text-heading">28 750</h5>
+                                <p class="text-body">Látogatók · bemutatóadat</p>
                             </div>
                             <div class="flex items-center px-2.5 py-0.5 font-medium text-fg-success text-center">
                                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -114,7 +114,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="M12 6v13m0-13 4 4m-4-4-4 4" />
                                 </svg>
-                                12%
+                                8%
                             </div>
                         </div>
                         <div id="SzemelyDb"></div>
@@ -166,23 +166,24 @@
                         </div>
                     </div>
                 </div>
-                <div class="md:col-span-2">
+                <div class="statistics-metric-cell md:col-span-2">
                     <div
-                        class=" min-h-[350px] bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
+                        class="statistics-metric-card min-h-[350px] bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
                         <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Összbevétel:</h5>
-                        <p class="text-body text-center"></p>
+                        <p class="text-body text-center text-2xl font-bold">128 640 000 Ft <span class="text-sm font-normal">(bemutatóadat)</span></p>
+                        <div id="OsszBevetel" aria-label="Havi bevételek diagramja"></div>
                     </div>
                 </div>
-                <div class="md:col-span-2">
+                <div class="statistics-metric-cell md:col-span-2">
                     <div
-                        class="min-h-[350px] bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
-                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8 ">Eladott
+                        class="statistics-metric-card statistics-ticket-card bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
+                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Eladott
                             jegyek száma: </h5>
-                        <div class="grid grid-cols-2 gap-x-12 gap-y-25 text-white font-bold text-xl px-4">
-                            <p>EB:</p>
-                            <p>Normal:</p>
-                            <p>VIP:</p>
-                            <p>Prémium:</p>
+                        <div class="statistics-ticket-breakdown text-white font-bold text-xl px-4">
+                            <p>EB: <span class="block text-base font-normal text-body">8 200 db · 25,3%</span></p>
+                            <p>Normal: <span class="block text-base font-normal text-body">14 400 db · 44,4%</span></p>
+                            <p>VIP: <span class="block text-base font-normal text-body">5 700 db · 17,6%</span></p>
+                            <p>Prémium: <span class="block text-base font-normal text-body">4 100 db · 12,7%</span></p>
                         </div>
                     </div>
                 </div>
@@ -192,7 +193,7 @@
                         <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Esemény
                             leírás:
                         </h5>
-                        <p class="text-body"></p>
+                        <p class="text-body">A jegyeladások összesítése az események és jegytípusok szerint. A grafikonok és a fenti mutatók szemléltető bemutatóadatokat tartalmaznak; az alkalmazás jelenleg nem használ központi adatbázist.</p>
                     </div>
                 </div>
             </div>

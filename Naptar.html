@@ -20,7 +20,8 @@
                             Rendszer</span>
                     </p>
                     <div class="order-3 ml-auto flex basis-full justify-end gap-2 md:order-2 md:basis-auto">
-                        <button type="button"
+                        <button id="delete-event-button" type="button" disabled
+                            data-modal-target="popup-modal" data-modal-toggle="popup-modal"
                             class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 inline-flex h-10 w-10 md:h-auto md:w-auto items-center justify-center gap-2 px-0 md:px-4 py-2.5 font-medium rounded-base text-sm text-center leading-5">
                             <span aria-hidden="true">−</span>
                             <span class="hidden md:inline">Esemény törlése</span>
@@ -47,7 +48,7 @@
     </header>
     <main class="min-h-screen pt-32 sm:pt-32 pb-24 px-4">
         <!-- AI (Claude) segítségével: a <main> elrendezése (h-screen pt-20 pb-24 px-4 flex flex-col) -->
-        <section>
+        <section class="page-layout">
             <div class="border-b border-solid pb-4 mb-4" style="border-color: #008000ce !important;">
                 <h2 class="text-white font-bold text-3xl text-wrap">Esemény naptár</h2>
             </div>
@@ -69,35 +70,46 @@
                     </button>
                 </div>
                 <div class="py-6 overflow-y-auto">
-                    <form class="max-w-sm mx-auto space-y-4 ">
+                    <form id="event-form" class="max-w-sm mx-auto space-y-4">
                         <div>
-                            <label for="visitors" class="block mb-2.5 text-sm font-semibold text-heading">Esemény
+                            <label for="event-name" class="block mb-2.5 text-sm font-semibold text-heading">Esemény
                                 név:</label>
-                            <input type="text" id="visitors"
+                            <input type="text" id="event-name"
                                 class="esemenyNev bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-75 px-2.5 py-2 shadow-xs placeholder:text-body ml-1.5"
-                                placeholder="" required />
+                                placeholder="Esemény neve" maxlength="100" required />
                         </div>
                         <div>
-                            <label for="visitors"
+                            <label for="event-location"
                                 class="block mb-2.5 text-sm font-semibold text-heading">Helyszín:</label>
-                            <input type="text" id="visitors"
+                            <input type="text" id="event-location"
                                 class="helyszin bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-75 px-2.5 py-2 shadow-xs placeholder:text-body ml-1.5"
-                                placeholder="" required />
+                                placeholder="Helyszín" maxlength="120" required />
                         </div>
                         <div>
-                            <label for="visitors" class=" block mb-2.5 text-sm font-semibold text-heading">Maximális
+                            <label for="event-capacity" class=" block mb-2.5 text-sm font-semibold text-heading">Maximális
                                 létszám:</label>
-                            <input type="number" id="visitors"
+                            <input type="number" id="event-capacity"
                                 class="letszam bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-75 px-2.5 py-2 shadow-xs placeholder:text-body ml-1.5"
-                                placeholder="" required />
+                                placeholder="Például: 500" min="1" step="1" required />
                         </div>
-                        <label for="message" class="block mb-2.5 text-sm font-medium text-heading">Esemény
+                        <div>
+                            <label for="event-price" class="block mb-2.5 text-sm font-semibold text-heading">Jegyár:</label>
+                            <div class="relative w-75 ml-1.5">
+                                <input type="number" id="event-price"
+                                    class="block w-full rounded-base border border-default-medium bg-neutral-secondary-medium px-2.5 py-2 pe-10 text-sm text-heading focus:border-brand focus:ring-brand"
+                                    placeholder="Például: 8900" min="0" step="1" required />
+                                <span class="pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body">Ft</span>
+                            </div>
+                        </div>
+                        <div>
+                        <label for="event-description" class="block mb-2.5 text-sm font-medium text-heading">Esemény
                             leírás:</label>
-                        <textarea id="message" rows="4"
+                        <textarea id="event-description" rows="4" maxlength="1000" required
                             class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-75 p-3.5 shadow-xs placeholder:text-body ml-1.5"
                             placeholder="Leírás..."></textarea>
-
-                        <label for="time" class="block mb-2.5 text-sm font-medium text-heading">Dátum:</label>
+                        </div>
+                        <div>
+                        <label for="event-date" class="block mb-2.5 text-sm font-medium text-heading">Dátum:</label>
                         <div class="relative max-w-sm">
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                 <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -107,12 +119,13 @@
                                         d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z" />
                                 </svg>
                             </div>
-                            <input id="datepicker-autohide" datepicker datepicker-autohide type="text"
+                            <input id="event-date" type="date" required
                                 class="datum block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body"
-                                placeholder="Válasszon dátumot">
+                                />
+                        </div>
                         </div>
                         <div>
-                            <label for="time" class="block mb-2.5 text-sm font-medium text-heading">Idő:</label>
+                            <label for="event-time" class="block mb-2.5 text-sm font-medium text-heading">Idő:</label>
                             <div class="relative max-w-sm">
                                 <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                     <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -121,17 +134,17 @@
                                             stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                     </svg>
                                 </div>
-                                <input type="time" id="time"
+                                <input type="time" id="event-time"
                                     class="ido block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs [&::-webkit-calendar-picker-indicator]:hidden"
-                                    min="09:00" max="18:00" value="09:00" required />
+                                    value="18:00" required />
                             </div>
                         </div>
-                </div>
-                <div class="flex gap-3 mt-12">
-                    <button type="button"
-                        class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 w-37.5 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Mentés</button>
-                    <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                        class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 w-37.5 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Mégse</button>
+                        <div class="flex gap-3 pt-4">
+                            <button type="submit"
+                                class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 w-37.5 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Mentés</button>
+                            <button type="button" data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation"
+                                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 w-37.5 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Mégse</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -152,7 +165,8 @@
                     <div id="weekdays"
                         class="grid grid-cols-7 md:gap-2 text-center text-sm font-bold text-heading py-2"></div>
 
-                    <div id="calendar-grid" class="grid grid-cols-7 md:auto-rows-[100px] gap-2 flex-1 min-h-0"></div>
+                    <div id="calendar-grid" class="grid grid-cols-7 gap-2 flex-1 min-h-0"></div>
+                    <p id="calendar-event-status" class="mt-2 text-sm text-body" aria-live="polite"></p>
                 </div>
                 <div class="py-4">
                     <div
@@ -160,6 +174,9 @@
                         <h5 class="mb-3 text-xl sm:text-2xl font-semibold tracking-tight text-heading leading-8">
                             Következő
                             eseményig: </h5>
+                        <p id="next-event-name" class="mb-2 text-sm text-body text-center">
+                                Következő esemény betöltése…
+                        </p>
                         <p class="text-body timer text-center text-bold"><span class="day">000</span>:<span
                                 class="hour">00</span>:<span class="min">00</span>:<span class="sec">00</span></p>
                     </div>
@@ -252,11 +269,11 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 13V8m0 8h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
-                    <h3 class="mb-6 text-body py-4">Biztosan vissza szeretné vonni az adatokat?</h3>
+                    <h3 id="delete-event-confirmation" class="mb-6 text-body py-4">Biztosan törölni szeretnéd a kiválasztott eseményt?</h3>
                     <div class="flex md:flex items-center space-x-4 justify-center">
-                        <button data-modal-hide="popup-modal" type="button"
+                        <button id="confirm-delete-event" type="button"
                             class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 w-16 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">
-                            Igen
+                            Törlés
                         </button>
                         <button data-modal-hide="popup-modal" type="button"
                             class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 w-16 font-medium rounded-base text-sm px-4 py-2.5 text-center ms-3 leading-5">Nem

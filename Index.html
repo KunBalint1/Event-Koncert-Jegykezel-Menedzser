@@ -28,26 +28,35 @@
             </nav>
         </section>
     </header>
-    <main class="min-h-screen pt-20 pb-24 px-4 pb-32">
-        <section>
+    <main class="min-h-screen pt-24 pb-24 px-4 pb-32">
+        <section class="page-layout">
             <div class="border-b border-solid pb-4 mb-4" style="border-color: #008000ce !important;">
                 <h2 class="text-white font-bold text-3xl text-wrap pt-4">Főoldal</h2>
             </div>
-            <div class="grid md:grid-cols-4 gap-4 items-start">
+            <div class="dashboard-overview grid md:grid-cols-4 gap-4 items-stretch">
                 <div class="md:col-span-3">
                     <div
-                        class="bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium h-50">
-                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Összegzés</h5>
-                        <div class="grid md:grid-cols-3 text-white text-bold text-lg">
-                            <div>Eladás</div>
-                            <div>Jegyek</div>
-                            <div>Következeő esemény (Naptar.html timer)</div>
+                        class="dashboard-overview-card dashboard-summary-card bg-neutral-primary-soft p-6 md:p-8 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
+                        <h5 class="dashboard-summary-title text-2xl font-semibold tracking-tight text-heading">Összegzés</h5>
+                        <div class="dashboard-summary-stats">
+                            <div class="dashboard-summary-stat">
+                                <span class="dashboard-summary-label">Összbevétel</span>
+                                <strong class="dashboard-summary-value">128 640 000 Ft</strong>
+                            </div>
+                            <div class="dashboard-summary-stat">
+                                <span class="dashboard-summary-label">Eladott jegyek száma</span>
+                                <strong class="dashboard-summary-value">32 400 db</strong>
+                            </div>
+                            <div class="dashboard-summary-stat">
+                                <span class="dashboard-summary-label">Következő esemény</span>
+                                <strong class="dashboard-summary-value">Coldplay Live · nov. 12.</strong>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div
-                    class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
+                    class="dashboard-overview-card max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
                     <div class="flex justify-between items-start">
                         <div>
                             <h5 class="text-2xl font-semibold text-heading">32.4k</h5>
@@ -114,13 +123,13 @@
                 </div>
             </div>
         </section>
-        <section>
+        <section class="page-layout">
             <div class="grid md:grid-cols-4">
                 <div class="md:col-span-4">
                     <div class="border-b border-solid pb-4 mb-4" style="border-color: #008000ce !important;">
                         <h2 class="text-white font-bold text-3xl text-wrap pt-4">Események & jegyek listája</h2>
                     </div>
-                    <form class="w-full md:max-w-md mt-auto md:ml-6">
+                    <form class="w-full md:max-w-md mt-auto md:ml-6" id="event-search-form">
                         <label for="search"
                             class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
                         <div class="relative">
@@ -133,48 +142,136 @@
                             </div>
                             <input type="search" id="search"
                                 class="w-full  pe-24 block p-3 ps-9 bg-neutral-secondary-medium text-heading text-sm rounded-base shadow-xs placeholder:text-body"
-                                placeholder="Search" required style="border-color: #008000ce !important; border-width: 2px; ">
-                            <button type="button"
+                                placeholder="Esemény, helyszín keresése" style="border-color: #008000ce !important; border-width: 2px; ">
+                            <button type="submit"
                                 class="absolute end-2 top-1/2 -translate-y-1/2 text-white  box-border border border-transparent shadow-xs leading-5 rounded text-xs px-5 py-1.5 focus:outline-none font-bold"
                                 style="background-color: #008000ce !important;">Keresés</button>
                         </div>
                     </form>
+                    <div class="event-filter-controls" aria-label="Események szűrése">
+                        <label class="sr-only" for="filter-date">Szűrés dátum szerint</label>
+                        <select id="filter-date" class="rounded-base bg-neutral-secondary-medium p-2 text-sm text-heading">
+                            <option value="all">Dátum (mind)</option>
+                            <option value="7">Következő 7 nap</option>
+                            <option value="30">Következő 30 nap</option>
+                            <option value="90">Következő 90 nap</option>
+                        </select>
+                        <label class="sr-only" for="filter-location">Szűrés helyszín szerint</label>
+                        <select id="filter-location" class="rounded-base bg-neutral-secondary-medium p-2 text-sm text-heading">
+                            <option value="all">Helyszín (mind)</option>
+                            <option value="budapest">Budapest</option>
+                            <option value="sopron">Sopron</option>
+                        </select>
+                        <label class="sr-only" for="filter-type">Szűrés típus szerint</label>
+                        <select id="filter-type" class="rounded-base bg-neutral-secondary-medium p-2 text-sm text-heading">
+                            <option value="all">Típus (mind)</option>
+                            <option value="festival">Fesztivál</option>
+                            <option value="concert">Koncert</option>
+                            <option value="party">Party</option>
+                        </select>
+                        <label class="sr-only" for="filter-price">Szűrés jegyár szerint</label>
+                        <select id="filter-price" class="rounded-base bg-neutral-secondary-medium p-2 text-sm text-heading">
+                            <option value="all">Jegyár (mind)</option>
+                            <option value="5000">5 000 Ft-ig</option>
+                            <option value="10000">5 001–10 000 Ft</option>
+                            <option value="10001">10 001 Ft-tól</option>
+                        </select>
+                        <button type="button" id="clear-event-filters"
+                            class="rounded-base bg-neutral-secondary-medium px-3 py-2 text-sm text-heading">Szűrők törlése</button>
+                    </div>
+                    <p id="event-results" class="event-results text-sm text-body" aria-live="polite"></p>
                 </div>
             </div>
             <div class="p-4 px-6 flex gap-4 overflow-x-auto md:gap-6 hide-scrollbar">
                 <div class="scrollmenu">
-                    <div
-                        class="scroll-card bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
-                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Esemény</h5>
-                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Helyszín</h5>
-                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Dátum</h5>
+                    <div class="scroll-card event-card bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium"
+                        data-category="festival" data-location="budapest" data-date="2027-07-09" data-price="12500"
+                        data-search="sziget festival 2027 budapest óbudai sziget fesztivál">
+                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Sziget Festival 2027</h5>
+                        <h5 class="mb-3 text-lg font-semibold tracking-tight text-heading leading-8">Óbudai-sziget, Budapest</h5>
+                        <h5 class="mb-3 text-base tracking-tight text-heading leading-8">2027. július 9–14.</h5>
+                        <p class="mb-2 text-sm text-body">Jegyek: 12 450 / 20 000 · 12 500 Ft-tól</p>
+                        <div class="event-sales-progress" role="img" aria-label="A jegyek 62 százaléka elkelt">
+                            <span style="width: 62%"></span>
+                        </div>
+                        <div class="event-stadium-preview" data-active-sectors="1,5,9,13" role="group" aria-label="Interaktív stadion szektortérkép"></div>
+                        <div class="event-seat-legend"><span>Aktív szektor</span><span>Prémium</span><span>Alsó szint</span><span>Felső szint</span><span>Foglalt</span><span>Kiválasztva</span></div>
+                        <div class="event-card-actions">
+                            <a class="event-card-action" href="Statisztika.html">Statisztika megnyitása</a>
+                            <a class="event-card-action event-card-action--secondary" href="Arazas.html">Árak &amp; jegyek kezelése</a>
+                        </div>
                     </div>
-                    <div
-                        class="scroll-card bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
-                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Esemény</h5>
-                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Helyszín</h5>
-                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Dátum</h5>
+                    <div class="scroll-card event-card bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium"
+                        data-event="coldplay" data-category="concert" data-location="budapest" data-date="2026-11-12" data-price="8900"
+                        data-search="coldplay live koncert puskás aréna budapest">
+                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Coldplay Live</h5>
+                        <h5 class="mb-3 text-lg font-semibold tracking-tight text-heading leading-8">Puskás Aréna, Budapest</h5>
+                        <h5 class="mb-3 text-base tracking-tight text-heading leading-8">2026. november 12.</h5>
+                        <p class="mb-2 text-sm text-body">Jegyek: 4 500 / 10 000 · 8 900 Ft-tól</p>
+                        <div class="event-sales-progress" role="img" aria-label="A jegyek 45 százaléka elkelt">
+                            <span style="width: 45%"></span>
+                        </div>
+                        <div class="event-stadium-preview" data-active-sectors="2,3,10,11" role="group" aria-label="Interaktív stadion szektortérkép"></div>
+                        <div class="event-seat-legend"><span>Aktív szektor</span><span>Prémium</span><span>Alsó szint</span><span>Felső szint</span><span>Foglalt</span><span>Kiválasztva</span></div>
+                        <div class="event-card-actions">
+                            <a class="event-card-action" href="Statisztika.html">Statisztika megnyitása</a>
+                            <a class="event-card-action event-card-action--secondary" href="Arazas.html">Árak &amp; jegyek kezelése</a>
+                        </div>
                     </div>
-                    <div
-                        class="scroll-card bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
-                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Esemény</h5>
-                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Helyszín</h5>
-                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Dátum</h5>
+                    <div class="scroll-card event-card bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium"
+                        data-category="festival" data-location="sopron" data-date="2026-07-02" data-price="6730"
+                        data-search="volt festival sopron lővér kemping fesztivál">
+                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">VOLT Festival</h5>
+                        <h5 class="mb-3 text-lg font-semibold tracking-tight text-heading leading-8">Lővér Kemping, Sopron</h5>
+                        <h5 class="mb-3 text-base tracking-tight text-heading leading-8">2026. július 2–5.</h5>
+                        <p class="mb-2 text-sm text-body">Jegyek: 2 800 / 3 500 · 6 730 Ft-tól</p>
+                        <div class="event-sales-progress" role="img" aria-label="A jegyek 80 százaléka elkelt">
+                            <span style="width: 80%"></span>
+                        </div>
+                        <div class="event-stadium-preview" data-active-sectors="0,1,2,6,7,8,12,13" role="group" aria-label="Interaktív stadion szektortérkép"></div>
+                        <div class="event-seat-legend"><span>Aktív szektor</span><span>Prémium</span><span>Alsó szint</span><span>Felső szint</span><span>Foglalt</span><span>Kiválasztva</span></div>
+                        <div class="event-card-actions">
+                            <a class="event-card-action" href="Statisztika.html">Statisztika megnyitása</a>
+                            <a class="event-card-action event-card-action--secondary" href="Arazas.html">Árak &amp; jegyek kezelése</a>
+                        </div>
                     </div>
-                    <div
-                        class="scroll-card bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
-                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Esemény</h5>
-                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Helyszín</h5>
-                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Dátum</h5>
+                    <div class="scroll-card event-card bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium"
+                        data-category="party" data-location="budapest" data-date="2026-10-24" data-price="4000"
+                        data-search="necc party buli akvárium klub budapest">
+                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Necc Party</h5>
+                        <h5 class="mb-3 text-lg font-semibold tracking-tight text-heading leading-8">Akvárium Klub, Budapest</h5>
+                        <h5 class="mb-3 text-base tracking-tight text-heading leading-8">2026. október 24.</h5>
+                        <p class="mb-2 text-sm text-body">Jegyek: 780 / 1 200 · 4 000 Ft-tól</p>
+                        <div class="event-sales-progress" role="img" aria-label="A jegyek 65 százaléka elkelt">
+                            <span style="width: 65%"></span>
+                        </div>
+                        <div class="event-stadium-preview" data-active-sectors="1,2,5,6,9,10,13,14" role="group" aria-label="Interaktív helyszín szektortérkép"></div>
+                        <div class="event-seat-legend"><span>Aktív szektor</span><span>Prémium</span><span>Alsó szint</span><span>Felső szint</span><span>Foglalt</span><span>Kiválasztva</span></div>
+                        <div class="event-card-actions">
+                            <a class="event-card-action" href="Statisztika.html">Statisztika megnyitása</a>
+                            <a class="event-card-action event-card-action--secondary" href="Arazas.html">Árak &amp; jegyek kezelése</a>
+                        </div>
                     </div>
-                    <div
-                        class="scroll-card bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
-                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Esemény</h5>
-                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Helyszín</h5>
-                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Dátum</h5>
+                    <div class="scroll-card event-card bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium"
+                        data-category="concert" data-location="budapest" data-date="2026-12-05" data-price="7500"
+                        data-search="winter concert budapest koncert">
+                        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Winter Concert</h5>
+                        <h5 class="mb-3 text-lg font-semibold tracking-tight text-heading leading-8">MVM Dome, Budapest</h5>
+                        <h5 class="mb-3 text-base tracking-tight text-heading leading-8">2026. december 5.</h5>
+                        <p class="mb-2 text-sm text-body">Jegyek: 1 240 / 4 000 · 7 500 Ft-tól</p>
+                        <div class="event-sales-progress" role="img" aria-label="A jegyek 31 százaléka elkelt">
+                            <span style="width: 31%"></span>
+                        </div>
+                        <div class="event-stadium-preview" data-active-sectors="2,6,10,14" role="group" aria-label="Interaktív stadion szektortérkép"></div>
+                        <div class="event-seat-legend"><span>Aktív szektor</span><span>Prémium</span><span>Alsó szint</span><span>Felső szint</span><span>Foglalt</span><span>Kiválasztva</span></div>
+                        <div class="event-card-actions">
+                            <a class="event-card-action" href="Statisztika.html">Statisztika megnyitása</a>
+                            <a class="event-card-action event-card-action--secondary" href="Arazas.html">Árak &amp; jegyek kezelése</a>
+                        </div>
                     </div>
                 </div>
             </div>
+            <p id="event-empty" class="hidden p-4 text-center text-body">Nincs a szűrésnek megfelelő esemény.</p>
         </section>
     </main>
     <footer>
@@ -243,7 +340,9 @@
         </div>
     </footer>
     <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="./node_modules/apexcharts/dist/apexcharts.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/stadium.js"></script>
 </body>
 
 </html>

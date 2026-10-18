@@ -55,10 +55,13 @@ div.scrollmenu .scroll-card {
 div.scrollmenu .event-card {
   display: flex;
   flex-direction: column;
-  height: 40rem;
+  height: auto;
   min-height: 40rem;
-  max-height: 40rem;
   overflow: hidden;
+}
+
+div.scrollmenu .event-card > * {
+  flex-shrink: 0;
 }
 
 div.scrollmenu .event-card > h5 {
@@ -310,6 +313,24 @@ div.scrollmenu .event-card > .event-stadium-preview {
   cursor: pointer;
 }
 
+.calendar-event-edit-select {
+  flex: 0 0 2rem;
+  border: 1px solid #58645e;
+  border-radius: 0.3rem;
+  background: #252d29;
+  color: #d8e2dc;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.calendar-event-edit-select:hover,
+.calendar-event-edit-select:focus-visible {
+  border-color: #22e07a;
+  color: #a7f3d0;
+  outline: 2px solid #22e07a;
+}
+
 .calendar-event-delete-select:hover,
 .calendar-event-delete-select:focus-visible {
   border-color: #f87171;
@@ -371,9 +392,10 @@ div.scrollmenu .event-card > .event-stadium-preview {
 .event-stadium-preview {
   --sector-active: #22e07a;
   --sector-selected: #22e07a;
+  --seat-normal: #5f7fac;
   --seat-premium: #8573b3;
-  --seat-lower: #5f7fac;
-  --seat-upper: #5d6f69;
+  --seat-vip: #e0a93b;
+  --seat-earlybird: #3fb6a8;
   --seat-sold: #2a312d;
   position: relative;
   width: min(100%, 22rem);
@@ -384,7 +406,7 @@ div.scrollmenu .event-card > .event-stadium-preview {
   --sector-active: #a855f7;
   --sector-selected: #38bdf8;
   --seat-premium: #a855f7;
-  --seat-lower: #657bb8;
+  --seat-normal: #657bb8;
 }
 
 .event-stadium-preview svg {
@@ -413,20 +435,82 @@ div.scrollmenu .event-card > .event-stadium-preview {
   stroke: none;
 }
 
-.stadium-map__seat--premium {
+.stadium-map__seat--cat-normal {
+  fill: var(--seat-normal);
+}
+
+.stadium-map__seat--cat-premium {
   fill: var(--seat-premium);
 }
 
-.stadium-map__seat--lower {
-  fill: var(--seat-lower);
+.stadium-map__seat--cat-vip {
+  fill: var(--seat-vip);
 }
 
-.stadium-map__seat--upper {
-  fill: var(--seat-upper);
+.stadium-map__seat--cat-earlybird {
+  fill: var(--seat-earlybird);
 }
 
-.event-stadium-preview [data-sector][data-state="active"] .stadium-map__seat {
+.event-stadium-preview[data-mode="buy"] [data-sector][data-state="active"] .stadium-map__seat--cat-normal {
   fill: var(--sector-active);
+}
+
+.stadium-map__sector-shape {
+  fill: rgba(255, 255, 255, 0.025);
+  stroke: #2b332f;
+  stroke-width: 0.8;
+  transition: fill 120ms ease, stroke 120ms ease;
+}
+
+.event-stadium-preview [data-sector] {
+  cursor: pointer;
+}
+
+.event-stadium-preview svg:not(.is-zoomed) [data-sector]:hover .stadium-map__sector-shape,
+.event-stadium-preview [data-sector]:focus-visible .stadium-map__sector-shape,
+.event-stadium-preview[data-tool="sector"] [data-sector]:hover .stadium-map__sector-shape {
+  fill: rgba(34, 224, 122, 0.16);
+  stroke: #22e07a;
+}
+
+.event-stadium-preview [data-sector][data-current] .stadium-map__sector-shape {
+  fill: rgba(34, 224, 122, 0.07);
+  stroke: #22e07a;
+  stroke-width: 1.2;
+}
+
+.event-stadium-preview svg:not(.is-zoomed) .stadium-map__seat,
+.event-stadium-preview[data-tool="sector"] .stadium-map__seat {
+  pointer-events: none;
+}
+
+.event-stadium-preview[data-tool="rect"] svg {
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.event-stadium-preview[data-tool="rect"] .stadium-map__seat {
+  pointer-events: none;
+}
+
+.stadium-map__marquee {
+  fill: rgba(255, 255, 255, 0.1);
+  stroke: #ffffff;
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.event-stadium-preview[data-mode="assign"] [data-sector] .stadium-map__seat.is-selected {
+  fill: #ffffff;
+  stroke: #22e07a;
+  stroke-width: 1.2;
+}
+
+.event-stadium-preview [data-sector] .stadium-map__seat.is-row-hover {
+  stroke: #edf8f1;
+  stroke-width: 1;
 }
 
 .event-stadium-preview [data-sector] .stadium-map__seat.is-sold {
@@ -441,7 +525,7 @@ div.scrollmenu .event-card > .event-stadium-preview {
 }
 
 .event-stadium-preview [data-sector] .stadium-map__seat:not(.is-sold):hover,
-.event-stadium-preview [data-sector]:focus-visible .stadium-map__seat:not(.is-sold) {
+.event-stadium-preview svg.is-zoomed [data-sector]:focus-visible .stadium-map__seat:not(.is-sold) {
   stroke: #edf8f1;
   stroke-width: 1.2;
 }
@@ -521,7 +605,7 @@ div.scrollmenu .event-card > .event-stadium-preview {
 }
 
 .stadium-map__info {
-  min-height: 2.4em;
+  min-height: 3.6em;
   margin: 0.4rem 0 0;
   color: #aeb8b2;
   font-size: 0.7rem;
@@ -531,6 +615,13 @@ div.scrollmenu .event-card > .event-stadium-preview {
 
 .stadium-map__info span {
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stadium-map__note {
+  opacity: 0.75;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -563,15 +654,53 @@ div.scrollmenu .event-card > .event-stadium-preview {
   content: "";
 }
 
-.event-seat-legend span:nth-child(2)::before {
-  background: var(--seat-premium, #8573b3);
+.event-seat-legend .event-seat-legend__item--active::before {
+  background: #22e07a;
 }
 
-.event-seat-legend span:nth-child(3)::before {
-  background: var(--seat-lower, #5f7fac);
+.event-seat-legend .event-seat-legend__item--normal::before {
+  background: #5f7fac;
 }
 
-.event-seat-legend span:nth-child(4)::before,
+.event-seat-legend .event-seat-legend__item--premium::before {
+  background: #8573b3;
+}
+
+.event-seat-legend .event-seat-legend__item--vip::before {
+  background: #e0a93b;
+}
+
+.event-seat-legend .event-seat-legend__item--earlybird::before {
+  background: #3fb6a8;
+}
+
+.event-seat-legend .event-seat-legend__item--sold::before {
+  background: #2a312d;
+  box-shadow: inset 0 0 0 1px #4a544e;
+}
+
+.event-seat-legend .event-seat-legend__item--booked::before {
+  background: #e5484d;
+  box-shadow: 0 0 0 1px #ffd5d7;
+}
+
+.event-seat-legend .event-seat-legend__item--selected::before {
+  background: #22e07a;
+  box-shadow: 0 0 0 1px #edf8f1;
+}
+
+.event-card[data-event="coldplay"] .event-seat-legend .event-seat-legend__item--premium::before {
+  background: #a855f7;
+}
+
+.event-card[data-event="coldplay"] .event-seat-legend .event-seat-legend__item--normal::before {
+  background: #657bb8;
+}
+
+.event-card[data-event="coldplay"] .event-seat-legend .event-seat-legend__item--selected::before {
+  background: #38bdf8;
+}
+
 .seat-map__legend-seat--reserved {
   background: #58615d;
 }
@@ -585,41 +714,12 @@ div.scrollmenu .event-card > .event-stadium-preview {
   display: none;
 }
 
-.event-card .event-seat-legend span:nth-child(2)::before {
-  background: #8573b3;
-}
-
-.event-card .event-seat-legend span:nth-child(3)::before {
-  background: #5f7fac;
-}
-
-.event-card .event-seat-legend span:nth-child(4)::before {
-  background: #5d6f69;
-}
-
-.event-card[data-event="coldplay"] .event-seat-legend span:first-child::before {
-  background: #a855f7;
-}
-
 .event-created-description {
   display: -webkit-box;
   overflow: hidden;
   margin-bottom: 0.5rem;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
-}
-
-.event-card .event-seat-legend span:nth-child(5)::before {
-  background: #2a312d;
-  box-shadow: inset 0 0 0 1px #4a544e;
-}
-
-.event-card .event-seat-legend span:nth-child(6)::before {
-  background: #22e07a;
-}
-
-.event-card[data-event="coldplay"] .event-seat-legend span:nth-child(6)::before {
-  background: #38bdf8;
 }
 
 .seat-map__legend-seat {
@@ -706,4 +806,219 @@ div.scrollmenu .event-card > .event-stadium-preview {
   font-weight: 600;
   text-align: center;
   text-align: center;
+}
+
+.pricing-stadium {
+  width: min(100%, 38rem);
+}
+
+.stadium-assign__tools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.stadium-assign__tool,
+.stadium-assign__category {
+  border: 1px solid #58645e;
+  border-radius: 0.4rem;
+  background: #252d29;
+  color: #d8e2dc;
+  cursor: pointer;
+}
+
+.stadium-assign__tool {
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+}
+
+.stadium-assign__tool[aria-pressed="true"] {
+  border-color: #22e07a;
+  background: #16432f;
+  color: #d8ffeb;
+}
+
+.stadium-assign__tool:hover,
+.stadium-assign__tool:focus-visible,
+.stadium-assign__category:enabled:hover,
+.stadium-assign__category:focus-visible {
+  border-color: #22e07a;
+  outline: none;
+}
+
+.stadium-assign__panel {
+  margin-top: 0.75rem;
+  color: #c2cac5;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.stadium-assign__panel p {
+  margin: 0.25rem 0;
+}
+
+.stadium-assign__title {
+  margin-top: 0.6rem;
+  font-weight: 600;
+}
+
+.stadium-assign__categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: 0.5rem;
+  margin: 0.4rem 0;
+}
+
+.stadium-assign__category {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.5rem;
+  align-items: center;
+  padding: 0.45rem 0.6rem;
+  text-align: left;
+}
+
+.stadium-assign__category:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.stadium-assign__dot {
+  grid-row: 1 / span 2;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+}
+
+.stadium-assign__category--normal .stadium-assign__dot {
+  background: #5f7fac;
+}
+
+.stadium-assign__category--premium .stadium-assign__dot {
+  background: #8573b3;
+}
+
+.stadium-assign__category--vip .stadium-assign__dot {
+  background: #e0a93b;
+}
+
+.stadium-assign__category--earlybird .stadium-assign__dot {
+  background: #3fb6a8;
+}
+
+.stadium-assign__name {
+  font-weight: 600;
+}
+
+.stadium-assign__meta {
+  color: #aeb8b2;
+  font-size: 0.7rem;
+}
+
+.stadium-assign__resets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 1rem;
+}
+
+.stadium-assign__link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #8fd9b6;
+  font-size: 0.75rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.stadium-assign__link:disabled {
+  color: #6c7872;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+.stadium-assign__status {
+  min-height: 1.2em;
+  color: #8fd9b6;
+}
+
+.stadium-map__proceed {
+  display: block;
+  margin: 0.5rem auto 0;
+  padding: 0.45rem 1rem;
+  border: 1px solid #22e07a;
+  border-radius: 0.4rem;
+  background: #16432f;
+  color: #d8ffeb;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.stadium-map__proceed[hidden] {
+  display: block;
+  visibility: hidden;
+}
+
+.stadium-map__proceed:hover,
+.stadium-map__proceed:focus-visible {
+  background: #1c6846;
+  outline: none;
+}
+
+.seat-order__row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #303834;
+  color: #d8e2dc;
+  font-size: 0.9rem;
+}
+
+.seat-order__row select {
+  padding: 0.35rem 0.6rem;
+  border: 1px solid #58645e;
+  border-radius: 0.4rem;
+  background: #252d29;
+  color: #d8e2dc;
+  font-size: 0.85rem;
+}
+
+.seat-order__fixed {
+  color: #aeb8b2;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 480px) {
+  .seat-order__row {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+[data-ticket-step]:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+.seat-order__row {
+  grid-template-columns: 1fr auto;
+}
+
+.seat-order__type {
+  color: #aeb8b2;
+  font-size: 0.85rem;
+}
+
+.event-stadium-preview [data-sector] .stadium-map__seat.is-booked {
+  fill: #e5484d;
+  stroke: #ffd5d7;
+  stroke-width: 0.8;
+}
+
+.seat-order__row--booked strong {
+  color: #8fd9b6;
 }

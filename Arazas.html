@@ -36,37 +36,12 @@
                 <strong id="pricing-event-name">Nincs kiválasztva esemény</strong>
                 <span id="pricing-event-details">Válassz eseményt a főoldalon az árak megtekintéséhez.</span>
             </div>
-            <div>
+            <div class="flex">
                 <div
-                    class="md:row-span-2 bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
+                    class="w-full md:row-span-2 bg-neutral-primary-soft flex flex-col p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
                     <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8 py-5 text-center">Árak
                     </h5>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="md:col-span-2">
-                            <label for="early-bird-price" class=" block mb-2.5 text-sm font-medium text-heading">Early
-                                Bird:</label>
-                            <div class="relative">
-                                <input type="number" id="early-bird-price"
-                                    class="block w-full rounded-base border border-default-medium bg-neutral-secondary-medium px-3 py-2.5 pe-12 text-sm text-heading focus:border-brand focus:ring-brand"
-                                    min="0" step="1" value="6500" required />
-                                <span
-                                    class="pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body">
-                                    Ft
-                                </span>
-                            </div>
-                        </div>
-                        <div class="md:col-span-2">
-                            <label for="vip-price" class="block mb-2.5 text-sm font-medium text-heading">VIP:</label>
-                            <div class="relative">
-                                <input type="number" id="vip-price"
-                                    class="block w-full rounded-base border border-default-medium bg-neutral-secondary-medium px-3 py-2.5 pe-12 text-sm text-heading focus:border-brand focus:ring-brand"
-                                    min="0" step="1" value="25000" required />
-                                <span
-                                    class="pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body">
-                                    Ft
-                                </span>
-                            </div>
-                        </div>
+                    <div class="grid md:grid-cols-2 gap-6 pricing-price-grid flex-1 content-between">
                         <div class="md:col-span-2">
                             <label for="normal-price" class="block mb-2.5 text-sm font-medium text-heading">Normal:</label>
                             <div class="relative">
@@ -91,6 +66,31 @@
                                 </span>
                             </div>
                         </div>
+                        <div class="md:col-span-2">
+                            <label for="vip-price" class="block mb-2.5 text-sm font-medium text-heading">VIP:</label>
+                            <div class="relative">
+                                <input type="number" id="vip-price"
+                                    class="block w-full rounded-base border border-default-medium bg-neutral-secondary-medium px-3 py-2.5 pe-12 text-sm text-heading focus:border-brand focus:ring-brand"
+                                    min="0" step="1" value="25000" required />
+                                <span
+                                    class="pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body">
+                                    Ft
+                                </span>
+                            </div>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="early-bird-price" class=" block mb-2.5 text-sm font-medium text-heading">Early
+                                Bird:</label>
+                            <div class="relative">
+                                <input type="number" id="early-bird-price"
+                                    class="block w-full rounded-base border border-default-medium bg-neutral-secondary-medium px-3 py-2.5 pe-12 text-sm text-heading focus:border-brand focus:ring-brand"
+                                    min="0" step="1" value="6500" required />
+                                <span
+                                    class="pointer-events-none absolute inset-y-0 end-3 flex items-center text-sm text-body">
+                                    Ft
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -100,64 +100,71 @@
                     Ülőhelyek
                 </h5>
                 <p id="seat-capacity" class="seat-map__capacity" aria-live="polite"></p>
-                <div class="seat-map-legend" aria-label="Ülőhelyek jelmagyarázata">
-                    <span><i class="seat-map__legend-seat"></i> Szabad</span>
-                    <span><i class="seat-map__legend-seat seat-map__legend-seat--selected"></i> Kiválasztva</span>
-                    <span><i class="seat-map__legend-seat seat-map__legend-seat--reserved"></i> Foglalt</span>
+                <div id="pricing-stadium" class="event-stadium-preview pricing-stadium" data-mode="assign"
+                    role="group" aria-label="Székek kategóriába sorolása"></div>
+            </div>
+
+            <div id="seat-order" hidden
+                class="md:col-span-2 bg-neutral-primary-soft p-6 border border-default rounded-base shadow-xs">
+                <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Kiválasztott székek</h5>
+                <div id="seat-order-list"></div>
+                <p id="seat-order-summary" class="mt-3 text-sm text-body" aria-live="polite"></p>
+                <div class="mt-3 flex flex-wrap gap-3">
+                    <button type="button" id="seat-order-clear"
+                        class="rounded-base border border-default-medium px-4 py-3 text-sm font-medium text-heading hover:bg-neutral-secondary-medium">Kiválasztás elvetése</button>
                 </div>
-                <div class="seat-map__stage">SZÍNPAD</div>
-                <div id="seat-map" class="seat-map" role="group" aria-label="Választható ülőhelyek"></div>
-                <p class="seat-map__selection" aria-live="polite">
-                    Kiválasztva: <span id="selected-seats">Nincs kiválasztott szék</span>
-                    (<span id="selected-seat-count">0</span>)
-                </p>
+                <p id="seat-order-status" class="mt-2 text-sm text-green-400" aria-live="polite"></p>
             </div>
 
             <!-- Ez itt AI ez a teljes kártya belső része! -->
             <div
-                class="md:col-span-2 bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium self-end md:h-[400px]">
+                class="md:col-span-2 bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium self-end">
                 <div class="flex flex-col justify-between gap-y-3 sm:gap-y-6 h-full">
-                    <div class="flex items-center justify-between w-full">
-                        <span class="flex-1 text-lg sm:text-2xl font-semibold text-white">EB:</span>
-                        <div class="flex shrink-0 items-center gap-4 sm:gap-8">
-                            <button type="button"
-                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xl sm:h-12 sm:w-12 sm:text-2xl font-medium text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 active:scale-95 transition-transform">-</button>
-                            <span class="w-6 sm:w-8 text-center text-lg sm:text-2xl font-semibold text-white">1</span>
-                            <button type="button"
-                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xl sm:h-12 sm:w-12 sm:text-2xl font-medium text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 active:scale-95 transition-transform">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between w-full">
-                        <span class="flex-1 text-lg sm:text-2xl font-semibold text-white">VIP:</span>
-                        <div class="flex shrink-0 items-center gap-4 sm:gap-8">
-                            <button type="button"
-                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xl sm:h-12 sm:w-12 sm:text-2xl font-medium text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 active:scale-95 transition-transform">-</button>
-                            <span class="w-6 sm:w-8 text-center text-lg sm:text-2xl font-semibold text-white">1</span>
-                            <button type="button"
-                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xl sm:h-12 sm:w-12 sm:text-2xl font-medium text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 active:scale-95 transition-transform">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between w-full">
+                    <div class="flex items-center justify-between w-full" data-ticket-row="normal">
                         <span class="flex-1 text-lg sm:text-2xl font-semibold text-white">Normal:</span>
                         <div class="flex shrink-0 items-center gap-4 sm:gap-8">
-                            <button type="button"
+                            <button type="button" data-ticket-step="-1" aria-label="Normal jegyszám csökkentése"
                                 class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xl sm:h-12 sm:w-12 sm:text-2xl font-medium text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 active:scale-95 transition-transform">-</button>
-                            <span class="w-6 sm:w-8 text-center text-lg sm:text-2xl font-semibold text-white">1</span>
-                            <button type="button"
+                            <span data-ticket-count aria-live="polite" class="w-6 sm:w-8 text-center text-lg sm:text-2xl font-semibold text-white">1</span>
+                            <button type="button" data-ticket-step="1" aria-label="Normal jegyszám növelése"
                                 class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xl sm:h-12 sm:w-12 sm:text-2xl font-medium text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 active:scale-95 transition-transform">+</button>
                         </div>
                     </div>
-                    <div class="flex items-center justify-between w-full">
+                    <div class="flex items-center justify-between w-full" data-ticket-row="premium">
                         <span class="flex-1 text-lg sm:text-2xl font-semibold text-white">Premium:</span>
                         <div class="flex shrink-0 items-center gap-4 sm:gap-8">
-                            <button type="button"
+                            <button type="button" data-ticket-step="-1" aria-label="Premium jegyszám csökkentése"
                                 class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xl sm:h-12 sm:w-12 sm:text-2xl font-medium text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 active:scale-95 transition-transform">-</button>
-                            <span class="w-6 sm:w-8 text-center text-lg sm:text-2xl font-semibold text-white">1</span>
-                            <button type="button"
+                            <span data-ticket-count aria-live="polite" class="w-6 sm:w-8 text-center text-lg sm:text-2xl font-semibold text-white">1</span>
+                            <button type="button" data-ticket-step="1" aria-label="Premium jegyszám növelése"
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xl sm:h-12 sm:w-12 sm:text-2xl font-medium text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 active:scale-95 transition-transform">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between w-full" data-ticket-row="vip">
+                        <span class="flex-1 text-lg sm:text-2xl font-semibold text-white">VIP:</span>
+                        <div class="flex shrink-0 items-center gap-4 sm:gap-8">
+                            <button type="button" data-ticket-step="-1" aria-label="VIP jegyszám csökkentése"
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xl sm:h-12 sm:w-12 sm:text-2xl font-medium text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 active:scale-95 transition-transform">-</button>
+                            <span data-ticket-count aria-live="polite" class="w-6 sm:w-8 text-center text-lg sm:text-2xl font-semibold text-white">1</span>
+                            <button type="button" data-ticket-step="1" aria-label="VIP jegyszám növelése"
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xl sm:h-12 sm:w-12 sm:text-2xl font-medium text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 active:scale-95 transition-transform">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between w-full" data-ticket-row="earlyBird">
+                        <span class="flex-1 text-lg sm:text-2xl font-semibold text-white">EB:</span>
+                        <div class="flex shrink-0 items-center gap-4 sm:gap-8">
+                            <button type="button" data-ticket-step="-1" aria-label="EB jegyszám csökkentése"
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xl sm:h-12 sm:w-12 sm:text-2xl font-medium text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 active:scale-95 transition-transform">-</button>
+                            <span data-ticket-count aria-live="polite" class="w-6 sm:w-8 text-center text-lg sm:text-2xl font-semibold text-white">1</span>
+                            <button type="button" data-ticket-step="1" aria-label="EB jegyszám növelése"
                                 class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xl sm:h-12 sm:w-12 sm:text-2xl font-medium text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 active:scale-95 transition-transform">+</button>
                         </div>
                     </div>
 
+                    <p id="ticket-summary" class="text-sm text-body text-center" aria-live="polite"></p>
+                    <button type="button" id="ticket-commit" disabled
+                        class="w-full rounded-base bg-brand px-4 py-3 text-sm font-medium text-white hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-50">Jegyek rögzítése</button>
+                    <p id="ticket-status" class="text-sm text-center text-green-400" aria-live="polite"></p>
                 </div>
             </div>
         </section>
@@ -229,7 +236,10 @@
             </div>
     </footer>
     <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="js/Naptar.js"></script>
+    <script src="js/Arazas.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/stadium.js"></script>
 </body>
 
 </html>

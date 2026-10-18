@@ -41,11 +41,11 @@
                         <div class="dashboard-summary-stats">
                             <div class="dashboard-summary-stat">
                                 <span class="dashboard-summary-label">Összbevétel</span>
-                                <strong class="dashboard-summary-value">128 640 000 Ft</strong>
+                                <strong class="dashboard-summary-value" id="summary-revenue" data-base="128640000">128 640 000 Ft</strong>
                             </div>
                             <div class="dashboard-summary-stat">
                                 <span class="dashboard-summary-label">Eladott jegyek száma</span>
-                                <strong class="dashboard-summary-value">32 400 db</strong>
+                                <strong class="dashboard-summary-value" id="summary-tickets" data-base="32400">32 400 db</strong>
                             </div>
                             <div class="dashboard-summary-stat">
                                 <span class="dashboard-summary-label">Következő esemény</span>
@@ -59,7 +59,7 @@
                     class="dashboard-overview-card max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
                     <div class="flex justify-between items-start">
                         <div>
-                            <h5 class="text-2xl font-semibold text-heading">32.4k</h5>
+                            <h5 class="text-2xl font-semibold text-heading" id="summary-tickets-short">32.4k</h5>
                             <p class="text-body">Eladott jegyek</p>
                         </div>
                         <div class="flex items-center px-2.5 py-0.5 font-medium text-fg-success text-center">
@@ -148,38 +148,38 @@
                                 style="background-color: #008000ce !important;">Keresés</button>
                         </div>
                     </form>
-                    <div class="event-filter-controls" aria-label="Események szűrése">
+                    <div class="event-filter-controls md:ml-6" aria-label="Események">
                         <label class="sr-only" for="filter-date">Szűrés dátum szerint</label>
-                        <select id="filter-date" class="rounded-base bg-neutral-secondary-medium p-2 text-sm text-heading">
-                            <option value="all">Dátum (mind)</option>
+                        <select id="filter-date" class="rounded-base bg-neutral-secondary-medium p-2 text-sm text-heading" style="border-color: #008000ce !important; border-width: 2px;">
+                            <option value="all" >Dátum (mind)</option>
                             <option value="7">Következő 7 nap</option>
                             <option value="30">Következő 30 nap</option>
                             <option value="90">Következő 90 nap</option>
                         </select>
                         <label class="sr-only" for="filter-location">Szűrés helyszín szerint</label>
-                        <select id="filter-location" class="rounded-base bg-neutral-secondary-medium p-2 text-sm text-heading">
+                        <select id="filter-location" class="rounded-base bg-neutral-secondary-medium p-2 text-sm text-heading px-6" style="border-color: #008000ce !important; border-width: 2px; ">
                             <option value="all">Helyszín (mind)</option>
                             <option value="budapest">Budapest</option>
                             <option value="sopron">Sopron</option>
                         </select>
                         <label class="sr-only" for="filter-type">Szűrés típus szerint</label>
-                        <select id="filter-type" class="rounded-base bg-neutral-secondary-medium p-2 text-sm text-heading">
+                        <select id="filter-type" class="rounded-base bg-neutral-secondary-medium p-2 text-sm text-heading" style="border-color: #008000ce !important; border-width: 2px; ">
                             <option value="all">Típus (mind)</option>
                             <option value="festival">Fesztivál</option>
                             <option value="concert">Koncert</option>
                             <option value="party">Party</option>
                         </select>
                         <label class="sr-only" for="filter-price">Szűrés jegyár szerint</label>
-                        <select id="filter-price" class="rounded-base bg-neutral-secondary-medium p-2 text-sm text-heading">
+                        <select id="filter-price" class="rounded-base bg-neutral-secondary-medium p-2 text-sm text-heading px-4" style="border-color: #008000ce !important; border-width: 2px;">
                             <option value="all">Jegyár (mind)</option>
                             <option value="5000">5 000 Ft-ig</option>
                             <option value="10000">5 001–10 000 Ft</option>
                             <option value="10001">10 001 Ft-tól</option>
                         </select>
                         <button type="button" id="clear-event-filters"
-                            class="rounded-base bg-neutral-secondary-medium px-3 py-2 text-sm text-heading">Szűrők törlése</button>
+                            class="rounded-base bg-neutral-secondary-medium px-3 py-2 text-sm text-heading" style="border-color: #008000ce !important; border-width: 2px; ">Szűrők törlése</button>
                     </div>
-                    <p id="event-results" class="event-results text-sm text-body" aria-live="polite"></p>
+                    <p id="event-results" class="event-results text-sm text-body md:ml-6" aria-live="polite"></p>
                 </div>
             </div>
             <div class="p-4 px-6 flex gap-4 overflow-x-auto md:gap-6 hide-scrollbar">
@@ -341,6 +341,7 @@
     </footer>
     <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
     <script src="./node_modules/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="js/Naptar.js"></script>
     <script src="js/script.js"></script>
     <script src="js/stadium.js"></script>
 </body>

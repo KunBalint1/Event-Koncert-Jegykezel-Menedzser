@@ -19,50 +19,25 @@ const confirmDeleteEventButton = document.getElementById('confirm-delete-event')
 const deleteEventConfirmation = document.getElementById('delete-event-confirmation');
 let selectedCalendarEventId = null;
 
-function isCalendarEvent(event) {
-    return event && typeof event.id === 'string' &&
-        typeof event.name === 'string' && typeof event.location === 'string' &&
-        typeof event.description === 'string' && typeof event.date === 'string' &&
-        typeof event.time === 'string' && Number.isInteger(event.capacity) &&
-        event.capacity > 0 && /^\d{4}-\d{2}-\d{2}$/.test(event.date) &&
-        /^\d{2}:\d{2}$/.test(event.time) &&
-        (event.soldTickets === undefined ||
-            (Number.isInteger(event.soldTickets) && event.soldTickets >= 0)) &&
-        (event.price === undefined ||
-            (Number.isInteger(event.price) && event.price >= 0)) &&
-        (event.revenue === undefined ||
-            (Number.isFinite(event.revenue) && event.revenue >= 0)) &&
-        !Number.isNaN(new Date(`${event.date}T${event.time}`).getTime());
+const naptar = new Naptar(CALENDAR_STORAGE_KEY);
+if (naptar.getHiba() && calendarEventStatus) {
+    calendarEventStatus.textContent =
+        'A mentett események nem tölthetők be. Ellenőrizd a böngésző tárhelyét.';
 }
 
-function loadCalendarEvents() {
-    try {
-        const savedEvents = localStorage.getItem(CALENDAR_STORAGE_KEY);
-        if (savedEvents === null) return [];
-
-        const parsedEvents = JSON.parse(savedEvents);
-        if (!Array.isArray(parsedEvents) || !parsedEvents.every(isCalendarEvent)) {
-            throw new Error('A mentett eseményadatok formátuma érvénytelen.');
-        }
-        return parsedEvents;
-    } catch (error) {
-        console.error('Nem sikerült betölteni a naptáreseményeket.', error);
-        if (calendarEventStatus) {
-            calendarEventStatus.textContent =
-                'A mentett események nem tölthetők be. Ellenőrizd a böngésző tárhelyét.';
-        }
-        return [];
+function showCalendarSaveError() {
+    if (calendarEventStatus) {
+        calendarEventStatus.textContent =
+            'Az esemény mentése nem sikerült. Ellenőrizd a böngésző tárhelyét.';
     }
 }
-
-let calendarEvents = loadCalendarEvents();
 
 const statisticsChartElement = document.getElementById('OsszBevetel');
 const statisticsEventId = statisticsChartElement
     ? new URLSearchParams(window.location.search).get('eventId')
     : null;
 const selectedStatisticsEvent = statisticsEventId
-    ? calendarEvents.find(event => event.id === statisticsEventId)
+    ? naptar.keres(statisticsEventId)
     : null;
 
 function showSelectedEventStatistics(event) {
@@ -108,7 +83,7 @@ function showSelectedEventStatistics(event) {
     }
 
     const eventDescriptionCard = Array.from(document.querySelectorAll('main h5'))
-        .find(heading => heading.textContent.trim() === 'Esemény leírás:');
+        .find(heading => heading.textContent.replace(/\s+/g, ' ').trim() === 'Esemény leírás:');
     if (eventDescriptionCard) {
         const description = eventDescriptionCard.parentElement.querySelector('p');
         if (description) {
@@ -124,43 +99,24 @@ function showSelectedEventStatistics(event) {
             heading.textContent.includes('jegyek száma'));
     if (ticketTypesHeading) {
         ticketTypesHeading.textContent = `Jegyeladások · ${event.name}`;
-        const ticketTypesGrid = ticketTypesHeading.parentElement.querySelector('div.grid');
-        if (ticketTypesGrid) {
-            const remaining = Math.max(0, capacity - soldTickets);
-            const ticketStats = [
-                ['Eladott jegy: ', `${formatNumber(soldTickets)} db`],
-                ['Szabad férőhely: ', `${formatNumber(remaining)} db`],
-                ['Eladási arány: ', `${salesRate}%`],
-                ['Jegytípus bontás: ', 'nincs rögzítve']
-            ];
-            Array.from(ticketTypesGrid.querySelectorAll('p')).forEach((item, index) => {
-                if (!ticketStats[index]) return;
-                if (item.firstChild) item.firstChild.textContent = ticketStats[index][0];
+        const breakdown = ticketTypesHeading.parentElement.querySelector('.statistics-ticket-breakdown');
+        if (breakdown) {
+            // A kártya sorrendje: EB, Normal, VIP, Prémium. Csak a ténylegesen rögzített eladások látszanak.
+            const types = ['earlyBird', 'normal', 'vip', 'premium'];
+            const soldByType = event.soldByType || {};
+            Array.from(breakdown.querySelectorAll('p')).forEach((item, index) => {
+                const count = soldByType[types[index]] || 0;
+                const share = soldTickets > 0 ? Math.round(count / soldTickets * 1000) / 10 : 0;
                 const detail = item.querySelector('span');
-                if (detail) detail.textContent = ticketStats[index][1];
+                if (detail) detail.textContent = `${formatNumber(count)} db · ${share.toLocaleString('hu-HU')}%`;
             });
         }
     }
 }
-
 if (statisticsEventId && selectedStatisticsEvent) {
     showSelectedEventStatistics(selectedStatisticsEvent);
 } else if (statisticsEventId) {
     console.warn(`A kért naptáresemény nem található: ${statisticsEventId}`);
-}
-
-function saveCalendarEvents(events) {
-    try {
-        localStorage.setItem(CALENDAR_STORAGE_KEY, JSON.stringify(events));
-        return true;
-    } catch (error) {
-        console.error('Nem sikerült elmenteni a naptáreseményeket.', error);
-        if (calendarEventStatus) {
-            calendarEventStatus.textContent =
-                'Az esemény mentése nem sikerült. Ellenőrizd a böngésző tárhelyét.';
-        }
-        return false;
-    }
 }
 
 const nextEventNameElement = document.getElementById('next-event-name');
@@ -176,7 +132,7 @@ let countdownIntervalId = null;
 
 function updateNextEventCountdown() {
     if (!countdownIsAvailable) return;
-    const nextEvent = calendarEvents
+    const nextEvent = naptar.osszes()
         .map(event => ({ ...event, startsAt: new Date(`${event.date}T${event.time}`) }))
         .filter(event => event.startsAt.getTime() > Date.now())
         .sort((first, second) => first.startsAt - second.startsAt)[0];
@@ -264,7 +220,7 @@ if (weekdaysElement && monthTitleElement && calendarGridElement &&
 
             const dayEventsContainer = document.createElement('div');
             dayEventsContainer.className = 'calendar-day__events';
-            const dayEvents = calendarEvents.filter(event => event.date === key);
+            const dayEvents = naptar.napEsemenyei(d.getFullYear(), d.getMonth() + 1, d.getDate());
             dayEvents.forEach(event => {
                 const eventRow = document.createElement('div');
                 eventRow.className = 'calendar-event-row';
@@ -282,6 +238,15 @@ if (weekdaysElement && monthTitleElement && calendarGridElement &&
                     eventLink.classList.add('calendar-event-chip--selected');
                 }
                 eventRow.appendChild(eventLink);
+
+                const editButton = document.createElement('button');
+                editButton.type = 'button';
+                editButton.className = 'calendar-event-edit-select';
+                editButton.textContent = '✎';
+                editButton.setAttribute('aria-label', `Szerkesztés: ${event.name}`);
+                editButton.title = `Szerkesztés: ${event.name}`;
+                editButton.addEventListener('click', () => startEditingEvent(event.id));
+                eventRow.appendChild(editButton);
 
                 const deleteSelectButton = document.createElement('button');
                 deleteSelectButton.type = 'button';
@@ -309,11 +274,65 @@ if (weekdaysElement && monthTitleElement && calendarGridElement &&
 
     refreshCalendar = renderCalendar;
 
+    // Meglévő esemény szerkesztése: ugyanaz az oldalsó űrlap nyílik meg, kitöltve az esemény adataival.
+    const eventFormTitle = document.getElementById('event-form-title');
+    const eventFormSubmit = eventForm ? eventForm.querySelector('button[type="submit"]') : null;
+    const openDrawerButton = document.querySelector('[data-drawer-show="drawer-navigation"]');
+    const capacityField = document.getElementById('event-capacity');
+    const priceField = document.getElementById('event-price');
+    let editingEventId = null;
+    let openingForEdit = false;
+
+    function leaveEditMode(resetForm) {
+        editingEventId = null;
+        if (eventFormTitle) eventFormTitle.textContent = 'Esemény Kezelés';
+        if (eventFormSubmit) eventFormSubmit.textContent = 'Mentés';
+        if (capacityField) capacityField.min = '1';
+        if (priceField) priceField.required = true;
+        if (resetForm && eventForm) eventForm.reset();
+    }
+
+    function startEditingEvent(eventId) {
+        const eventToEdit = naptar.keres(eventId);
+        if (!eventToEdit || !eventForm) return;
+
+        eventForm.reset();
+        editingEventId = eventToEdit.id;
+        document.getElementById('event-name').value = eventToEdit.name;
+        document.getElementById('event-location').value = eventToEdit.location;
+        document.getElementById('event-description').value = eventToEdit.description;
+        document.getElementById('event-date').value = eventToEdit.date;
+        document.getElementById('event-time').value = eventToEdit.time;
+        if (capacityField) {
+            capacityField.value = String(eventToEdit.capacity);
+            capacityField.min = String(Math.max(1, eventToEdit.soldTickets || 0));
+        }
+        if (priceField) {
+            priceField.value = eventToEdit.price === undefined ? '' : String(eventToEdit.price);
+            priceField.required = eventToEdit.price !== undefined;
+        }
+        if (eventFormTitle) eventFormTitle.textContent = 'Esemény szerkesztése';
+        if (eventFormSubmit) eventFormSubmit.textContent = 'Módosítás';
+        if (calendarEventStatus) {
+            calendarEventStatus.textContent = `Szerkesztés alatt: ${eventToEdit.name}.`;
+        }
+
+        if (openDrawerButton) {
+            openingForEdit = true;
+            openDrawerButton.click();
+            openingForEdit = false;
+        }
+    }
+
+    if (openDrawerButton) {
+        openDrawerButton.addEventListener('click', () => {
+            if (!openingForEdit) leaveEditMode(true);
+        });
+    }
+
     if (deleteEventButton) {
         deleteEventButton.addEventListener('click', () => {
-            const eventToDelete = calendarEvents.find(
-                event => event.id === selectedCalendarEventId
-            );
+            const eventToDelete = naptar.keres(selectedCalendarEventId);
             if (eventToDelete && deleteEventConfirmation) {
                 deleteEventConfirmation.textContent =
                     `Biztosan törölni szeretnéd ezt az eseményt: ${eventToDelete.name}?`;
@@ -344,43 +363,59 @@ if (weekdaysElement && monthTitleElement && calendarGridElement &&
             const location = locationInput.value.trim();
             const description = descriptionInput.value.trim();
             const capacity = Number(capacityInput.value);
-            const price = Number(priceInput.value);
+            const priceText = priceInput.value.trim();
+            const price = Number(priceText);
+            const editedEvent = editingEventId
+                ? naptar.keres(editingEventId)
+                : null;
+            const priceMayBeEmpty = Boolean(editedEvent) && editedEvent.price === undefined;
+            const priceIsValid = priceText === ''
+                ? priceMayBeEmpty
+                : Number.isInteger(price) && price >= 0;
 
             if (!name || !location || !description || !Number.isInteger(capacity) || capacity < 1 ||
-                !priceInput.value.trim() || !Number.isInteger(price) || price < 0) {
+                !priceIsValid) {
                 if (calendarEventStatus) {
                     calendarEventStatus.textContent =
                         'Töltsd ki az összes mezőt, és adj meg pozitív létszámot, valamint 0 vagy nagyobb egész jegyárat.';
                 }
                 return;
             }
+            if (editedEvent && capacity < (editedEvent.soldTickets || 0)) {
+                if (calendarEventStatus) {
+                    calendarEventStatus.textContent =
+                        `A létszám nem lehet kevesebb az eladott jegyeknél (${editedEvent.soldTickets} db).`;
+                }
+                return;
+            }
 
-            const newEvent = {
-                id: window.crypto && window.crypto.randomUUID
-                    ? window.crypto.randomUUID()
-                    : `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+            const eventData = {
                 name,
                 location,
                 capacity,
-                price,
-                soldTickets: 0,
-                revenue: 0,
+                ...(priceText === '' ? {} : { price }),
                 description,
                 date: dateInput.value,
                 time: timeInput.value
             };
-            const updatedEvents = [...calendarEvents, newEvent];
-            if (!saveCalendarEvents(updatedEvents)) return;
+            const newEvent = editedEvent
+                ? naptar.modosit(editedEvent.id, eventData)
+                : naptar.hozzaad({ ...eventData, soldTickets: 0, revenue: 0 });
+            if (!newEvent) {
+                showCalendarSaveError();
+                return;
+            }
 
-            calendarEvents = updatedEvents;
             view = new Date(`${newEvent.date}T12:00:00`);
             view.setDate(1);
             selectedCalendarEventId = null;
             if (deleteEventButton) deleteEventButton.disabled = true;
             if (calendarEventStatus) {
-                calendarEventStatus.textContent = `${newEvent.name} esemény elmentve.`;
+                calendarEventStatus.textContent = editedEvent
+                    ? `${newEvent.name} esemény módosítva.`
+                    : `${newEvent.name} esemény elmentve.`;
             }
-            eventForm.reset();
+            leaveEditMode(true);
             const drawerCloseButton = document.querySelector(
                 '#drawer-navigation [data-drawer-hide="drawer-navigation"]'
             );
@@ -392,9 +427,7 @@ if (weekdaysElement && monthTitleElement && calendarGridElement &&
 
     if (confirmDeleteEventButton) {
         confirmDeleteEventButton.addEventListener('click', () => {
-            const eventToDelete = calendarEvents.find(
-                event => event.id === selectedCalendarEventId
-            );
+            const eventToDelete = naptar.keres(selectedCalendarEventId);
             if (!eventToDelete) {
                 if (calendarEventStatus) {
                     calendarEventStatus.textContent = 'Előbb válassz ki egy törlendő eseményt.';
@@ -402,12 +435,11 @@ if (weekdaysElement && monthTitleElement && calendarGridElement &&
                 return;
             }
 
-            const updatedEvents = calendarEvents.filter(
-                event => event.id !== selectedCalendarEventId
-            );
-            if (!saveCalendarEvents(updatedEvents)) return;
+            if (!naptar.torol(selectedCalendarEventId)) {
+                showCalendarSaveError();
+                return;
+            }
 
-            calendarEvents = updatedEvents;
             selectedCalendarEventId = null;
             if (deleteEventButton) deleteEventButton.disabled = true;
             if (calendarEventStatus) {
@@ -431,7 +463,7 @@ if (weekdaysElement && monthTitleElement && calendarGridElement &&
 
 window.addEventListener('storage', event => {
     if (event.key !== CALENDAR_STORAGE_KEY && event.key !== null) return;
-    calendarEvents = loadCalendarEvents();
+    naptar.betolt();
     selectedCalendarEventId = null;
     if (deleteEventButton) deleteEventButton.disabled = true;
     updateNextEventCountdown();
@@ -722,6 +754,8 @@ if (eventSearchForm) {
         stadium.className = 'event-stadium-preview';
         stadium.setAttribute('role', 'group');
         stadium.setAttribute('aria-label', 'Interaktív stadion ülésrend');
+        stadium.dataset.seatCapacity = String(event.capacity);
+        stadium.dataset.eventKey = `event:${event.id}`;
         legend.className = 'event-seat-legend';
         ['Aktív szektor', 'Prémium', 'Alsó szint', 'Felső szint', 'Foglalt', 'Kiválasztva']
             .forEach(label => {
@@ -747,7 +781,7 @@ if (eventSearchForm) {
     };
 
     if (eventCardsContainer) {
-        calendarEvents.forEach(renderSavedEventCard);
+        naptar.osszes().forEach(renderSavedEventCard);
     }
 
     const eventCards = Array.from(document.querySelectorAll('.event-card'));
@@ -850,11 +884,12 @@ if (pricingEventContext) {
     const pricingEventParams = new URLSearchParams(window.location.search);
     const pricingEventId = pricingEventParams.get('eventId');
     const pricingEvent = pricingEventId
-        ? calendarEvents.find(event => event.id === pricingEventId)
+        ? naptar.keres(pricingEventId)
         : null;
     const eventNameElement = document.getElementById('pricing-event-name');
     const eventDetailsElement = document.getElementById('pricing-event-details');
     const normalPriceInput = document.getElementById('normal-price');
+    const pricingStadium = document.getElementById('pricing-stadium');
 
     if (pricingEventId && !pricingEvent) {
         pricingEventContext.classList.remove('hidden');
@@ -868,11 +903,16 @@ if (pricingEventContext) {
         if (normalPriceInput && Number.isInteger(pricingEvent.price)) {
             normalPriceInput.value = String(pricingEvent.price);
         }
+        if (pricingStadium) {
+            pricingStadium.dataset.eventKey = `event:${pricingEvent.id}`;
+            pricingStadium.dataset.seatCapacity = String(pricingEvent.capacity);
+        }
         pricingEventContext.classList.remove('hidden');
     } else if (pricingEventParams.has('name')) {
         const eventName = pricingEventParams.get('name');
         const eventPrice = pricingEventParams.get('price');
         const parsedPrice = eventPrice === '' ? null : Number(eventPrice);
+        if (pricingStadium && eventName) pricingStadium.dataset.eventKey = `name:${eventName.trim()}`;
         eventNameElement.textContent = eventName || 'Kiválasztott esemény';
         eventDetailsElement.textContent =
             parsedPrice !== null && Number.isInteger(parsedPrice) && parsedPrice >= 0
@@ -936,4 +976,255 @@ if (seatMap) {
         seatCapacityLabel.textContent =
             `Összesen ${totalSeats} ülőhely · ${reservedSeatCount} foglalt · ${availableSeats} szabad`;
     }
+}
+
+// Jegyvásárlás szimulálása az Árazás oldalon: a +/- gombokkal jegyeket gyűjtünk kategóriánként,
+// a "Jegyek rögzítése" gomb pedig hozzáadja őket az esemény eladásaihoz és bevételéhez.
+// Az árakat és a jegyszámokat az Arazas osztály, az eseményeket a Naptar osztály kezeli.
+const PRICE_INPUT_IDS = {
+    normal: 'normal-price',
+    premium: 'premium-price',
+    vip: 'vip-price',
+    earlyBird: 'early-bird-price'
+};
+const readPriceInputs = () => {
+    const prices = {};
+    Object.entries(PRICE_INPUT_IDS).forEach(([key, id]) => {
+        prices[key] = document.getElementById(id).value;
+    });
+    return prices;
+};
+const formatFt = value => `${value.toLocaleString('hu-HU')} Ft`;
+
+const ticketRows = document.querySelectorAll('[data-ticket-row]');
+if (ticketRows.length) {
+    const PENDING_KEY = 'jegykezelo-kivalasztott-szekek';
+    const BOOKED_KEY = 'jegykezelo-foglalt-szekek';
+    const STATIC_SALES_KEY = 'jegykezelo-beepitett-eladasok';
+    const params = new URLSearchParams(window.location.search);
+    const eventId = params.get('eventId');
+    const hasEvent = Boolean(eventId && naptar.keres(eventId));
+    const stadiumElement = document.getElementById('pricing-stadium');
+    const stadiumKey = (stadiumElement && stadiumElement.dataset.eventKey) || 'general';
+    const summary = document.getElementById('ticket-summary');
+    const commitButton = document.getElementById('ticket-commit');
+    const statusLine = document.getElementById('ticket-status');
+    const seatOrder = document.getElementById('seat-order');
+    const seatList = document.getElementById('seat-order-list');
+    const readJson = key => {
+        try {
+            return JSON.parse(localStorage.getItem(key)) || {};
+        } catch (error) {
+            return {};
+        }
+    };
+
+    // A főoldalon kiválasztott, még le nem foglalt székek.
+    const bookedStore = readJson(BOOKED_KEY);
+    const alreadyBooked = new Set(Array.isArray(bookedStore[stadiumKey]) ? bookedStore[stadiumKey] : []);
+    const pending = readJson(PENDING_KEY);
+    let seats = pending.key === stadiumKey && Array.isArray(pending.seats)
+        ? pending.seats.filter(seat => !alreadyBooked.has(seat.key))
+        : [];
+    const assigned = new Map(); // székkulcs -> jegytípus
+    const confirmed = []; // az ebben a munkamenetben lefoglalt székek
+
+    const pricing = new Arazas(undefined, { earlyBird: 0, vip: 0, normal: 0, premium: 0 });
+    pricing.arakFrissit(readPriceInputs());
+    const freeTickets = () => (hasEvent ? naptar.szabadHelyek(eventId) : Infinity);
+    const seatName = seat => `${seat.section} · ${seat.row} sor · ${seat.number}. szék`;
+    const nextSeatFor = type => seats.find(seat =>
+        !assigned.has(seat.key) && Arazas.engedettTipusok(seat.category).includes(type));
+
+    const render = () => {
+        const seatMode = seats.length > 0;
+        const tickets = pricing.getJegyek();
+        const count = pricing.jegyDarab();
+        seatOrder.hidden = !seatMode && confirmed.length === 0;
+        seatList.replaceChildren();
+        seats.forEach(seat => {
+            const row = document.createElement('div');
+            row.className = 'seat-order__row';
+            const name = document.createElement('span');
+            name.textContent = seatName(seat);
+            const type = document.createElement('span');
+            type.className = 'seat-order__type';
+            type.textContent = assigned.has(seat.key)
+                ? `${Arazas.NEVEK[assigned.get(seat.key)]} · ${formatFt(pricing.ar(assigned.get(seat.key)))}`
+                : 'Válassz jegytípust lent';
+            row.append(name, type);
+            seatList.appendChild(row);
+        });
+        confirmed.forEach(item => {
+            const row = document.createElement('div');
+            row.className = 'seat-order__row seat-order__row--booked';
+            const name = document.createElement('span');
+            name.textContent = item.name;
+            const type = document.createElement('strong');
+            type.textContent = `Lefoglalva ✓ · ${Arazas.NEVEK[item.type]} · ${formatFt(item.price)}`;
+            row.append(name, type);
+            seatList.appendChild(row);
+        });
+
+        ticketRows.forEach(row => {
+            const key = row.dataset.ticketRow;
+            row.querySelector('[data-ticket-count]').textContent = String(tickets[key]);
+            const minus = row.querySelector('[data-ticket-step="-1"]');
+            const plus = row.querySelector('[data-ticket-step="1"]');
+            minus.disabled = tickets[key] === 0;
+            plus.disabled = seatMode ? !nextSeatFor(key) : false;
+        });
+
+        if (seatMode) {
+            summary.textContent = `${seats.length} szék kiválasztva · ${count} jegytípus megadva · ${formatFt(pricing.jegyOsszeg())}`;
+            commitButton.textContent = 'Székek lefoglalása';
+        } else {
+            summary.textContent = hasEvent
+                ? `Összesen ${count} jegy · ${formatFt(pricing.jegyOsszeg())} · még ${freeTickets() - count} szabad hely`
+                : 'Jegyek rögzítéséhez válassz egy mentett eseményt a főoldalon.';
+            commitButton.textContent = 'Jegyek rögzítése';
+        }
+        commitButton.disabled = count === 0 || (!seatMode && !hasEvent);
+    };
+
+    Object.values(PRICE_INPUT_IDS).forEach(id => {
+        document.getElementById(id).addEventListener('input', () => {
+            pricing.arakFrissit(readPriceInputs());
+            render();
+        });
+    });
+
+    ticketRows.forEach(row => {
+        row.querySelectorAll('[data-ticket-step]').forEach(button => {
+            button.addEventListener('click', () => {
+                const key = row.dataset.ticketRow;
+                const step = Number(button.dataset.ticketStep);
+                statusLine.textContent = '';
+                if (seats.length) {
+                    if (step > 0) {
+                        const seat = nextSeatFor(key);
+                        if (!seat || freeTickets() - pricing.jegyDarab() < 1) {
+                            statusLine.textContent = 'Nincs több szabad hely az eseményen.';
+                            return;
+                        }
+                        assigned.set(seat.key, key);
+                    } else {
+                        const last = [...seats].reverse().find(seat => assigned.get(seat.key) === key);
+                        if (last) assigned.delete(last.key);
+                    }
+                    pricing.jegyLeptet(key, step);
+                } else if (!pricing.jegyLeptet(key, step, freeTickets() - pricing.jegyDarab())) {
+                    statusLine.textContent = 'Nincs több szabad hely az eseményen.';
+                }
+                render();
+            });
+        });
+    });
+
+    document.getElementById('seat-order-clear').addEventListener('click', () => {
+        try {
+            localStorage.removeItem(PENDING_KEY);
+        } catch (error) {
+            // A kiválasztás elvetése mentés nélkül is működik.
+        }
+        seats = [];
+        assigned.clear();
+        confirmed.length = 0;
+        pricing.jegyekNullaz();
+        statusLine.textContent = '';
+        render();
+    });
+
+    commitButton.addEventListener('click', () => {
+        const count = pricing.jegyDarab();
+        const amount = pricing.jegyOsszeg();
+        if (count === 0) return;
+        const tickets = pricing.getJegyek();
+        const parts = Arazas.KATEGORIAK.filter(key => tickets[key] > 0)
+            .map(key => `${tickets[key]} × ${Arazas.NEVEK[key]}`);
+
+        if (seats.length) {
+            if (hasEvent && !naptar.elad(eventId, count, amount, pricing.getJegyek())) {
+                statusLine.textContent = 'A foglalás nem sikerült: nincs elég szabad hely, vagy a mentés hibás.';
+                return;
+            }
+            const bookedKeys = seats.filter(seat => assigned.has(seat.key)).map(seat => seat.key);
+            const rest = seats.filter(seat => !assigned.has(seat.key));
+            bookedStore[stadiumKey] = [...alreadyBooked, ...bookedKeys];
+            try {
+                localStorage.setItem(BOOKED_KEY, JSON.stringify(bookedStore));
+                if (rest.length) {
+                    localStorage.setItem(PENDING_KEY, JSON.stringify({ key: stadiumKey, seats: rest }));
+                } else {
+                    localStorage.removeItem(PENDING_KEY);
+                }
+            } catch (error) {
+                statusLine.textContent = 'A foglalás mentése nem sikerült. Ellenőrizd a böngésző tárhelyét.';
+                return;
+            }
+            seats.filter(seat => assigned.has(seat.key)).forEach(seat => {
+                const type = assigned.get(seat.key);
+                confirmed.push({ name: seatName(seat), type, price: pricing.ar(type) });
+            });
+            if (!hasEvent) {
+                const staticSales = readJson(STATIC_SALES_KEY);
+                const previous = staticSales[stadiumKey] || { darab: 0, bevetel: 0 };
+                staticSales[stadiumKey] = { darab: previous.darab + count, bevetel: previous.bevetel + amount };
+                try {
+                    localStorage.setItem(STATIC_SALES_KEY, JSON.stringify(staticSales));
+                } catch (error) {
+                    statusLine.textContent = 'A foglalás mentése nem sikerült. Ellenőrizd a böngésző tárhelyét.';
+                }
+            }
+            bookedKeys.forEach(key => alreadyBooked.add(key));
+            seats = rest;
+            assigned.clear();
+        } else if (!naptar.elad(eventId, count, amount, pricing.getJegyek())) {
+            statusLine.textContent = 'A rögzítés nem sikerült: nincs elég szabad hely, vagy a mentés hibás.';
+            return;
+        }
+        pricing.jegyekNullaz();
+        render();
+        statusLine.textContent = `Rögzítve: ${parts.join(', ')} · ${formatFt(amount)}`;
+        statusLine.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    });
+    render();
+}
+
+// Főoldali összegzés: a beépített események alapértékéhez hozzáadjuk az összes mentett esemény
+// eladásait és a beépített eseményekre foglalt székeket. Minden betöltéskor újraszámolódik.
+const summaryRevenue = document.getElementById('summary-revenue');
+const summaryTickets = document.getElementById('summary-tickets');
+const summaryTicketsShort = document.getElementById('summary-tickets-short');
+if (summaryRevenue && summaryTickets) {
+    const updateDashboardSummary = () => {
+        naptar.betolt();
+        let revenue = Number(summaryRevenue.dataset.base) || 0;
+        let tickets = Number(summaryTickets.dataset.base) || 0;
+        naptar.osszes().forEach(event => {
+            revenue += event.revenue || 0;
+            tickets += event.soldTickets || 0;
+        });
+        try {
+            Object.values(JSON.parse(localStorage.getItem('jegykezelo-beepitett-eladasok')) || {})
+                .forEach(sale => {
+                    revenue += Number(sale.bevetel) || 0;
+                    tickets += Number(sale.darab) || 0;
+                });
+        } catch (error) {
+            // Hibás tárolt adat esetén az alapértékek maradnak.
+        }
+        summaryRevenue.textContent = `${revenue.toLocaleString('hu-HU')} Ft`;
+        summaryTickets.textContent = `${tickets.toLocaleString('hu-HU')} db`;
+        if (summaryTicketsShort) {
+            summaryTicketsShort.textContent = tickets >= 1000
+                ? `${(tickets / 1000).toLocaleString('hu-HU', { maximumFractionDigits: 1 })}k`
+                : String(tickets);
+        }
+    };
+    updateDashboardSummary();
+    window.addEventListener('pageshow', event => {
+        if (event.persisted) updateDashboardSummary();
+    });
+    window.addEventListener('storage', updateDashboardSummary);
 }
